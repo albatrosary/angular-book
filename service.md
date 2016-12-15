@@ -14,7 +14,7 @@ import {Injectable} from '@angular/core';
 import {Issue} from './issue';
 
 @Injectable()
-export class IssueStore {
+export class IssueService {
   private issues: Issue[] = [];
 
   public delete(index: number): void {
@@ -29,7 +29,6 @@ export class IssueStore {
     return this.issues;
   }
 }
-
 ```
 
 issue.component.tsは
@@ -39,7 +38,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { Issue } from './issue';
-import { IssueStore } from './issue.store';
+import { IssueService } from './issue.service';
 
 @Component({
   selector: 'app-issue',
@@ -52,12 +51,12 @@ export class IssueComponent implements OnInit {
   private issues: Issue[];
 
   constructor (
-    private issueStore: IssueStore
+    private issueService: IssueService
   ) {}
 
   ngOnInit(): void {
     this.issue = new Issue;
-    this.issues = this.issueStore.list;
+    this.issues = this.issueService.list;
   }
 
   public onSubmit(form: NgForm): void {
@@ -66,61 +65,41 @@ export class IssueComponent implements OnInit {
       desc: form.value.desc
     }
 
-    this.issueStore.add(issue);
+    this.issueService.add(issue);
 
     form.reset();
   }
 
   public onDelete(index: number): void {
-    this.issueStore.delete(index);
+    this.issueService.delete(index);
   }
 
 }
-
 ```
 
-app.module.tsにIssueStoreを追加します
+issue.module.tsにIssueServiceを追加します
 
 ```
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { CommonModule } from '@angular/common';
+import { IssueComponent } from './issue.component';
 
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { IssueComponent } from './issue/issue.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { WikiComponent } from './wiki/wiki.component';
-
-import { routing, appRoutingProviders }  from './app.routes';
-import { MarkdownPipe } from './markdown.pipe';
-
-import { IssueStore } from './issue/issue.store';
+import { IssueService } from './issue.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    IssueComponent,
-    PageNotFoundComponent,
-    WikiComponent,
-    MarkdownPipe
-  ],
   imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    routing
+    CommonModule,
+    FormsModule
   ],
+  declarations: [IssueComponent],
   providers: [
-    appRoutingProviders,
-    IssueStore
-  ],
-  bootstrap: [AppComponent]
+    IssueService
+  ]
 })
-export class AppModule { }
+export class IssueModule { }
+
 ```
 
-
+これでロジック部をComponentからServiceへ移動させることができました。
 

@@ -7,6 +7,6 @@
 * [階層化されたModuleとRouting](階層化されたmoduleとrouting.md)
 * [Pipeの利用](pipeの利用.md)
 * [Issue Trackerの作成](issue-trackerの作成.md)
-* コンポーネント分割
 * [Service](service.md)
+* [コンポーネント分割](コンポーネント分割.md)
 
