@@ -1,4 +1,4 @@
-# Angular 2: The Future of JavaScript is Now
+# The Future of JavaScript is Now
 
 ## ANGULAR CLI
 
