@@ -5,7 +5,7 @@
 * [プロジェクトの生成及び設定](mac.md)
 * [ルーティングの設定](routing.md)
 * [階層化されたModuleとRouting](階層化されたmoduleとrouting.md)
-* [ライフサイクル](ライフサイクル.md)
+* [RouterとComponentのライフサイクル](ライフサイクル.md)
 * [Pipeを使ったWikiページ](pipeの利用.md)
 * [Issue Trackerページの作成](issue-trackerの作成.md)
 * [サービスの利用](service.md)
