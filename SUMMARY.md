@@ -5,6 +5,7 @@
 * [プロジェクトの生成及び設定](mac.md)
 * [ルーティングの設定](routing.md)
 * [階層化されたModuleとRouting](階層化されたmoduleとrouting.md)
+* [ライフサイクル](ライフサイクル.md)
 * [Pipeを使ったWikiページ](pipeの利用.md)
 * [Issue Trackerページの作成](issue-trackerの作成.md)
 * [サービスの利用](service.md)
@@ -14,5 +15,8 @@
 * [Animationを使ってみる](animation.md)
 * [header.titleを変更する](titleを変更する.md)
 * [Lazy LoadとAoTビルド](lazy-load.md)
-* [Changelog](book-revision.md)
+* [ライフサイクル](ライフサイクル.md)
+* Unit Test
+* e2e Test
+* Azure and Werker CI
 
