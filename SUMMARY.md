@@ -18,4 +18,5 @@
 * [Unit Test](unit-test.md)
 * [e2e Test](e2e-test.md)
 * [Azure and Werker CI](azure-and-werker-ci.md)
+* [Changelog](changelog.md)
 
