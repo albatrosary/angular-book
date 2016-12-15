@@ -1,4 +1,4 @@
-# The Future of JavaScript is Now
+# The Future of Angular is Now
 
 Angularはフルスタックと呼ばれるようにComponent, Route, Service, PipeなどWebアプリケーションを作る上で全てのものが揃っています。Angular 2になりそうしたライブラリ以外にも様々な道具が提供されています。
 

@@ -104,7 +104,6 @@ Chrome 54.0.2840 (Mac OS X 10.12.1): Executed 3 of 3 (2 FAILED) (0.273 secs / 0.
 export class AppComponent {
   title = 'app sample!';
 }
-
 ```
 
 と変更したためにテストが通らなくなっています。テストコードを変更します。`app.component.spec.ts`を見て下さい。
@@ -249,7 +248,6 @@ webpack: bundle is now VALID.
     Some end-to-end tests failed, see above.
     $ 
 
-
 ここでもユニットテストと同様の理由でエラーが発生します。e2eテストコードは「src」ディレクトリとは別の「e2e」ディレクトリに格納されています。 その中にある`app.e2e-spec.ts`というファイルを見てみます。
 
 ```
@@ -311,7 +309,7 @@ Executed 1 of 1 spec SUCCESS in 0.827 sec.
 [22:26:37] I/launcher - chrome #01 passed
 
 All end-to-end tests pass.
-$ 
+$
 ```
 
 ## ビルド
@@ -368,7 +366,7 @@ $ tree
 └── styles.map
 
 0 directories, 9 files
-$ 
+$
 ```
 
 ## 外部ファイルの登録
@@ -384,9 +382,11 @@ npm install marked --save
 npm install @types/marked --save-dev
 ```
 
+## 完成したコード
+
+完成したコードは[github](https://github.com/albatrosary/start-angular)にあります。
+
 ## まとめ
 
 このように通常の開発では`ng serve`でアプリケーション開発を行い、`ng test`や`ng e2e`を使ってテストを行います。テストが完了すると`ng build`でリリースモジュールの作成をします。こうした手順の一部はCIで行うことで開発ライフサイクルの自動化をします。
-
-
 
