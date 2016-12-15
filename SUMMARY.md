@@ -16,6 +16,6 @@
 * [header.titleを変更する](titleを変更する.md)
 * [Lazy LoadとAoTビルド](lazy-load.md)
 * [Unit Test](unit-test.md)
-* e2e Test
-* Azure and Werker CI
+* [e2e Test](e2e-test.md)
+* [Azure and Werker CI](azure-and-werker-ci.md)
 
