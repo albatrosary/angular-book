@@ -14,6 +14,7 @@
 * [SASSの導入](sassの導入.md)
 * [Animationを使ってみる](animation.md)
 * [header.titleを変更する](titleを変更する.md)
+* [lintを利用する](lintを利用する.md)
 * [Lazy LoadとAoTビルド](lazy-load.md)
 * [Unit Test](unit-test.md)
 * [e2e Test](e2e-test.md)
