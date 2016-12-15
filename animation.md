@@ -3,18 +3,15 @@ pages.componentのメニューにアニメーションを設定します。
 準備としてpages.component.htmlを次のように書き換えます
 
 ```
-<div>
-  <ul>
-    <li *ngFor="let menu of links; let i = index">
-      <a routerLink="{{menu.url}}"
-        [@menuState]="menu.state" (click)="onClick(i)">
-        {{menu.name}}
-      </a>
-    </li>
-  </ul>
-</div>
+<ul>
+  <li *ngFor="let menu of links; let i = index">
+    <a routerLink="{{menu.url}}"
+      [@menuState]="menu.state" (click)="onClick(i)">
+      {{menu.name}}
+    </a>
+  </li>
+</ul>
 <router-outlet></router-outlet>
-
 ```
 
 pages.component.tsにアニメーションを定義します。アニメーションは@Componentのanimations句で実装します。
@@ -71,7 +68,6 @@ export class PagesComponent implements OnInit {
     );
   }
 }
-
 ```
 
 

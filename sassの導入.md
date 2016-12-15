@@ -1,3 +1,5 @@
+Angularはコンポーネント単位でのScoped CSSであるため無駄な識別子を定義する必要が無く見通しの良いCSSを作ることができます。
+
 SASSを利用するための設定はとても簡単です。angular-cli.jsonを変更します。
 
 ```
@@ -142,7 +144,7 @@ footer {
   <h2>ANGULAR CLI</h2>
   <p>Angular2をインストールする最良の方法は、Angular CLI Toolを使用することです。</p>
   <p>Angular CLIはAngular 2 Applicationの足場を生成するのに役立つだけでなく、開発者、生成、サービス、テスト、および管理に役立つ一連のコマンドが付属しています。 Angularを利用するする人々から聞いた主な不平の一つは、それがどこで始まり、どこで終わるのかを理解することが難しいことです。 Yeoman、Grunt、Gulp、そしてあらゆる種類のツールを使って真の発展を作り出していることです。 環境は、今やすべてがフレームワークコマンドラインインターフェイスによって提供されます。</p>
-  
+
   <h2>ANGULAR UNIVERSAL</h2>
   <p>Angular2のアプリケーション向けのサーバーサイドレンダリングが存在します。Angular 1 では SEO に苦しめられましたが Universal を利用することでそれを回避できます そして、サイトのプレビュー、最適化された検索エンジン、そしてはるかに改善されたパフォーマンスを得ることができます。</p>
 
@@ -151,7 +153,7 @@ footer {
 
   <h2>ANGULAR AUGURY</h2>
   <p>Angular 2を使うと、デバッグがかなり難しいですが、Angular Augury Toolを利用することで回避できます。 これはChrome2プラグインです。 実際にコンポーネントツリーをグラフィック表現で管理しています。</p>
-  
+
   <h2>ANGULAR MATERIAL 2</h2>
   <p>Angular Material 2コンポーネントではコミュニティに沿ってGoogle Developersチームの協力もあり 以前よりも強力なコンポーネントを作成しています。</p>
 
@@ -225,7 +227,6 @@ input, textarea {
 .id {
   border: 0px;
 }
-
 ```
 
 ### issue.component.scss
@@ -243,7 +244,7 @@ input, textarea {
   <h2>バグ管理システム</h2>
 
   <p>バグ管理システム、バグトラッキングシステム[1]とはプロジェクトのバグを登録し、修正状況を追跡するシステム。バグ管理システムの多くは、ウェブサーバ上で動作し、ウェブブラウザ経由でアクセスできるようになっている。バグ管理システムはソフトウェアを開発する上での必須のもの[要出典]になりつつある。</p>
-  
+
   <h2>背景</h2>
   <p>近年、ソフトウェアの開発においてはバグの修正が重要な作業と考えられている。バグを漏らさず修正し、再発を防ぐには、バグの発見日時や発見者、再現方法、修正担当者、修正履歴、修正方法、重要度、テスト状況などの多くの情報を残し管理する必要がある。開発によっては数千という数のバグが発生し、また多数のテスト担当者や修正担当者が関わっていることを考慮すると、従来のファイルレベルの管理では追いつかなくなっている。このような背景から、バグを管理するソフトウェアであるバグ管理システムが生まれた。</p>
 
@@ -286,7 +287,6 @@ div {
   margin: 0 5px;
   width: 49%;
 }
-
 ```
 
 ### pages.component.scss
@@ -310,13 +310,12 @@ a {
   text-decoration: none;
   color: #888888;
 }
-
 ```
 
 ### app.component.scss
 
 ```
-@import './../assets/properties';
+@import './shared/properties';
 
 ul {
   display: flex;
@@ -332,17 +331,17 @@ div {
   display: flex;
   padding: 0 3px;
   background-color: $corporate-color;
-  color: #FFFFFF;
+  color: $font-color;
 }
 
 li {
   list-style: none;
-  padding: 0 5px 0 5px;
+  padding: 0 5px;
 }
 
 a {
   text-decoration: none;
-  color: #FFFFFF;
+  color: $font-color;
 }
 
 ```
