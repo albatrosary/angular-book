@@ -1,3 +1,6 @@
 # Summary
 
-* [First Chapter](chapter1.md)
+* [Introduction](README.md)
+* [Environment](chapter1.md)
+* [Mac](mac.md)
+
