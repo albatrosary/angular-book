@@ -8,7 +8,6 @@ Pipeを作成します。マークダウンで入力したものをHTMLへ変換
 
 ```
 $ ng g pipe pages/wiki/markdown.pipe
-
 ```
 
 「app/pages/wiki」ディレクトリにある`markdown.pipe.ts`ファイルを開き次のように記述します
@@ -72,5 +71,31 @@ export class WikiComponent implements OnInit {
 }
 ```
 
+wiki.module.tsに必要なライブラリを追加します。
+
+```
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
+import { WikiComponent } from './wiki.component';
+
+import { MarkdownPipe } from './markdown.pipe';
+
+@NgModule({
+  imports: [
+    CommonModule,
+    FormsModule
+  ],
+  declarations: [
+    WikiComponent,
+    MarkdownPipe
+  ]
+})
+export class WikiModule { }
+
+```
+
+  
 Angular2のバインディングの仕組みとPipeを利用することで簡単にマークダウンエディタを作成することができます。
 

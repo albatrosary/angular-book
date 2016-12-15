@@ -25,6 +25,7 @@ app
  | |  |- issue.module.ts
  | |- top
  | |- wiki
+ | | |- wiki.module.ts
  | |- pages.module.ts
  | |- pages.routes.ts
  |- app.module.ts
@@ -94,10 +95,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { IssueModule } from './issue/issue.module';
+import { WikiModule } from './wiki/wiki.module';
 
 import { PagesComponent } from './pages.component';
 import { TopComponent } from './top/top.component';
-import { WikiComponent } from './wiki/wiki.component';
 
 import { pagesRouting, pagesRoutingProviders }  from './pages.routes';
 
@@ -105,19 +106,19 @@ import { pagesRouting, pagesRoutingProviders }  from './pages.routes';
   imports: [
     CommonModule,
     IssueModule,
+    WikiModule,
     pagesRouting
   ],
   providers: [pagesRoutingProviders],
   declarations: [
     PagesComponent,
-    TopComponent,
-    WikiComponent
+    TopComponent
   ]
 })
 export class PagesModule { }
 ```
 
-Issueに関してはComponent単体では無くModuleにしていますのでimports句で`IssueModule`を設定しています。
+Issue, wikiに関してはComponent単体では無くModuleにしていますのでimports句で`IssueModule`と`WikiModule`を設定しています。
 
 ## 親ルータの設定
 
