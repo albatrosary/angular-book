@@ -15,8 +15,7 @@
 * [Animationを使ってみる](animation.md)
 * [header.titleを変更する](titleを変更する.md)
 * [Lazy LoadとAoTビルド](lazy-load.md)
-* [ライフサイクル](ライフサイクル.md)
-* Unit Test
+* [Unit Test](unit-test.md)
 * e2e Test
 * Azure and Werker CI
 
