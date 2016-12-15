@@ -60,12 +60,41 @@ SASSを利用するための設定はとても簡単です。angular-cli.jsonを
     }
   }
 }
-
 ```
 
 angular-cliのcssと書かれている部分をscssに変更するとng g componentコマンドを実行したときにcssではなくscssを出力します。またscssのビルドはすでに準備されているので拡張子を変更すれば特に設定は必要ありません。
 
+### 共通SCSSの配置
 
+assets/properties.scssに変数を定義します。ここではヘッダーとフッターのバックカラーを定義します。
 
+```
+$corporate-color: #2196F3;
+$font-color: #FFFFFF;
+```
 
+### footer
+
+footer.component.html
+
+```
+<footer>&copy; ashiras, inc.</footer>
+```
+
+footer.component.scss
+
+```
+@import './../../assets/properties';
+
+footer {
+  margin: 5px 0;
+  padding: 5px 0;
+  text-align: center;
+  font-size: 0.8rem;
+  background-color: $corporate-color;
+  color: #FFFFFF;
+}
+```
+
+f
 

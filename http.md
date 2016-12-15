@@ -5,13 +5,13 @@ REST処理を行うためサーバを構築します。「server/main.js」と�
 ```
 'use strict';
 
-var express =require('express');
-var bodyParser =require('body-parser');
-var app =express();
-var server =require('http').createServer(app);
-var port =process.env.PORT||3000;
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
+const server =require('http').createServer(app);
+const port =process.env.PORT||3000;
 
-var fs=require("fs");
+const fs=require("fs");
 
 app.use(bodyParser.json({limit:'50mb'}));
 app.use(bodyParser.urlencoded({extended:true, limit:'50mb'}));
@@ -33,18 +33,30 @@ app.get('/api/issues', function(req, res) {
   res.status(200).json(items);
 });
 
+app.get('/api/issues/:id', function(req, res) {
+  let id = req.params.id;
+  res.status(200).json(items[id]);
+});
+
 app.post('/api/issues', function(req, res) {
   items.push(req.body);
   res.status(200).json();
 });
 
+app.put('/api/issues', function(req, res) {
+  let id = req.body.id;
+  let issue = req.body.issue;
+  items[id] = JSON.parse(issue);
+  res.status(200).json();
+});
+
 app.delete('/api/issues/:id', function(req, res) {
-  var id =req.params.id;
+  let id = req.params.id;
   items.splice(id, 1);
   res.status(200).json();
 });
 
-exports=module.exports= app;
+exports = module.exports = app;
 ```
 
 テストデータ\(issues.json\)も同じディレクトリに作成します
@@ -154,7 +166,6 @@ issue.service.ts はRxJSのPromiseを使って実装します。
       }
     }
 
-
 ## Componentの書き換え
 
 issue-list.componentはPromise実装に伴い若干の処理を追加しています。
@@ -190,9 +201,7 @@ export class IssueListComponent implements OnInit {
   }
 
 }
-
 ```
 
-これでHTTPリクエストに対する簡単な処理が完了しました。  
-
+これでHTTPリクエストに対する簡単な処理が完了しました。
 
