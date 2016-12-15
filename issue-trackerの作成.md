@@ -66,9 +66,9 @@ issue.component.html は
   <button type=submit [disabled]="!f.form.valid">登録</button>
 </form>
 <div *ngFor="let issue of issues; let i = index">
-  <div>{{i+1}}</div><button (click)="onDelete(i)">削除</button>
   <p>{{issue.title}}</p>
-  <pre>{{issue.desc}}</pre>
+  <pre>{{issue.desc}}</pre><div>{{i+1}}</div>
+  <button (click)="onDelete(i)">削除</button>
 </div>
 ```
 
@@ -88,7 +88,6 @@ import { IssueComponent } from './issue.component';
   declarations: [IssueComponent]
 })
 export class IssueModule { }
-
 ```
 
 簡単なIssueリストを作成することができました。

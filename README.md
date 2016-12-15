@@ -1,5 +1,7 @@
 # The Future of JavaScript is Now
 
+Angularはフルスタックと呼ばれるようにComponent, Route, Service, PipeなどWebアプリケーションを作る上で全てのものが揃っています。Angular 2になりそうしたライブラリ以外にも様々な道具が提供されています。
+
 ## ANGULAR CLI
 
 Angular2をインストールする最良の方法は、Angular CLI Toolを使用することです。

@@ -13,8 +13,8 @@ $ ng g pipe pages/wiki/markdown.pipe
 「app/pages/wiki」ディレクトリにある`markdown.pipe.ts`ファイルを開き次のように記述します
 
 ```
-import { Pipe, PipeTransform } from'@angular/core';
-import { DomSanitizer , SafeHtml } from'@angular/platform-browser';
+import { Pipe, PipeTransform } from　'@angular/core';
+import { DomSanitizer, SafeHtml } from　'@angular/platform-browser';
 
 import * as marked from 'marked';
 
@@ -25,8 +25,8 @@ export class MarkdownPipe implements PipeTransform {
 
   constructor (private sanitizer: DomSanitizer) {}
 
-  transform(value: any, args?: any):SafeHtml {
-    if ( value===undefined||value===null ) return'';
+  transform(value: any, args?: any):　SafeHtml {
+    if ( value===undefined||value===null ) return　'';
     localStorage.setItem('amke', value);
     return this.sanitizer.bypassSecurityTrustHtml(marked(value));
   }
@@ -60,7 +60,7 @@ import { Component, OnInit } from'@angular/core';
   styleUrls: ['./wiki.component.css']
 })
 export class WikiComponent implements OnInit {
-  wiki:string;
+  wiki:　string;
 
   constructor() { }
 
@@ -93,9 +93,7 @@ import { MarkdownPipe } from './markdown.pipe';
   ]
 })
 export class WikiModule { }
-
 ```
 
-  
 Angular2のバインディングの仕組みとPipeを利用することで簡単にマークダウンエディタを作成することができます。
 

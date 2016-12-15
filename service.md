@@ -9,9 +9,9 @@ $ ng g service pages/issue/issue
 具体的には
 
 ```
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
-import {Issue} from './issue';
+import { Issue } from './issue';
 
 @Injectable()
 export class IssueService {
@@ -98,7 +98,6 @@ import { IssueService } from './issue.service';
   ]
 })
 export class IssueModule { }
-
 ```
 
 これでロジック部をComponentからServiceへ移動させることができました。
