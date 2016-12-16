@@ -46,7 +46,29 @@ $ npm cache clear
 $ npm install angular-cli -g
 ```
 
-## angular-cliを使ったプロジェクトの生成
+angular-cli で私がよく利用するコマンドは
+
+* ng new
+* ng serve
+* ng test
+* ng e2e 
+* ng g
+
+です 。特に開発の初期では ng g はもっとも多く叩くコマンドで（ng g の g は generator の g）テンプレートを生成してくれます。
+angular-cli のコマンドは [github](https://github.com/angular/angular-cli) に詳細が書かれてますので一読されると良いと思います。
+
+| Scaffold | Used |
+| :--- | :--- |
+| Component | ng g component my-new-component |
+| Directive | ng g directive my-new-directive |
+| Pipe | ng g pipe my-new-pipe |
+| Service | ng g service my-new-service |
+| Class | ng g class my-new-class |
+| Interface | ng g interface my-new-interface |
+| Enum | ng g enum my-new-interface |
+| Module | ng g module my-module |
+
+## angular-cli を使ったプロジェクトの生成
 
 プロジェクトの生成には `ng new` を使います。このコマンドは必要なファイルを生成し、npm インストールを実行します。ここでは Hands-onプロジェクトを作成します。まずは cd ~ でホームディレクトリに移動しプロジェクトの生成を行います。
 
@@ -96,7 +118,7 @@ Successfully initialized git.
 Installing packages for tooling via npm.
 ```
 
-しばらくすると `Installed packages for tooling via npm. `というメッセージが表示され無事プロジェクトが生成たれたことを示します。
+しばらくすると `Installed packages for tooling via npm.`というメッセージが表示され無事プロジェクトが生成たれたことを示します。
 
 ```
 $ ng new Handson
@@ -128,8 +150,6 @@ webpack: bundle is now VALID.
 ```
 
 はじめて見る方は、冒頭 `NG` と表示され何がだめなの？と思うかも知れませんがこれは ng コマンドという意味ですので勘違いしないようにしてください。
-
-
 
 ブラウザを`http://localhost:4200/`で起動するようメッセージが表示されます。実際にブラウザを立ち上げアクセスしてみます。簡単なメッセージが表示されると思います。`ng serve`で起動した簡易サーバはライブリロードの機能が含まれているためTypeScriptファイルやHTMLファイルなどを更新した場合に自動的にブラウザが更新されます。
 
@@ -213,9 +233,7 @@ export class AppComponent {
       }));
      ・・・
 
-ここに`app works!`という文字列と比較している部分あありますので、これを`app sample!`に変更してください。
-
-やはりライブリロードが実行されテストが実行されます。結果次のようなメッセージあ表示されます。
+ここに`app works!`という文字列と比較している部分あありますので、これを`app sample!`に変更してください。ライブリロードが実行されテストが再実行されます。結果次のようなメッセージあ表示されます。
 
 ```
 Chrome 54.0.2840 (Mac OS X 10.12.1): Executed 3 of 3 SUCCESS (0.191 secs / 0.187 secs)
@@ -474,7 +492,7 @@ npm install @types/marked --save-dev
 
 ## 完成したコード
 
-完成したコードは[github](https://github.com/albatrosary/start-angular)にあります。
+今回作成する簡単なWebアプリケーションの完成したコードは[github](https://github.com/albatrosary/start-angular)にあります。最終的な出来上がりを確認したい方はこちらを見て頂くと良いかと思います。
 
 ## まとめ
 
