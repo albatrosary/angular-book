@@ -417,7 +417,7 @@ Executed 1 of 1 spec SUCCESS in 0.947 sec.
 [11:56:28] I/launcher - chrome #01 passed
 
 All end-to-end tests pass.
-$ 
+$
 ```
 
 ## ビルド
@@ -482,12 +482,12 @@ $
 デモ作成用に幾つかファイルを追加します。詳細についてはハンズオンを進めながら行います。
 
 ```
-npm install express body-parser cookie-parser --save-dev
-npm install @types/express @types/body-parser @types/cookie-parser --save-dev
-npm install angular2-express-engine angular2-platform-node angular2-universal angular2-universal-polyfills --save-dev
-
-npm install marked --save
-npm install @types/marked --save-dev
+$ npm install express body-parser cookie-parser --save-dev
+$ npm install @types/express @types/body-parser @types/cookie-parser --save-dev
+$ npm install angular2-express-engine angular2-platform-node angular2-universal angular2-universal-polyfills --save-dev
+$ 
+$ npm install marked --save
+$ npm install @types/marked --save-dev
 ```
 
 ## 完成したコード
