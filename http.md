@@ -48,7 +48,6 @@ app.put('/api/issues', function(req, res) {
   let id = req.body.id;
   let issue = req.body.issue;
   items[id] = JSON.parse(issue);
-  console.log(items);
   res.status(200).json();
 });
 
