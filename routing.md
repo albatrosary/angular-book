@@ -1,4 +1,4 @@
-SPAの最大の特徴であるルーティングについて学びます。ルーティングはURLに紐付いた画面を表示させる仕組みです。
+SPA\(Single-page Application\)の最大の特徴であるルーティングについて学びます。SPAのルーティングはURLに紐付いた画面を表示させる仕組みです。
 
 ## ルーティングの設定
 
@@ -10,6 +10,29 @@ $ ng g component issue
 $ ng g component pageNotFound
 $ ng g component wiki
 ```
+
+ng g componentコマンドを実行すると4つのファイルが出来上がります。具体的に ng g component home としたときは
+
+```
+$ ng g component home
+installing component
+  create src/app/home/home.component.css
+  create src/app/home/home.component.html
+  create src/app/home/home.component.spec.ts
+  create src/app/home/home.component.ts
+$
+```
+
+です。`home.component.css` は `home.component` に対するCSS定義を記述するものです。`home.component.html `は、HTMLテンプレートを記述するものです。`spec.ts` という拡張子のものがありますが、これはユニットテストを定義するものです。 `home.component.ts` は、TypeScriptで何かしらUIに関連する処理を記述するものです。
+
+よく講演でコンポーネントの話をします。Webアプリケーション開発におけるコンポーネントは Web Components をベースにした考え方です。Web Components には次の4つの定義があります。
+
+1. 
+2. HTML Template
+3. HTML Imports
+4. Shadow DOM
+
+
 
 これとは別にルーティング設定用のモジュールを作成します。
 
@@ -46,18 +69,18 @@ app.module.tsは`ng g component`コマンドで必要なファイルが追加さ
 今回はルーティングの設定がありますのでルーティングをプロバイダー登録します。結果として次のようになります
 
 ```
-import { BrowserModule } from'@angular/platform-browser';
-import { NgModule } from'@angular/core';
-import { FormsModule } from'@angular/forms';
-import { HttpModule } from'@angular/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
-import { AppComponent } from'./app.component';
-import { HomeComponent } from'./home/home.component';
-import { IssueComponent } from'./issue/issue.component';
-import { PageNotFoundComponent } from'./page-not-found/page-not-found.component';
-import { WikiComponent } from'./wiki/wiki.component';
+import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
+import { IssueComponent } from './issue/issue.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { WikiComponent } from './wiki/wiki.component';
 
-import { routing, appRoutingProviders }  from'./app.routes';
+import { routing, appRoutingProviders } from './app.routes';
 
 @NgModule({
   declarations: [
@@ -79,7 +102,7 @@ import { routing, appRoutingProviders }  from'./app.routes';
 export class AppModule { }
 ```
 
-`app.component`にルーティングの設定を行います。`app.component.html`を開き次のように変更します。
+`app.component.html `に aタグを使って使って簡易メニューを作成します。
 
 ```
 <h1>Issue Tracker</h1>
@@ -91,7 +114,44 @@ export class AppModule { }
 <router-outlet></router-outlet>
 ```
 
-これでルーティングを定義することができました。
+これでルーティングを定義することができました。実際に画面を動かしルーティングが出来ているか確認してください。
 
-実際に画面を動かしルーティングが出来ているか確認してください。
+参考までに、ここまでのファイル構成を記載します。
+
+```
+$ tree 
+.
+├── app.component.css
+├── app.component.html
+├── app.component.spec.ts
+├── app.component.ts
+├── app.module.ts
+├── app.routes.ts
+├── home
+│   ├── home.component.css
+│   ├── home.component.html
+│   ├── home.component.spec.ts
+│   └── home.component.ts
+├── index.ts
+├── issue
+│   ├── issue.component.css
+│   ├── issue.component.html
+│   ├── issue.component.spec.ts
+│   └── issue.component.ts
+├── page-not-found
+│   ├── page-not-found.component.css
+│   ├── page-not-found.component.html
+│   ├── page-not-found.component.spec.ts
+│   └── page-not-found.component.ts
+└── wiki
+    ├── wiki.component.css
+    ├── wiki.component.html
+    ├── wiki.component.spec.ts
+    └── wiki.component.ts
+
+4 directories, 23 files
+$ 
+```
+
+
 
