@@ -141,33 +141,33 @@ $ tree -L 2
 ├── README.md
 ├── angular-cli.json
 ├── e2e
-│   ├── app.e2e-spec.ts
-│   ├── app.po.ts
-│   └── tsconfig.json
+│   ├── app.e2e-spec.ts
+│   ├── app.po.ts
+│   └── tsconfig.json
 ├── karma.conf.js
 ├── node_modules
 ├── package.json
 ├── protractor.conf.js
 ├── proxy.conf.json
 ├── server
-│   ├── issues.json
-│   └── main.js
+│   ├── issues.json
+│   └── main.js
 ├── src
-│   ├── app
-│   ├── assets
-│   ├── environments
-│   ├── favicon.ico
-│   ├── index.html
-│   ├── main.ts
-│   ├── polyfills.ts
-│   ├── styles.css
-│   ├── test.ts
-│   ├── tsconfig.json
-│   └── typings.d.ts
+│   ├── app
+│   ├── assets
+│   ├── environments
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── main.ts
+│   ├── polyfills.ts
+│   ├── styles.css
+│   ├── test.ts
+│   ├── tsconfig.json
+│   └── typings.d.ts
 └── tslint.json
 
 892 directories, 20 files
-$ 
+$
 ```
 
 ## サービスの書き換え
@@ -275,7 +275,7 @@ export class IssueListComponent implements OnInit {
 
   public onDelete(index: number): void {
     this.issueService.delete(index)
-      .catch(error => console.log(error))
+      .catch(error => console.log(error));
   }
 
 }
