@@ -52,7 +52,7 @@ export class MarkdownPipe implements PipeTransform {
 続いて`wiki.component.ts`ファイルを開き次のように記載します。
 
 ```
-import { Component, OnInit } from'@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-wiki',
@@ -95,5 +95,5 @@ import { MarkdownPipe } from './markdown.pipe';
 export class WikiModule { }
 ```
 
-Angular2のバインディングの仕組みとPipeを利用することで簡単にマークダウンエディタを作成することができます。
+Angular2のバインディングの仕組みとPipeを利用することで、数行のコードで簡単にマークダウンエディタを作成することができます。
 
