@@ -6,7 +6,6 @@
 
 です。それぞれどのように DI 設定するのか見ていきます。
 
-
 ```
 $ ng g service pages/issue/issue
 ```
