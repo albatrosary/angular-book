@@ -25,7 +25,7 @@ export class MarkdownPipe implements PipeTransform {
 
   constructor (private sanitizer: DomSanitizer) {}
 
-  transform(value: any, args?: any):　SafeHtml {
+  transform(value: any, args?: any): SafeHtml {
     if ( value === undefined || value === null ) {
       return　'';
     }
