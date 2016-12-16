@@ -1,11 +1,105 @@
-## プロジェクトの生成
+Angular アプリケーションの開発を進める上で最も簡単で効率的なツールは angular-cli をインストールすることです。 angular-cli は、開発に必要なライブラリをまとめていて、かつ、スカッフォールドも行えます。
 
-Angular CLIを使ってプロジェクトを生成します。コマンドプロンプトを表示し自身の作業ディレクトリへ移動した後、プロジェクトを生成します。 サンプルではホームディレクトリに`Sandbox`があり、そこでAngular CLIコマンドを発行しています。
+## angular-cliのインストール
+
+Node.js のインストールが済んでいれば、次に行うことは angular-cli をインストールすることです。angular-cli は npm\(Node Package Manager\) を使ってインストールします。インストール完了後 `ng help` や `ng version` が実行できていれば無事インストールが完了しています。
+
+> angular-cli のコマンドは ng を使います。ng コマンドには多くの機能が実装されてますので ng help で色々と確認すると良いでしょう。
 
 ```
-$ cd~
-$ cd Sandbox
-$ ng new project_name
+$ npm install -g angular-cli
+$ ng version
+angular-cli: 1.0.0-beta.22-1
+node: 6.7.0
+os: darwin x64
+$ ng help
+ng build <options...>
+  Builds your app and places it into the output path (dist/ by default).
+  aliases: b
+  --target (String) (Default: development)
+    aliases: -t <value>, -dev (--target=development), -prod (--target=production)
+  --environment (String) (Default: )
+    aliases: -e <value>
+  --output-path (Path) (Default: null)
+    aliases: -o <value>
+  --watch (Boolean) (Default: false)
+    aliases: -w
+  --watcher (String)
+  --suppress-sizes (Boolean) (Default: false)
+  --base-href (String) (Default: null)
+    aliases: -bh <value>
+  --aot (Boolean) (Default: false)
+  --sourcemap (Boolean) (Default: true)
+    aliases: -sm
+  --vendor-chunk (Boolean) (Default: true)
+  --verbose (Boolean) (Default: false)
+  --progress (Boolean) (Default: true)
+
+・・・
+```
+
+もし既に古いバージョンの angular-cli がインストールされていた場合には更新を行います。
+
+```
+$ npm uninstall angular-cli -g
+$ npm cache clear
+$ npm install angular-cli -g
+```
+
+## angular-cliを使ったプロジェクトの生成
+
+プロジェクトの生成には `ng new` を使います。このコマンドは必要なファイルを生成し、npm インストールを実行します。ここでは Hands-onプロジェクトを作成します。まずは cd ~ でホームディレクトリに移動しプロジェクトの生成を行います。
+
+> 私はホームディレクトリ\(cd ~\) の直下に Sandbox というディレクトリを作って、そこでプロジェクト開発をしています。
+
+```
+$ cd ~
+$ ng new Handson
+$ cd Handson
+$ ng serve
+```
+
+実際にプロジェクトを生成します。プロジェクトの作成には（ネットワークの状況にもよりますが）若干の時間を要します。下記のような`Installing packages for tooling via npm.` というメッセージから中々応答が帰ってこないこともありますが辛抱強く待ちましょう。
+
+```
+$ ng new Handson
+installing ng2
+  create .editorconfig
+  create README.md
+  create src/app/app.component.css
+  create src/app/app.component.html
+  create src/app/app.component.spec.ts
+  create src/app/app.component.ts
+  create src/app/app.module.ts
+  create src/app/index.ts
+  create src/assets/.gitkeep
+  create src/environments/environment.prod.ts
+  create src/environments/environment.ts
+  create src/favicon.ico
+  create src/index.html
+  create src/main.ts
+  create src/polyfills.ts
+  create src/styles.css
+  create src/test.ts
+  create src/tsconfig.json
+  create src/typings.d.ts
+  create angular-cli.json
+  create e2e/app.e2e-spec.ts
+  create e2e/app.po.ts
+  create e2e/tsconfig.json
+  create .gitignore
+  create karma.conf.js
+  create package.json
+  create protractor.conf.js
+  create tslint.json
+Successfully initialized git.
+Installing packages for tooling via npm.
+```
+
+しばらくすると `Installed packages for tooling via npm. `というメッセージが表示され無事プロジェクトが生成たれたことを示します。
+
+```
+$ ng new Handson
 installing ng2
   create .editorconfig
   create README.md
@@ -18,28 +112,24 @@ Installed packages for tooling via npm.
 $
 ```
 
-プロジェクトの生成には数分時間を要します。 これは必要なファイルをnpmでダウンロードしているためです。
-
 プロジェクトの生成が終了したら、プロジェクトディレクトリに移動し簡易サーバを起動します。
 
 ```
-$ cd project_name
+$ cd Handson
 $ ng serve
 ** NG Live Development Server is running on http://localhost:4200. **
- ・・・
-           Asset       Size  Chunks             Chunk Names
-  main.bundle.js    2.71 MB    0, 2  [emitted]  main
-styles.bundle.js    10.2 kB    1, 2  [emitted]  styles
-       inline.js    5.53 kB       2  [emitted]  inline
-        main.map    2.81 MB    0, 2  [emitted]  main
-      styles.map    14.1 kB    1, 2  [emitted]  styles
-      inline.map    5.59 kB       2  [emitted]  inline
-      index.html  478 bytes          [emitted]  
-Child html-webpack-plugin for"index.html":
-         Asset     Size  Chunks       Chunk Names
-    index.html  2.81 kB       0       
+Hash: 7cd95729a72e78fee9e4                                                               
+Time: 8721ms
+chunk    {0} main.bundle.js, main.bundle.map (main) 4.66 kB {2} [initial] [rendered]
+chunk    {1} styles.bundle.js, styles.bundle.map (styles) 9.99 kB {3} [initial] [rendered]
+chunk    {2} vendor.bundle.js, vendor.bundle.map (vendor) 2.22 MB [initial] [rendered]
+chunk    {3} inline.bundle.js, inline.bundle.map (inline) 0 bytes [entry] [rendered]
 webpack: bundle is now VALID.
 ```
+
+はじめて見る方は、冒頭 `NG` と表示され何がだめなの？と思うかも知れませんがこれは ng コマンドという意味ですので勘違いしないようにしてください。
+
+
 
 ブラウザを`http://localhost:4200/`で起動するようメッセージが表示されます。実際にブラウザを立ち上げアクセスしてみます。簡単なメッセージが表示されると思います。`ng serve`で起動した簡易サーバはライブリロードの機能が含まれているためTypeScriptファイルやHTMLファイルなどを更新した場合に自動的にブラウザが更新されます。
 
