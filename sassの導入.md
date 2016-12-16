@@ -1,6 +1,6 @@
-Angularはコンポーネント単位でのScoped CSSであるため無駄な識別子を定義する必要が無く見通しの良いCSSを作ることができます。
+Angularはコンポーネント単位での Scoped CSS 定義されるため無駄な識別子を定義する必要が無く見通しの良いCSSを作ることができます。
 
-SASSを利用するための設定はとても簡単です。angular-cli.jsonを変更します。
+SASSを利用するための設定はとても簡単です。`angular-cli.json` を変更します。
 
 ```
 {
@@ -343,7 +343,6 @@ a {
   text-decoration: none;
   color: $font-color;
 }
-
 ```
 
 

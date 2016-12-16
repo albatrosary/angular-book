@@ -62,12 +62,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./wiki.component.css']
 })
 export class WikiComponent implements OnInit {
-  wiki:　string;
+  wiki: string;
 
   constructor() { }
 
   ngOnInit() {
-    this.wiki=localStorage.getItem('amke');
+    this.wiki = localStorage.getItem('amke');
   }
 
 }
