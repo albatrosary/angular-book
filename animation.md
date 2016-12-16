@@ -1,6 +1,4 @@
-pages.componentのメニューにアニメーションを設定します。
-
-準備としてpages.component.htmlを次のように書き換えます
+pages.componentのメニュー部にアニメーションを設定します。準備として `pages.component.html` を次のように書き換えます
 
 ```
 <ul>
@@ -14,7 +12,7 @@ pages.componentのメニューにアニメーションを設定します。
 <router-outlet></router-outlet>
 ```
 
-pages.component.tsにアニメーションを定義します。アニメーションは@Componentのanimations句で実装します。
+`pages.component.ts` にアニメーションを定義します。アニメーションは `@Component` の `animations` で実装します。
 
 ```
 import { Component, OnInit, Input, trigger, state, style, transition, animate } from '@angular/core';
@@ -70,5 +68,5 @@ export class PagesComponent implements OnInit {
 }
 ```
 
-
+ふわっと現れるアンダーラインが作れたと思います。 Angular Animate は [angular.io](https://angular.io/docs/ts/latest/guide/animations.html) に幾つかサンプルがありますので実際にコードを書いてみると良いです。
 
