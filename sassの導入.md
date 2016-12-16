@@ -66,7 +66,7 @@ SASSを利用するための設定はとても簡単です。`angular-cli.json` 
 
 `angular-cli.json` の `css` と書かれている部分を `scss` に変更すると `ng g component` コマンドを実行したときに `css` ではなく `scss` を出力します。そして angular-cli に `scss` のビルドはすでに準備されているので拡張子を変更すれば、特別な設定無しにビルドすることができます。
 
-`angular-cli.json` を書き換えることができたら、少し面倒ですが拡張子を `scss` に変更しましょう。拡張子を変えたら `.component.ts` ファイルに定義されている stylesUrls の cssファイル拡張子も変更します。具体的に `footer.component `の場合
+`angular-cli.json` を書き換えることができたら、少し面倒ですが拡張子を `scss` に変更しましょう。拡張子を変えたら `.component.ts` ファイルに定義されている stylesUrls の cssファイル拡張子も変更します。具体的に `footer.component`の場合
 
 ```
 $ tree
@@ -77,7 +77,7 @@ $ tree
 └── footer.component.ts
 
 0 directories, 4 files
-$ 
+$
 ```
 
 を下記へ変更します。
@@ -91,7 +91,7 @@ $ tree
 └── footer.component.ts
 
 0 directories, 4 files
-$ 
+$
 ```
 
 footer.component.ts は
@@ -132,20 +132,15 @@ export class FooterComponent implements OnInit {
   }
 
 }
-
 ```
 
 これをすべてに行います。
-
-
 
 > 通常、こんな面倒なことはしません。--style=sass スイッチを使い SASS を使うよう指定します。
 >
 > ```
 > $ ng new sassy-project --style=sass
 > ```
-
-
 
 ### 共通SASSの配置
 
@@ -324,7 +319,6 @@ input, textarea {
 ```
 <section>
   <h2>バグ管理システム</h2>
-
   <p>バグ管理システム、バグトラッキングシステム[1]とはプロジェクトのバグを登録し、修正状況を追跡するシステム。バグ管理システムの多くは、ウェブサーバ上で動作し、ウェブブラウザ経由でアクセスできるようになっている。バグ管理システムはソフトウェアを開発する上での必須のもの[要出典]になりつつある。</p>
 
   <h2>背景</h2>
@@ -394,6 +388,17 @@ a {
 }
 ```
 
+### pages.component.html
+
+```
+<ul>
+  <li><a routerLink="top">Top</a></li>
+  <li><a routerLink="issue">Issue</a></li>
+  <li><a routerLink="wiki">Wiki</a></li>
+</ul>
+<router-outlet></router-outlet>
+```
+
 ### app.component.scss
 
 ```
@@ -427,5 +432,19 @@ a {
 }
 ```
 
+### app.component.html
 
+```
+<div>
+  <h1>Issue Tracker</h1>
+  <ul>
+    <li><a routerLink="home">Home</a></li>
+    <li><a routerLink="pages">Pages</a></li>
+  </ul>
+</div>
+<router-outlet></router-outlet>
+<app-footer></app-footer>
+```
+
+これですべてのSASSを書き終えました。コードをコピーする作業はあまり面白くありませんので、自身でかっこいいデザインをしてください。
 
