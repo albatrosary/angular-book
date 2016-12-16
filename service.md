@@ -1,12 +1,17 @@
-サービスを作成します
+サービスを作成し DI\(Dependency injection\) を使ってコンポーネントで利用します。DI を行う際のキーワードは
+
+* クラスの@Injectable宣言：サービス化
+* コンポーネントの利用宣言：コンストラクターで宣言
+* モジュールでのプロバイダ宣言
+
+です。それぞれどのように DI 設定するのか見ていきます。
+
 
 ```
 $ ng g service pages/issue/issue
 ```
 
-`issue.service.ts`は配列の登録を記述します。
-
-具体的には
+`issue.service.ts`は配列の登録を記述します。具体的には
 
 ```
 import { Injectable } from '@angular/core';
@@ -83,6 +88,7 @@ issue.module.tsにIssueServiceを追加します
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+
 import { IssueComponent } from './issue.component';
 
 import { IssueService } from './issue.service';
@@ -101,4 +107,10 @@ export class IssueModule { }
 ```
 
 これでロジック部をComponentからServiceへ移動させることができました。
+
+今回のようにあまり複雑でないようなものをサービス化する必要があるのか？という疑問もあるかもしれません。コンポーネント、特にtemplateUrl で定義されたテンプレートはUIの処理を定義し制御をそのTypeScriptファイルで実装します。言い換えると @Component で定義されたクラスは UI のためのものです。@Injectable は何かしらの処理を定義したもので UI とはあまり関係のないものを定義します。データストアを定義しそのハンドリングするメソッドを定義するのもいいですし、HTTPリクエストを処理するために定義するのも良いと思います。こうしてモジュール分割したものを接続する機能が DI だと考えれば良いかと思います。
+
+> ReactなどでReduxなどのフレームワークがありますが、Angular でも [ngrx](https://github.com/ngrx) というものが存在し似たような構成が作れます。好みの問題もありますが ngrx を全面に採用する人もいますが私は利用しません。サンプルコードを書いてみると理解できますが Angular が提供している @Injectable が薄くなるのがもったいなく感じるためです。
+
+
 
