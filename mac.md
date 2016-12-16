@@ -54,7 +54,7 @@ angular-cli で私がよく利用するコマンドは
 * ng e2e 
 * ng g
 
-です 。特に開発の初期では ng g はもっとも多く叩くコマンドで（ng g の g は generator の g）テンプレートを生成してくれます。
+です 。特に開発の初期では ng g はもっとも多く叩くコマンドで（ng g の g は generator の g）テンプレートを生成してくれます。  
 angular-cli のコマンドは [github](https://github.com/angular/angular-cli) に詳細が書かれてますので一読されると良いと思います。
 
 | Scaffold | Used |
@@ -267,91 +267,91 @@ webpack: bundle is now VALID.
 
     $ ng e2e
 
-    > project-name@0.0.0 pree2e /Users/albatrosary/Sandbox/project_name
+    > handson@0.0.0 pree2e /Users/albatrosary/Sandbox/Handson
     > webdriver-manager update
 
-    [22:21:03] I/update - chromedriver: file exists /Users/albatrosary/Sandbox/project_name/node_modules/webdriver-manager/selenium/chromedriver_2.24mac64.zip
-    [22:21:03] I/update - chromedriver: unzipping chromedriver_2.24mac64.zip
-    [22:21:04] I/update - chromedriver: setting permissions to 0755 for /Users/albatrosary/Sandbox/project_name/node_modules/webdriver-manager/selenium/chromedriver_2.24
-    [22:21:04] I/update - chromedriver: v2.24 up to date
-    [22:21:04] I/update - selenium standalone: file exists /Users/albatrosary/Sandbox/project_name/node_modules/webdriver-manager/selenium/selenium-server-standalone-2.53.1.jar
-    [22:21:04] I/update - selenium standalone: v2.53.1 up to date
-    [22:21:05] W/file_manager - geckodriver-v0.9.0-mac.tar.gz expected length undefined, found 1096885
-    [22:21:05] W/file_manager - removing file: /Users/albatrosary/Sandbox/project_name/node_modules/webdriver-manager/selenium/geckodriver-v0.9.0-mac.tar.gz
-    [22:21:05] I/downloader - geckodriver: downloading version v0.9.0
-    [22:21:05] I/downloader - curl -o /Users/albatrosary/Sandbox/project_name/node_modules/webdriver-manager/selenium/geckodriver-v0.9.0-mac.tar.gz https://github.com/mozilla/geckodriver/releases/download/v0.9.0/geckodriver-v0.9.0-mac.tar.gz
-    [22:21:09] I/update - geckodriver: unzipping /Users/albatrosary/Sandbox/project_name/node_modules/webdriver-manager/selenium/geckodriver-v0.9.0-mac.tar.gz
-    [22:21:09] I/update - geckodriver: setting permissions to 0755 for /Users/albatrosary/Sandbox/project_name/node_modules/webdriver-manager/selenium/geckodriver-v0.9.0
+    [11:53:53] I/update - selenium standalone: file exists /Users/albatrosary/Sandbox/Handson/node_modules/webdriver-manager/selenium/selenium-server-standalone-2.53.1.jar
+    [11:53:53] I/update - selenium standalone: v2.53.1 up to date
+    [11:53:54] I/update - chromedriver: file exists /Users/albatrosary/Sandbox/Handson/node_modules/webdriver-manager/selenium/chromedriver_2.24mac64.zip
+    [11:53:54] I/update - chromedriver: unzipping chromedriver_2.24mac64.zip
+    [11:53:54] I/update - chromedriver: setting permissions to 0755 for /Users/albatrosary/Sandbox/Handson/node_modules/webdriver-manager/selenium/chromedriver_2.24
+    [11:53:54] I/update - chromedriver: v2.24 up to date
+    [11:53:55] W/file_manager - geckodriver-v0.9.0-mac.tar.gz expected length undefined, found 1096885
+    [11:53:55] W/file_manager - removing file: /Users/albatrosary/Sandbox/Handson/node_modules/webdriver-manager/selenium/geckodriver-v0.9.0-mac.tar.gz
+    [11:53:55] I/downloader - geckodriver: downloading version v0.9.0
+    [11:53:55] I/downloader - curl -o /Users/albatrosary/Sandbox/Handson/node_modules/webdriver-manager/selenium/geckodriver-v0.9.0-mac.tar.gz https://github.com/mozilla/geckodriver/releases/download/v0.9.0/geckodriver-v0.9.0-mac.tar.gz
+    [11:54:00] I/update - geckodriver: unzipping /Users/albatrosary/Sandbox/Handson/node_modules/webdriver-manager/selenium/geckodriver-v0.9.0-mac.tar.gz
+    [11:54:00] I/update - geckodriver: setting permissions to 0755 for /Users/albatrosary/Sandbox/Handson/node_modules/webdriver-manager/selenium/geckodriver-v0.9.0
 
-    > project-name@0.0.0 e2e /Users/albatrosary/Sandbox/project_name
+    > handson@0.0.0 e2e /Users/albatrosary/Sandbox/Handson
     > protractor "./protractor.conf.js"
 
-    [22:21:10] I/direct - Using ChromeDriver directly...
-    [22:21:10] I/launcher - Running 1 instances of WebDriver
+    [11:54:01] I/direct - Using ChromeDriver directly...
+    [11:54:01] I/launcher - Running 1 instances of WebDriver
     Started
     Spec started
     F
-      project-name App
+      handson App
         ✗ should display message saying app works
           - Expected 'app sample!' to equal 'app works!'.
 
 
 
     Failures:
-    1) project-name App should display message saying app works
+    1) handson App should display message saying app works
       Message:
         Expected 'app sample!' to equal 'app works!'.
       Stack:
         Error: Failed expectation
-            at Object.<anonymous> (/Users/albatrosary/Sandbox/project_name/e2e/app.e2e-spec.ts:10:41)
-            at /Users/albatrosary/Sandbox/project_name/node_modules/protractor/node_modules/jasminewd2/index.js:94:23
-            at new ManagedPromise (/Users/albatrosary/Sandbox/project_name/node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:1082:7)
-            at controlFlowExecute (/Users/albatrosary/Sandbox/project_name/node_modules/protractor/node_modules/jasminewd2/index.js:80:18)
-            at TaskQueue.execute_ (/Users/albatrosary/Sandbox/project_name/node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:2913:14)
-            at TaskQueue.executeNext_ (/Users/albatrosary/Sandbox/project_name/node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:2896:21)
-            at asyncRun (/Users/albatrosary/Sandbox/project_name/node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:2820:25)
-            at /Users/albatrosary/Sandbox/project_name/node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:639:7
+            at Object.<anonymous> (/Users/albatrosary/Sandbox/Handson/e2e/app.e2e-spec.ts:10:41)
+            at /Users/albatrosary/Sandbox/Handson/node_modules/protractor/node_modules/jasminewd2/index.js:94:23
+            at new ManagedPromise (/Users/albatrosary/Sandbox/Handson/node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:1082:7)
+            at controlFlowExecute (/Users/albatrosary/Sandbox/Handson/node_modules/protractor/node_modules/jasminewd2/index.js:80:18)
+            at TaskQueue.execute_ (/Users/albatrosary/Sandbox/Handson/node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:2913:14)
+            at TaskQueue.executeNext_ (/Users/albatrosary/Sandbox/Handson/node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:2896:21)
+            at asyncRun (/Users/albatrosary/Sandbox/Handson/node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:2820:25)
+            at /Users/albatrosary/Sandbox/Handson/node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:639:7
             at process._tickCallback (internal/process/next_tick.js:103:7)
 
     1 spec, 1 failure
-    Finished in 0.856 seconds
+    Finished in 1.032 seconds
 
     **************************************************
     *                    Failures                    *
     **************************************************
 
-    1) project-name App should display message saying app works
+    1) handson App should display message saying app works
       - Expected 'app sample!' to equal 'app works!'.
 
-    Executed 1 of 1 spec (1 FAILED) in 0.856 sec.
-    [22:21:12] I/launcher - 0 instance(s) of WebDriver still running
-    [22:21:12] I/launcher - chrome #01 failed 1 test(s)
-    [22:21:12] I/launcher - overall: 1 failed spec(s)
-    [22:21:12] E/launcher - Process exited with error code 1
+    Executed 1 of 1 spec (1 FAILED) in 1 sec.
+    [11:54:04] I/launcher - 0 instance(s) of WebDriver still running
+    [11:54:04] I/launcher - chrome #01 failed 1 test(s)
+    [11:54:04] I/launcher - overall: 1 failed spec(s)
+    [11:54:04] E/launcher - Process exited with error code 1
 
 
-    npm ERR! Darwin 16.1.0
+    npm ERR! Darwin 16.3.0
     npm ERR! argv "/Users/albatrosary/.nodebrew/node/v6.7.0/bin/node" "/Users/albatrosary/.nodebrew/current/bin/npm" "run" "e2e" "--" "./protractor.conf.js"
     npm ERR! node v6.7.0
     npm ERR! npm  v3.10.3
     npm ERR! code ELIFECYCLE
-    npm ERR! project-name@0.0.0 e2e: `protractor "./protractor.conf.js"`
+    npm ERR! handson@0.0.0 e2e: `protractor "./protractor.conf.js"`
     npm ERR! Exit status 1
     npm ERR! 
-    npm ERR! Failed at the project-name@0.0.0 e2e script 'protractor "./protractor.conf.js"'.
+    npm ERR! Failed at the handson@0.0.0 e2e script 'protractor "./protractor.conf.js"'.
     npm ERR! Make sure you have the latest version of node.js and npm installed.
-    npm ERR! If you do, this is most likely a problem with the project-name package,
+    npm ERR! If you do, this is most likely a problem with the handson package,
     npm ERR! not with npm itself.
     npm ERR! Tell the author that this fails on your system:
     npm ERR!     protractor "./protractor.conf.js"
     npm ERR! You can get information on how to open an issue for this project with:
-    npm ERR!     npm bugs project-name
+    npm ERR!     npm bugs handson
     npm ERR! Or if that isn't available, you can get their info via:
-    npm ERR!     npm owner ls project-name
+    npm ERR!     npm owner ls handson
     npm ERR! There is likely additional logging output above.
 
     npm ERR! Please include the following file with any support request:
-    npm ERR!     /Users/albatrosary/Sandbox/project_name/npm-debug.log
+    npm ERR!     /Users/albatrosary/Sandbox/Handson/npm-debug.log
 
     Some end-to-end tests failed, see above.
     $ 
@@ -379,45 +379,45 @@ it('should display message saying app works', () => {
 ```
 $ ng e2e
 
-> project-name@0.0.0 pree2e /Users/albatrosary/Sandbox/project_name
+> handson@0.0.0 pree2e /Users/albatrosary/Sandbox/Handson
 > webdriver-manager update
 
-[22:26:28] I/update - chromedriver: file exists /Users/albatrosary/Sandbox/project_name/node_modules/webdriver-manager/selenium/chromedriver_2.24mac64.zip
-[22:26:28] I/update - chromedriver: unzipping chromedriver_2.24mac64.zip
-[22:26:28] I/update - chromedriver: setting permissions to 0755 for /Users/albatrosary/Sandbox/project_name/node_modules/webdriver-manager/selenium/chromedriver_2.24
-[22:26:28] I/update - chromedriver: v2.24 up to date
-[22:26:28] I/update - selenium standalone: file exists /Users/albatrosary/Sandbox/project_name/node_modules/webdriver-manager/selenium/selenium-server-standalone-2.53.1.jar
-[22:26:28] I/update - selenium standalone: v2.53.1 up to date
-[22:26:29] W/file_manager - geckodriver-v0.9.0-mac.tar.gz expected length undefined, found 1096885
-[22:26:29] W/file_manager - removing file: /Users/albatrosary/Sandbox/project_name/node_modules/webdriver-manager/selenium/geckodriver-v0.9.0-mac.tar.gz
-[22:26:29] I/downloader - geckodriver: downloading version v0.9.0
-[22:26:29] I/downloader - curl -o /Users/albatrosary/Sandbox/project_name/node_modules/webdriver-manager/selenium/geckodriver-v0.9.0-mac.tar.gz https://github.com/mozilla/geckodriver/releases/download/v0.9.0/geckodriver-v0.9.0-mac.tar.gz
-[22:26:33] I/update - geckodriver: unzipping /Users/albatrosary/Sandbox/project_name/node_modules/webdriver-manager/selenium/geckodriver-v0.9.0-mac.tar.gz
-[22:26:33] I/update - geckodriver: setting permissions to 0755 for /Users/albatrosary/Sandbox/project_name/node_modules/webdriver-manager/selenium/geckodriver-v0.9.0
+[11:56:17] I/update - chromedriver: file exists /Users/albatrosary/Sandbox/Handson/node_modules/webdriver-manager/selenium/chromedriver_2.24mac64.zip
+[11:56:17] I/update - chromedriver: unzipping chromedriver_2.24mac64.zip
+[11:56:17] I/update - chromedriver: setting permissions to 0755 for /Users/albatrosary/Sandbox/Handson/node_modules/webdriver-manager/selenium/chromedriver_2.24
+[11:56:17] I/update - chromedriver: v2.24 up to date
+[11:56:17] I/update - selenium standalone: file exists /Users/albatrosary/Sandbox/Handson/node_modules/webdriver-manager/selenium/selenium-server-standalone-2.53.1.jar
+[11:56:17] I/update - selenium standalone: v2.53.1 up to date
+[11:56:19] W/file_manager - geckodriver-v0.9.0-mac.tar.gz expected length undefined, found 1096885
+[11:56:19] W/file_manager - removing file: /Users/albatrosary/Sandbox/Handson/node_modules/webdriver-manager/selenium/geckodriver-v0.9.0-mac.tar.gz
+[11:56:19] I/downloader - geckodriver: downloading version v0.9.0
+[11:56:19] I/downloader - curl -o /Users/albatrosary/Sandbox/Handson/node_modules/webdriver-manager/selenium/geckodriver-v0.9.0-mac.tar.gz https://github.com/mozilla/geckodriver/releases/download/v0.9.0/geckodriver-v0.9.0-mac.tar.gz
+[11:56:23] I/update - geckodriver: unzipping /Users/albatrosary/Sandbox/Handson/node_modules/webdriver-manager/selenium/geckodriver-v0.9.0-mac.tar.gz
+[11:56:23] I/update - geckodriver: setting permissions to 0755 for /Users/albatrosary/Sandbox/Handson/node_modules/webdriver-manager/selenium/geckodriver-v0.9.0
 
-> project-name@0.0.0 e2e /Users/albatrosary/Sandbox/project_name
+> handson@0.0.0 e2e /Users/albatrosary/Sandbox/Handson
 > protractor "./protractor.conf.js"
 
-[22:26:34] I/direct - Using ChromeDriver directly...
-[22:26:34] I/launcher - Running 1 instances of WebDriver
+[11:56:24] I/direct - Using ChromeDriver directly...
+[11:56:24] I/launcher - Running 1 instances of WebDriver
 Started
 Spec started
 .
-  project-name App
-    ✓ should display message saying app works
+  handson App
+    ✓ should display message saying app sample
 
 
 
 
 1 spec, 0 failures
-Finished in 0.827 seconds
+Finished in 0.947 seconds
 
-Executed 1 of 1 spec SUCCESS in 0.827 sec.
-[22:26:37] I/launcher - 0 instance(s) of WebDriver still running
-[22:26:37] I/launcher - chrome #01 passed
+Executed 1 of 1 spec SUCCESS in 0.947 sec.
+[11:56:28] I/launcher - 0 instance(s) of WebDriver still running
+[11:56:28] I/launcher - chrome #01 passed
 
 All end-to-end tests pass.
-$
+$ 
 ```
 
 ## ビルド
