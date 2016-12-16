@@ -16,10 +16,10 @@ export class Issue {
 `issue.component.ts`ファイルは次のようになります
 
 ```
-import { Component, OnInit } from'@angular/core';
-import { NgForm } from'@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
-import { Issue } from'./issue';
+import { Issue } from './issue';
 
 @Component({
   selector: 'app-issue',
@@ -90,5 +90,8 @@ import { IssueComponent } from './issue.component';
 export class IssueModule { }
 ```
 
-簡単なIssueリストを作成することができました。
+簡単なIssueリストを作成することができました。ここで理解すべきことは [FORM](https://angular.io/docs/ts/latest/guide/forms.html) の使い方です。気がついたかもしれませんが、入力項目に値が入っていない場合、登録ボタンが押せなくなっています。これを応用すると、入力値のチェックやチェック後のメッセージ表示など様々なインタラクティブなことが実装できます。
+
+  
+Angular のバインディングは強力ですので UI を構築するときには欠かせないものです。
 
