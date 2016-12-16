@@ -314,6 +314,13 @@ input, textarea {
 }
 ```
 
+### issue.component.html
+
+```
+<app-issue-input></app-issue-input>
+<app-issue-list></app-issue-list>
+```
+
 ### top.component.html
 
 ```
@@ -363,6 +370,13 @@ div {
   margin: 0 5px;
   width: 49%;
 }
+```
+
+### wiki.component.html
+
+```
+<textarea [(ngModel)]="wiki"></textarea>
+<div [innerHtml]="wiki | markdown"></div>
 ```
 
 ### pages.component.scss
