@@ -1,4 +1,4 @@
-ルーティングに応じて、headerタグにあるtitleタグを変更します。app.component.tsを次のように変更します。
+ルーティングに応じて、headerタグにあるtitleタグを変更する処理を追加します。app.component.tsを次のように変更します。
 
 ```
 import { Component } from '@angular/core';
@@ -35,14 +35,13 @@ export class AppComponent {
     return data;
   }
 }
-
 ```
 
-titleに表示する名称は 
+titleに表示する名称は
 
 `data: {title: '表示タイトル'}`
 
-として定義します。app.routes.tsの定義は
+としてルータに定義します。`app.routes.ts `の定義は
 
 ```
 import { ModuleWithProviders } from '@angular/core';
@@ -60,7 +59,6 @@ const appRoutes: Routes = [
 export const appRoutingProviders: any[] = [];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
-
 ```
 
 pages.routes.tsの定義は
@@ -91,7 +89,6 @@ const pagesRoutes: Routes = [
 export const pagesRoutingProviders: any[] = [];
 
 export const pagesRouting: ModuleWithProviders = RouterModule.forChild(pagesRoutes);
-
 ```
 
 ページを切り替えると定義したタイトルが表示されます。
