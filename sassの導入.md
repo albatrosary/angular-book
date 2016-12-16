@@ -64,11 +64,92 @@ SASSを利用するための設定はとても簡単です。`angular-cli.json` 
 }
 ```
 
-angular-cliのcssと書かれている部分をscssに変更するとng g componentコマンドを実行したときにcssではなくscssを出力します。またscssのビルドはすでに準備されているので拡張子を変更すれば特に設定は必要ありません。
+`angular-cli.json` の `css` と書かれている部分を `scss` に変更すると `ng g component` コマンドを実行したときに `css` ではなく `scss` を出力します。そして angular-cli に `scss` のビルドはすでに準備されているので拡張子を変更すれば、特別な設定無しにビルドすることができます。
 
-### 共通SCSSの配置
+`angular-cli.json` を書き換えることができたら、少し面倒ですが拡張子を `scss` に変更しましょう。拡張子を変えたら `.component.ts` ファイルに定義されている stylesUrls の cssファイル拡張子も変更します。具体的に `footer.component `の場合
 
-app/shared/properties.scssに変数を定義します。ここではヘッダーとフッターのバックカラーを定義します。
+```
+$ tree
+.
+├── footer.component.css
+├── footer.component.html
+├── footer.component.spec.ts
+└── footer.component.ts
+
+0 directories, 4 files
+$ 
+```
+
+を下記へ変更します。
+
+```
+$ tree
+.
+├── footer.component.html
+├── footer.component.scss
+├── footer.component.spec.ts
+└── footer.component.ts
+
+0 directories, 4 files
+$ 
+```
+
+footer.component.ts は
+
+```
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-footer',
+  templateUrl: './footer.component.html',
+  styleUrls: ['./footer.component.css']
+})
+export class FooterComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
+```
+
+を下記へ変更します。
+
+```
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-footer',
+  templateUrl: './footer.component.html',
+  styleUrls: ['./footer.component.scss']
+})
+export class FooterComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
+
+```
+
+これをすべてに行います。
+
+
+
+> 通常、こんな面倒なことはしません。--style=sass スイッチを使い SASS を使うよう指定します。
+>
+> ```
+> $ ng new sassy-project --style=sass
+> ```
+
+
+
+### 共通SASSの配置
+
+app/shared/properties.scssに変数を定義します。ここではヘッダーとフッターのバックカラーを定義します。`shared` ディレクトリとファイルは今ありませんので、`app` ディレクトリ配下にそれぞれ作成してください。
 
 ```
 $corporate-color: #2196F3;
@@ -141,6 +222,7 @@ footer {
 ```
 <section>
   <h1>Angular 2: The Future of JavaScript is Now</h1>
+
   <h2>ANGULAR CLI</h2>
   <p>Angular2をインストールする最良の方法は、Angular CLI Toolを使用することです。</p>
   <p>Angular CLIはAngular 2 Applicationの足場を生成するのに役立つだけでなく、開発者、生成、サービス、テスト、および管理に役立つ一連のコマンドが付属しています。 Angularを利用するする人々から聞いた主な不平の一つは、それがどこで始まり、どこで終わるのかを理解することが難しいことです。 Yeoman、Grunt、Gulp、そしてあらゆる種類のツールを使って真の発展を作り出していることです。 環境は、今やすべてがフレームワークコマンドラインインターフェイスによって提供されます。</p>
