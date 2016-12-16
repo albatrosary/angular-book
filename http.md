@@ -11,8 +11,6 @@ const app = express();
 const server = require('http').createServer(app);
 const port =  process.env.PORT || 3000;
 
-const fs=require("fs");
-
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({extended: true, limit: '50mb'}));
 
