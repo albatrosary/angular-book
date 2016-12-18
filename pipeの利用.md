@@ -49,7 +49,11 @@ export class MarkdownPipe implements PipeTransform {
 <div [innerHtml]="wiki | markdown"></div>
 ```
 
-ここで`[innerHTML]`はHTMLバインディングするための記法です。
+ここで`[innerHTML]`はHTMLバインディングするための記法で div タグで囲まれた部分にバインディングされた値が挿入されます。
+
+> \[\(\)\] は双方向バインディングを意味します。\[innerHTML\]='wiki' は、wiki が受け取った値を画面に表示する「方向」で、\(click\)='onClick\(\)'は画面が受け取ったイベントをonClick\(\)メソッド実行させる「方向」で実行されます。
+>
+> 比喩した表現ですが、\[innerHTML\]='wiki' を右から左という向き定義したとすると\(click\)='onClick\(\)'は左から右という方向になります。ここから\[\(\)\]が「双方向」である意味が理解できると思います。
 
 続いて`wiki.component.ts`ファイルを開き次のように記載します。
 
@@ -73,7 +77,7 @@ export class WikiComponent implements OnInit {
 }
 ```
 
-wiki.module.tsに必要なライブラリを追加します。
+`wiki.module.ts` に必要なライブラリを追加します。
 
 ```
 import { NgModule } from '@angular/core';
@@ -97,5 +101,5 @@ import { MarkdownPipe } from './markdown.pipe';
 export class WikiModule { }
 ```
 
-Angular2のバインディングの仕組みとPipeを利用することで、数行のコードで簡単にマークダウンエディタを作成することができます。
+Angular のバインディングの仕組みとPipeを利用することで、数行のコードで簡単にマークダウンエディタを作成することができます。
 
