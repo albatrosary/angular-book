@@ -1,4 +1,12 @@
-## サーバの作成
+今回作成する構成は MEAN スタック と呼ばれる構成の MongoDBを除いたものです。MEAN スタック とは
+
+* [MongoDB](https://www.mongodb.com/)
+* [Express](http://expressjs.com/)
+* [Angular](https://angular.io/)
+* [Node.js](https://nodejs.org/ja/)
+
+で作られる Webアプリケーション のことです。2012年頃の話ですが、MongoDB コミュニティで入門者向けに LAMP\(Linux, Apache, MySQL, PHP\) のような構成で、より簡単なものとして考え出されました。
+## アプリケーションサーバの作成
 
 REST処理を行うためサーバを構築します。「server/main.js」として簡単なRESTサーバを作成します
 
