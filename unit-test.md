@@ -431,5 +431,5 @@ describe('AppComponent', () => {
 });
 ```
 
-Anuglar Unit Test の基本的なところをまとめました。
+Anuglar Unit Test の基本的なところをまとめました。このテストコードは [github](https://github.com/albatrosary/angular-unit-test/) にあります。
 
