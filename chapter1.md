@@ -25,7 +25,7 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 インストール完了したらpathを設定します。vi等で「~/.bash\_profile」ファイルを開きAdd pathで指定されたパスを登録してください。登録後保存し環境を適用させます：
 
 ```
-$ source~/.bash_profile
+$ source ~/.bash_profile
 ```
 
 nodeバージョンを調べます。一覧でバージョンが表示されます。
@@ -49,6 +49,8 @@ $ nodebrew use v6.7.0
 これでnodeの準備が完了しました。
 
 Macの場合はこれ以外にXcodeやRuby、Pythonなどインストールされていることが望ましいですが、あまり難しくはないので各自インストールし確認してください。
+
+> [Node.js リリース](https://github.com/nodejs/node/releases)はとても早く皆さんが環境構築するときにはもっと新しいバージョンが出ているかもしれません。
 
 # Windows 10
 
@@ -148,6 +150,4 @@ $ npm -v
 ```
 
 となります。
-
-
 
