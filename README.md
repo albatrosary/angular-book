@@ -10,7 +10,5 @@ Angular を勉強する最良の方法は
 
 この本を通じて Angular で自身のWebアプリケーションを作ってみたくなれば幸いです。
 
-December 16, 2016
-
-Fumio SAGAWA
+December 16, 2016 - Fumio SAGAWA
 
