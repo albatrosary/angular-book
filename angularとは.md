@@ -10,7 +10,7 @@ Angular CLI は Angular アプリケーションの足場を生成するのに�
 
 ## ANGULAR UNIVERSAL
 
-Angular のアプリケーション向けのサーバーサイドレンダリングが存在します。AngularJS では SEO に苦しめられましたが Universal を利用することでそれを回避できます そして、サイトのプレビュー、最適化された検索エンジン、そしてはるかに改善されたパフォーマンスを得ることができます。
+Angular のアプリケーション向けのサーバーサイドレンダリングが存在します。AngularJS では SEO に苦しめられましたが Universal を利用することでそれを回避できます。そして、サイトのプレビュー、最適化された検索エンジン、そしてはるかに改善されたパフォーマンスを得ることができます。
 
 [angular universal](https://universal.angular.io/)
 
@@ -65,6 +65,4 @@ Angular アプリケーションのコードアナライザは、Angular スタ�
 ## SEMANTIC VERSIONING
 
 これから Angular は [Semantic versioning](http://semver.org/) に従ってバージョン付与をします。これが意味するところは、これから私たちは Angular 2 という表現はあまり意味のないものになります。実際、February, 2017 には Angular 4 がリリースされる予定で、約半年に一度のペースでバージョンアップが行われます。
-
-
 
