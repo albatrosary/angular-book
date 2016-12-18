@@ -36,7 +36,7 @@ $ tree
 $
 ```
 
-## TableComponent
+## TableComponent のテスト
 
 TableComponent の table.component.html テンプレートは
 
@@ -89,7 +89,7 @@ export class TableComponent implements OnInit {
 export class Post {
 
   public title: number;
-  
+
   public author: string;
 
   constructor(post: any) {
@@ -157,7 +157,7 @@ import { PostService } from './table/post.service';
 })
 export class AppComponent {
   public isDataLoaded: boolean = false;
-  
+
   public post: Post;
 
   constructor(private postService: PostService) { }
@@ -203,7 +203,7 @@ export class AppModule { }
 
 準備はここまでです。 `ng serve` を実行しプラウザで表示してください。単純な画面が表示されます。
 
-### post.ts のテスト
+### Post のテスト
 
 post.ts は単純なクラスなのでテストもそれほど難しいものではありません。 angular-cli では class に対してテストコードは作りませんので自身で作成します。 post.spec.ts ファイルを作成しましょう
 
@@ -224,7 +224,7 @@ describe('Post', () => {
 });
 ```
 
-### post.service.ts のテスト
+### PostService のテスト
 
 PostService は HTTP を使ってますので MockBackend と MockConnection を利用し擬似的に HTTP 通信を行います。
 
@@ -305,7 +305,7 @@ export class MockPostService extends PostService {
 }
 ```
 
-### table.component.ts のテスト
+### TableComponent のテスト
 
 TableComponent のテストでは TableComponent を呼び出すためのラッパークラスを定義しラッパークラスを生成することで TableComponent を呼び出しています。
 
@@ -361,11 +361,9 @@ describe('TableComponent', () => {
 });
 ```
 
-### app.component.ts のテスト
+### AppComponent のテスト
 
-  
-最後に AppComponent をテストします。ここでは AppComponent を表示させるための TestCmpWrapper と TableComponent のラッパー TestTableCmpWrapper を定義しています。そして TableService のモックを利用しテストを行っています。  
-
+最後に AppComponent をテストします。ここでは AppComponent を表示させるための TestCmpWrapper と TableComponent のラッパー TestTableCmpWrapper を定義しています。そして TableService のモックを利用しテストを行っています。
 
 ```
 /* tslint:disable:no-unused-variable */
