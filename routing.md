@@ -25,12 +25,19 @@ $
 
 です。`home.component.css` は `home.component` に対するCSS定義を記述するものです。`home.component.html`は、HTMLテンプレートを記述するものです。`spec.ts` という拡張子のものがありますが、これはユニットテストを定義するものです。 `home.component.ts` は、TypeScriptで何かしらUIに関連する処理を記述するものです。
 
-よく講演でコンポーネントの話をします。Webアプリケーション開発におけるコンポーネントは Web Components をベースにした考え方です。Web Components には次の4つの定義があります。
-
-1. 
-2. HTML Template
-3. HTML Imports
-4. Shadow DOM
+> よく講演でコンポーネントの話をします。Webアプリケーション開発におけるコンポーネントは Web Components をベースにした考え方です。Web Components には次の4つの定義があります。
+>
+> 1. Custom Element
+>
+> 2. HTML Templates
+>
+> 3. HTML Imports
+>
+> 4. Shadow DOM
+>
+> Angular は、この Web Component に準じた構成を取っています。具体的には @Component の selector で宣言しているのが Custom Element です。templateUrl で HTML Templates と HTML Imports を実現させています。
+>
+> Shadow DOM ですが Angular では Scoped CSS を実装し実現させています。ブラウザを開きデベロッパーツールを開いて確認すると CSS が Scoped されているのが解ります。
 
 これとは別にルーティング設定用のモジュールを作成します。
 
