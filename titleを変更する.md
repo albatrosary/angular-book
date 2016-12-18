@@ -1,4 +1,4 @@
-ルーティングに応じて、headerタグにあるtitleタグを変更する処理を追加します。app.component.tsを次のように変更します。
+ルーティングに応じて、headタグにあるtitleタグを変更する処理を追加します。app.component.tsを次のように変更します。
 
 ```
 import { Component } from '@angular/core';
