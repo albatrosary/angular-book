@@ -1,6 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
+* [Angularとは](angularとは.md)
 * [アプリケーション開発をするための環境](chapter1.md)
 * [angular-cliの利用とプロジェクトの生成](mac.md)
 * [ルーティングの設定](routing.md)
@@ -17,7 +18,6 @@
 * [Lazy LoadとAoTビルド](lazy-load.md)
 * [lintを利用する](lintを利用する.md)
 * [Unit Test](unit-test.md)
-* [e2e Test](e2e-test.md)
 * [Azure and Werker CI](azure-and-werker-ci.md)
 * [Changelog](changelog.md)
 
