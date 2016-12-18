@@ -4,6 +4,7 @@
 * [Angularとは](angularとは.md)
 * [アプリケーション開発をするための環境](chapter1.md)
 * [angular-cliの利用とプロジェクトの生成](mac.md)
+* [ビルトインディレクティブ](ビルトインディレクティブ.md)
 * [ルーティングの設定](routing.md)
 * [階層化されたModuleとRouting](階層化されたmoduleとrouting.md)
 * [RouterとComponentのライフサイクル](ライフサイクル.md)
@@ -19,5 +20,5 @@
 * [lintを利用する](lintを利用する.md)
 * [Unit Test](unit-test.md)
 * [Azure and Wercker CI](azure-and-werker-ci.md)
-* [Changelog](changelog.md)
+* [ビルトインディレクティブ](ビルトインディレクティブ.md)
 
