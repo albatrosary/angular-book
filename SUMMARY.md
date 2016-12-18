@@ -18,6 +18,6 @@
 * [Lazy LoadとAoTビルド](lazy-load.md)
 * [lintを利用する](lintを利用する.md)
 * [Unit Test](unit-test.md)
-* [Azure and Werker CI](azure-and-werker-ci.md)
+* [Azure and Wercker CI](azure-and-werker-ci.md)
 * [Changelog](changelog.md)
 
