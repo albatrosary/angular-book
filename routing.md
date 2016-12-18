@@ -39,7 +39,7 @@ $
 >
 > Shadow DOM ですが Angular では Scoped CSS を実装し実現させています。ブラウザを開きデベロッパーツールを開いて確認すると CSS が Scoped されているのが解ります。
 
-これとは別にルーティング設定用のモジュールを作成します。
+これとは別にルーティング設定用のモジュールを作成します。ルーティングを作るスカッフォールドはありませんので ng g class でテンプレートを生成します。
 
 ```
 $ ng g class app.routes
@@ -48,15 +48,15 @@ $ ng g class app.routes
 `app.routes.ts` は
 
 ```
-import { ModuleWithProviders } from'@angular/core';
-import { Routes, RouterModule } from'@angular/router';
+import { ModuleWithProviders } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
-import { HomeComponent } from'./home/home.component';
-import { IssueComponent } from'./issue/issue.component';
-import { WikiComponent } from'./wiki/wiki.component';
-import { PageNotFoundComponent } from'./page-not-found/page-not-found.component';
+import { HomeComponent } from './home/home.component';
+import { IssueComponent } from './issue/issue.component';
+import { WikiComponent } from './wiki/wiki.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
-const appRoutes:Routes= [
+const appRoutes: Routes= [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: 'home', component: HomeComponent },
   { path: 'issue', component: IssueComponent },
@@ -66,7 +66,7 @@ const appRoutes:Routes= [
 
 export const appRoutingProviders: any[] = [];
 
-export const routing:ModuleWithProviders = RouterModule.forRoot(appRoutes);
+export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
 ```
 
 ここで、`path: ''` はルートパス（ ://localhost:4200/ のような）で呼ばれたときに `/home` へリダイレクトするよう定義しています。リダイレクト先の `/home` ではコンポーネント HomeComponent を実行するよう定義されていますので、画面には HomeComponent で定義されたテンプレートが表示されます。
