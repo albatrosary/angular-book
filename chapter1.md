@@ -10,7 +10,7 @@ Mac の場合、git、RubyやPythonが既にインストール済みなので、
 
 ### nodebrewのインストール
 
-nodebrewをインストールします。既にnodeがインストールされている場合には「奇麗に」削除しておきます。簡単には「奇麗に」削除できませんのでgoogleで色々と検索してください。
+nodebrew をインストールします。既に node がインストールされている場合には「奇麗に」削除しておきます。簡単には「奇麗に」削除できませんので google で色々と検索してください。
 
 ```
 $ curl -L git.io/nodebrew | perl - setup
@@ -22,7 +22,7 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 ========================================
 ```
 
-インストール完了したらpathを設定します。vi等で「~/.bash\_profile」ファイルを開きAdd pathで指定されたパスを登録してください。登録後保存し環境を適用させます：
+インストール完了したら path を設定します。vi 等で「~/.bash\_profile」ファイルを開き `Add path:` で指定されたパスを登録してください。登録後保存し環境を適用させます：
 
 ```
 $ source ~/.bash_profile
@@ -46,18 +46,16 @@ $ nodebrew install-binary v6.7.0
 $ nodebrew use v6.7.0
 ```
 
-これでnodeの準備が完了しました。
+これで node の準備が完了しました。Mac の場合  Ruby、Python などは既にインストールされているのでほとんど作業はありません。もし Xcode がインストールされていない場合は行って下さい。
 
-Macの場合はこれ以外にXcodeやRuby、Pythonなどインストールされていることが望ましいですが、あまり難しくはないので各自インストールし確認してください。
-
-> [Node.js リリース](https://github.com/nodejs/node/releases)はとても早く皆さんが環境構築するときにはもっと新しいバージョンが出ているかもしれません。
+> [Node.js リリース](https://github.com/nodejs/node/releases)はとても早く、皆さんが環境構築するときにはもっと新しいバージョンが出ているかもしれません。
 
 # Windows 10
 
 Windows の場合、Webアプリケーション開発を行うためのツールがほとんどインストールされていません。Mac を利用するユーザより若干多くの手間を掛け環境を作る必要があります。次のものは私が Surface pro 4 を購入したときにはじめにセッティングしたツールです。
 
 * git bash
-* python2.7
+* python 2系
 * Ruby
 * Visual Studio 2015 Community
 * Windows 10 SDK
@@ -70,15 +68,15 @@ Windows の場合、Webアプリケーション開発を行うためのツール
 
 ### git bashのインストール
 
-何はともあれWindowsマシンを利用するときに、必ず`git bash`はインストールします。
+何はともあれ Windows マシンを利用するときに、必ず`git bash`はインストールします。
 
-exeをダウンロードしてインストールしますが設定が少しあります。重要なのが「Configuring the line ending conversions」で`Checkout as-is, commit Unix-style line endings`を選択してます。 参考までに、こちらでも同じexeが落ちてきます。
+exe ファイルをダウンロードしてインストールしますが、設定が少しあります。重要なのが「Configuring the line ending conversions」で`Checkout as-is, commit Unix-style line endings`を選択してます。 参考までに、こちらでも同じexeが落ちてきます。
 
 \[[http://git-scm.com/](http://git-scm.com/)\]
 
-### python2.7
+### python 2.7
 
-python2.7をインストールします。npmライブラリの一部でpythonを利用していますので必須です（3系使わず2系）。
+python 2.7 をインストールします。npmライブラリの一部でpythonを利用していますので必須です（3系使わず2系）。
 
 \[[https://www.python.org/downloads/](https://www.python.org/downloads/)\]
 
@@ -86,7 +84,7 @@ python2.7をインストールします。npmライブラリの一部でpython�
 
 ### Ruby
 
-Sassコンパイルとかで利用されるRuby（安定版）も入れます。三種類インストーラーありますが`RubyInstaller`を使ってます。
+SASS コンパイルとかで利用されるRuby（安定版）も入れます。三種類インストーラーありますが`RubyInstaller`を使ってます。
 
 \[[http://rubyinstaller.org/](http://rubyinstaller.org/)\]
 
@@ -117,16 +115,14 @@ node-gypの条件はWindows10の場合は下記で「Visual C++ チェック忘�
 
 ### nodist
 
-MACでnodejs入れるときにnodebrewで入れたように、Windowsではnodistをインストールします。
-
-インストーラーが用意されているのでダウンロードし実行する
+MAC で Node.js を入れるときに nodebrew を使ったように、Windows では nodist を使用します。インストーラーが用意されているのでダウンロードし実行します。
 
 1. Download the installer here\(
    &lt;
    -githubを確認\)
 2. Run the installer and follow the install wizard
 
-設定は`set NODIST_X64=0`を`git bash`上で実行し利用するnodeを登録する。確認のため`nodist -v`を叩くとバージョンが表示されます。現在は
+設定は`set NODIST_X64=0`を`git bash`上で実行し、利用する node を登録します。確認のため`nodist -v`を叩くとバージョンが表示されます。現在は
 
 ```
 $ nodist -v
