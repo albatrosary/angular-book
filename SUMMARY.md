@@ -20,4 +20,5 @@
 * [lintを利用する](lintを利用する.md)
 * [Unit Test](unit-test.md)
 * [Azure and Wercker CI](azure-and-werker-ci.md)
+* [Changelog](changelog.md)
 
