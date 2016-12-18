@@ -62,7 +62,7 @@ export const appRoutingProviders: any[] = [];
 export const routing:ModuleWithProviders = RouterModule.forRoot(appRoutes);
 ```
 
-ここで、`path: ''` はルートパス\( http://localhost:4200/のような\)で呼ばれたときに `/home` へリダイレクトするよう定義しています。リダイレクト先の `/home` ではコンポーネント HomeComponent を実行するよう定義されていますので、画面には HomeComponent で定義されたテンプレートが表示されます。
+ここで、`path: ''` はルートパス（ http://localhost:4200/ のような）で呼ばれたときに `/home` へリダイレクトするよう定義しています。リダイレクト先の `/home` ではコンポーネント HomeComponent を実行するよう定義されていますので、画面には HomeComponent で定義されたテンプレートが表示されます。
 
 `path: '**'` は、ルーティング定義に無いパスが指定された場合（例えば、 http://localhost:4200/xxxxx ）にPageNotFoundComponent を表示するよう定義しています。404ページとしての定義です。
 
