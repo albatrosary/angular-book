@@ -1,8 +1,6 @@
 次に、ルーターを階層化します。`app.routes`では`home`及び`pages`へのルーティングを設定し`pages`では`issue`、`top`、`wiki`のルーティングを設定します。
 
-
-
-それでは始めます。`src/app` ディレクトリ以下の現状のファイル構成は次の通りです。
+それでは始めます。現状の`src/app` ディレクトリ配下のファイル構成は次の通りのはずです。
 
 ```
 $ tree 
@@ -14,21 +12,21 @@ $ tree
 ├── app.module.ts
 ├── app.routes.ts
 ├── home
-│   ├── home.component.css
-│   ├── home.component.html
-│   ├── home.component.spec.ts
-│   └── home.component.ts
+│   ├── home.component.css
+│   ├── home.component.html
+│   ├── home.component.spec.ts
+│   └── home.component.ts
 ├── index.ts
 ├── issue
-│   ├── issue.component.css
-│   ├── issue.component.html
-│   ├── issue.component.spec.ts
-│   └── issue.component.ts
+│   ├── issue.component.css
+│   ├── issue.component.html
+│   ├── issue.component.spec.ts
+│   └── issue.component.ts
 ├── page-not-found
-│   ├── page-not-found.component.css
-│   ├── page-not-found.component.html
-│   ├── page-not-found.component.spec.ts
-│   └── page-not-found.component.ts
+│   ├── page-not-found.component.css
+│   ├── page-not-found.component.html
+│   ├── page-not-found.component.spec.ts
+│   └── page-not-found.component.ts
 └── wiki
     ├── wiki.component.css
     ├── wiki.component.html
@@ -36,7 +34,7 @@ $ tree
     └── wiki.component.ts
 
 4 directories, 23 files
-$ 
+$
 ```
 
 pages ディレクトリを作成し issue ディレクトリと wiki ディレクトリを pagesディレクトリへ移動させます。
@@ -47,7 +45,7 @@ $ mv issue/ pages/
 $ mv wiki/ pages/
 ```
 
-これ以外に top.component と footer.component も合わせて作ります。top.component は url に pages が指定されたときに表示させる画面で footer.component は全画面のフッターを定義します。そして、ルーティングに合わせて`Module`も次のように階層化します。
+これ以外に top.component と footer.component も作ります。top.component は url に pages が指定されたときに表示させる画面で footer.component は全画面のフッターを定義します。そして、ルーティングに合わせて`Module`も次のように階層化します。
 
 ```
 $ ng g component footer
@@ -70,28 +68,28 @@ $ tree
 ├── app.module.ts
 ├── app.routes.ts
 ├── footer
-│   ├── footer.component.css
-│   ├── footer.component.html
-│   ├── footer.component.spec.ts
-│   └── footer.component.ts
+│   ├── footer.component.css
+│   ├── footer.component.html
+│   ├── footer.component.spec.ts
+│   └── footer.component.ts
 ├── home
-│   ├── home.component.css
-│   ├── home.component.html
-│   ├── home.component.spec.ts
-│   └── home.component.ts
+│   ├── home.component.css
+│   ├── home.component.html
+│   ├── home.component.spec.ts
+│   └── home.component.ts
 ├── index.ts
 ├── page-not-found
-│   ├── page-not-found.component.css
-│   ├── page-not-found.component.html
-│   ├── page-not-found.component.spec.ts
-│   └── page-not-found.component.ts
+│   ├── page-not-found.component.css
+│   ├── page-not-found.component.html
+│   ├── page-not-found.component.spec.ts
+│   └── page-not-found.component.ts
 └── pages
     ├── issue
-    │   ├── issue.component.css
-    │   ├── issue.component.html
-    │   ├── issue.component.spec.ts
-    │   ├── issue.component.ts
-    │   └── issue.module.ts
+    │   ├── issue.component.css
+    │   ├── issue.component.html
+    │   ├── issue.component.spec.ts
+    │   ├── issue.component.ts
+    │   └── issue.module.ts
     ├── pages.component.css
     ├── pages.component.html
     ├── pages.component.spec.ts
@@ -99,10 +97,10 @@ $ tree
     ├── pages.module.ts
     ├── pages.routes.ts
     ├── top
-    │   ├── top.component.css
-    │   ├── top.component.html
-    │   ├── top.component.spec.ts
-    │   └── top.component.ts
+    │   ├── top.component.css
+    │   ├── top.component.html
+    │   ├── top.component.spec.ts
+    │   └── top.component.ts
     └── wiki
         ├── wiki.component.css
         ├── wiki.component.html
@@ -111,7 +109,7 @@ $ tree
         └── wiki.module.ts
 
 7 directories, 39 files
-$ 
+$
 ```
 
 > ng g component と ng g module の違いは .module.ts ファイルがあるかどうかです。例えば  pages/issue を作成した場合
@@ -201,11 +199,11 @@ import { pagesRouting, pagesRoutingProviders }  from './pages.routes';
 export class PagesModule { }
 ```
 
-Issue, wikiに関してはComponent単体では無くModuleにしていますのでimports句で`IssueModule`と`WikiModule`を設定しています。
+Issue ページと wiki ページに関しては Component 単体では無く Module も利用していますので、pages.module.ts の imports句で`IssueModule`と`WikiModule`を設定しています。
 
 ## 親ルータの設定
 
-app.componentを変更します。まずapp.component.htmlは
+app.component を変更します。app.component にファーストビューが表示される Homeページ とアプリケーションを表示する Pagesページのリンクメニューを定義します。まず `app.component.html` は
 
 ```
 <h1>Issue Tracker</h1>
@@ -217,7 +215,7 @@ app.componentを変更します。まずapp.component.htmlは
 <app-footer></app-footer>
 ```
 
-次にapp.routes.ts
+次に `app.routes.ts` は
 
 ```
 import { ModuleWithProviders } from '@angular/core';
@@ -237,7 +235,7 @@ export const appRoutingProviders: any[] = [];
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
 ```
 
-続いてapp.module.ts
+続いて`app.module.ts` は
 
 ```
 import { BrowserModule } from '@angular/platform-browser';
@@ -274,7 +272,9 @@ import { routing, appRoutingProviders }  from './app.routes';
 export class AppModule { }
 ```
 
-`IssueComponent`、`WikiComponent`の代わりに`PagesModule`をimports句に設定しています。ng serveで簡易サーバを立ち上げるとネストされたルーティングが利用出来ていることの確認ができます。
+`app.module.ts`では`IssueComponent`、`WikiComponent`の代わりに`PagesModule`をimports句に設定しています。エントリーポイントとして、Module が定義されているページでは、利用宣言を Module で行い、Module 定義がない Component では Component を指定し「階層構造」を定義します。
+
+ng serveで簡易サーバを立ち上げるとネストされたルーティングが利用出来ていることの確認ができます。
 
 
 
