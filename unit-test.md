@@ -36,7 +36,7 @@ $ tree
 $
 ```
 
-## TableComponent のテスト
+## テスト用の簡単なアプリケーション
 
 TableComponent の table.component.html テンプレートは
 
