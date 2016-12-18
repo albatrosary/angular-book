@@ -103,3 +103,19 @@ export class WikiModule { }
 
 Angular のバインディングの仕組みとPipeを利用することで、数行のコードで簡単にマークダウンエディタを作成することができます。
 
+### Web Storage API
+
+よく使う [Web Storage](https://developer.mozilla.org/ja/docs/Web/API/Web_Storage_API) について簡単に説明します。Web Storage はキーバリューストアで
+
+* localStorage
+* sessionStorage
+
+のふたつが存在します。何れもブラウザ内でデータを保持するための仕組みですが次のような特徴がありますのでアプリケーション開発ではそれぞれのメリットを理解し利用することをオススメします。
+
+|  | 別タブでの共有 | データの有効期限 |
+| :--- | :--- | :--- |
+| localStorage | ◯ | ブラウザを閉じたり開いたりしてもデータを維持することができます |
+| sessionStorage | ☓ | ページのセッション中でブラウザを閉じると消去されます |
+
+データ容量は OS やブラウザで異なりますので[ストレージ容量を報告しているサイト](http://dev-test.nemikor.com/web-storage/support-test/)で確認すると良いでしょう。
+
