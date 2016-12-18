@@ -1,4 +1,4 @@
-SPA\(Single-page Application\)の最大の特徴であるルーティングについて学びます。SPAのルーティングはURLに紐付いた画面を表示させる仕組みです。
+SPA\(Single-page Application\) の最大の特徴であるルーティングについて学びます。SPAのルーティングはURLに紐付いた画面を表示させる仕組みです。
 
 ## ルーティングの設定
 
@@ -11,7 +11,7 @@ $ ng g component pageNotFound
 $ ng g component wiki
 ```
 
-ng g componentコマンドを実行すると4つのファイルが出来上がります。具体的に ng g component home としたときは
+`ng g component` コマンドを実行すると4つのファイルが出来上がります。具体的に `ng g component home` としたときは
 
 ```
 $ ng g component home
@@ -23,7 +23,7 @@ installing component
 $
 ```
 
-です。`home.component.css` は `home.component` に対するCSS定義を記述するものです。`home.component.html `は、HTMLテンプレートを記述するものです。`spec.ts` という拡張子のものがありますが、これはユニットテストを定義するものです。 `home.component.ts` は、TypeScriptで何かしらUIに関連する処理を記述するものです。
+です。`home.component.css` は `home.component` に対するCSS定義を記述するものです。`home.component.html`は、HTMLテンプレートを記述するものです。`spec.ts` という拡張子のものがありますが、これはユニットテストを定義するものです。 `home.component.ts` は、TypeScriptで何かしらUIに関連する処理を記述するものです。
 
 よく講演でコンポーネントの話をします。Webアプリケーション開発におけるコンポーネントは Web Components をベースにした考え方です。Web Components には次の4つの定義があります。
 
@@ -32,15 +32,13 @@ $
 3. HTML Imports
 4. Shadow DOM
 
-
-
 これとは別にルーティング設定用のモジュールを作成します。
 
 ```
 $ ng g class app.routes
 ```
 
-app.routes.tsは
+`app.routes.ts` は
 
 ```
 import { ModuleWithProviders } from'@angular/core';
@@ -64,7 +62,7 @@ export const appRoutingProviders: any[] = [];
 export const routing:ModuleWithProviders = RouterModule.forRoot(appRoutes);
 ```
 
-app.module.tsは`ng g component`コマンドで必要なファイルが追加されています。確認してください。
+`app.module.ts` は`ng g component`コマンドで必要なファイルが追加されています。確認してください。
 
 今回はルーティングの設定がありますのでルーティングをプロバイダー登録します。結果として次のようになります
 
@@ -102,7 +100,7 @@ import { routing, appRoutingProviders } from './app.routes';
 export class AppModule { }
 ```
 
-`app.component.html `に aタグを使って使って簡易メニューを作成します。
+`app.component.html`に aタグ を使って使って簡易メニューを作成します。
 
 ```
 <h1>Issue Tracker</h1>
@@ -128,21 +126,21 @@ $ tree
 ├── app.module.ts
 ├── app.routes.ts
 ├── home
-│   ├── home.component.css
-│   ├── home.component.html
-│   ├── home.component.spec.ts
-│   └── home.component.ts
+│   ├── home.component.css
+│   ├── home.component.html
+│   ├── home.component.spec.ts
+│   └── home.component.ts
 ├── index.ts
 ├── issue
-│   ├── issue.component.css
-│   ├── issue.component.html
-│   ├── issue.component.spec.ts
-│   └── issue.component.ts
+│   ├── issue.component.css
+│   ├── issue.component.html
+│   ├── issue.component.spec.ts
+│   └── issue.component.ts
 ├── page-not-found
-│   ├── page-not-found.component.css
-│   ├── page-not-found.component.html
-│   ├── page-not-found.component.spec.ts
-│   └── page-not-found.component.ts
+│   ├── page-not-found.component.css
+│   ├── page-not-found.component.html
+│   ├── page-not-found.component.spec.ts
+│   └── page-not-found.component.ts
 └── wiki
     ├── wiki.component.css
     ├── wiki.component.html
@@ -150,8 +148,8 @@ $ tree
     └── wiki.component.ts
 
 4 directories, 23 files
-$ 
+$
 ```
 
-
+ここまでの作業は非常に簡単だったと思います。特に angular-cli のお陰で、ややこしい環境設定は気にする必要無いというのは大きなメリットだと思います。
 
