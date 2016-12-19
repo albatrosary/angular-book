@@ -1,4 +1,4 @@
-pages.componentのメニュー部にアニメーションを設定します。準備として `pages.component.html` を次のように書き換えます
+PagesComponentのメニュー部にアニメーションを設定します。準備として `pages.component.html` を次のように書き換えます
 
 ```
 <ul>
