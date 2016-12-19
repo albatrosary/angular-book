@@ -6,6 +6,10 @@
 
 です。それぞれどのように DI 設定するのか見ていきます。
 
+## サービスの作成
+
+angular-cli を使って Service を生成します。
+
 ```
 $ ng g service pages/issue/issue
 ```
@@ -35,7 +39,7 @@ export class IssueService {
 }
 ```
 
-issue.component.tsは
+作成した Service を issue.component.ts でインジェクションします。
 
 ```
 import { Component, OnInit } from '@angular/core';
@@ -81,7 +85,7 @@ export class IssueComponent implements OnInit {
 }
 ```
 
-issue.module.tsにIssueServiceを追加します
+issue.module.ts に IssueService を追加します。
 
 ```
 import { NgModule } from '@angular/core';
@@ -105,7 +109,7 @@ import { IssueService } from './issue.service';
 export class IssueModule { }
 ```
 
-これでロジック部をComponentからServiceへ移動させることができました。
+これでロジック部を Component から Service へ移動させることができました。
 
 今回のようにあまり複雑でないようなものをサービス化する必要があるのか？という疑問もあるかもしれません。コンポーネント、特にtemplateUrl で定義されたテンプレートはUIの処理を定義し制御をそのTypeScriptファイルで実装します。言い換えると @Component で定義されたクラスは UI のためのものです。@Injectable は何かしらの処理を定義したもので UI とはあまり関係のないものを定義します。データストアを定義しそのハンドリングするメソッドを定義するのもいいですし、HTTPリクエストを処理するために定義するのも良いと思います。こうしてモジュール分割したものを接続する機能が DI だと考えれば良いかと思います。
 
