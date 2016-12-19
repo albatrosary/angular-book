@@ -1,4 +1,4 @@
-ルーティングに応じて、headタグにあるtitleタグを変更する処理を追加します。app.component.tsを次のように変更します。
+ルーティングに応じて、headタグにあるtitleタグを変更する処理を追加します。app.component.ts を次のように変更します。
 
 ```
 import { Component } from '@angular/core';
@@ -72,7 +72,7 @@ export const appRoutingProviders: any[] = [];
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
 ```
 
-pages.routes.tsの定義は
+`pages.routes.ts` の定義は
 
 ```
 import { ModuleWithProviders } from '@angular/core';
