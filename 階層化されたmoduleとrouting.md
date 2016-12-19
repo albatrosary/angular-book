@@ -1,4 +1,4 @@
-次に、ルーターを階層化します。`app.routes`では`home`及び`pages`へのルーティングを設定し`pages`では`issue`、`top`、`wiki`のルーティングを設定します。
+次に、ルーターを階層化します。`app.routes.ts`では`home`及び`pages`へのルーティングを設定し`pages.routes.ts`では`issue`、`top`、`wiki`のルーティングを設定します。
 
 それでは始めます。現状の`src/app` ディレクトリ配下のファイル構成は次の通りのはずです。
 
@@ -45,7 +45,7 @@ $ mv issue/ pages/
 $ mv wiki/ pages/
 ```
 
-これ以外に top.component と footer.component も作ります。top.component は url に pages が指定されたときに表示させる画面で footer.component は全画面のフッターを定義します。そして、ルーティングに合わせて`Module`も次のように階層化します。
+これ以外に TopComponent と FooterComponent も作ります。TopComponent は url に pages が指定されたときに表示させる画面で FooterComponent はすべての画面のフッターを定義します。そして、ルーティングに合わせて`Module`も階層化します。angular-cli を使ってファイルを生成します。
 
 ```
 $ ng g component footer
@@ -203,7 +203,7 @@ Issue ページと wiki ページに関しては Component 単体では無く Mo
 
 ## 親ルータの設定
 
-app.component を変更します。app.component にファーストビューが表示される Homeページ とアプリケーションを表示する Pagesページのリンクメニューを定義します。まず `app.component.html` は
+AppComponent を変更します。AppComponent にファーストビューが表示される HomeComponent ページ とアプリケーションを表示する PagesComponent ページのリンクメニューを定義します。まず `app.component.html` は
 
 ```
 <h1>Issue Tracker</h1>
@@ -272,11 +272,9 @@ import { routing, appRoutingProviders }  from './app.routes';
 export class AppModule { }
 ```
 
-`app.module.ts`では`IssueComponent`、`WikiComponent`の代わりに`PagesModule`をimports句に設定しています。エントリーポイントとして、Module が定義されているページでは、利用宣言を Module で行い、Module 定義がない Component では Component を指定し「階層構造」を定義します。
+`app.module.ts`では`IssueComponent`、`WikiComponent`の代わりに`PagesModule`を imports に設定しています。エントリーポイントとして、Module が定義されているページでは、利用宣言を Module で行い、Module 定義がない Component では Component を指定し「階層構造」を定義します。
 
-ng serveで簡易サーバを立ち上げるとネストされたルーティングが利用出来ていることの確認ができます。
-
-
+`ng serve` で簡易サーバを立ち上げるとネストされたルーティングが利用出来ていることの確認ができます。
 
 ここまでで今回作成する簡単なサンプルWebアプリケーションの骨格は出来上がりました。
 
