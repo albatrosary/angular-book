@@ -1,6 +1,8 @@
 ## Lazy Load
 
-Lazy Load\(遅延ロード\)で最初に必要なリソースのみダウンロードし、後に必要なModuleをロードさせる機能です。今回はpages.moduleをLazy Loadします。
+Lazy Load\(遅延ロード\)とは、最初に必要なリソースのみダウンロードし、後に必要なModuleをロードさせる機能です。今回はpages.moduleをLazy Loadします。
+
+> サンプルでは、細かくなった Component を Module という単位でまとめましたが、Module を利用するメリットのひとつとしてこのLazy Load（遅延ロード）も上げられます。
 
 `app.routes.ts` を次のように変更します。pathとして`pages`を定義しloadChildren句を定義します。
 
@@ -187,7 +189,6 @@ import { GuardsIssueService } from './issue/guards-issue.service';
   ]
 })
 export class PagesModule { }
-
 ```
 
 これで設定変更は完了しました。コンソールを見ると 0.chunk.js というファイルが現れますが Lazy Load されるファイルです。
