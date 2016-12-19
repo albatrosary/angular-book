@@ -1,5 +1,7 @@
 SPA\(Single-page Application\) の最大の特徴であるルーティングについて学びます。SPAのルーティングはURLに紐付いた画面を表示させる仕組みです。
 
+> SPA は以前のWebアプリケーションと比べ、レスポンスが高速でUI/UXに優れています。
+
 ## ルーティングの設定
 
 はじめにルーティングに必要となる4つの画面を追加します。
@@ -23,7 +25,7 @@ installing component
 $
 ```
 
-です。`home.component.css` は `home.component` に対するCSS定義を記述するものです。`home.component.html`は、HTMLテンプレートを記述するものです。`spec.ts` という拡張子のものがありますが、これはユニットテストを定義するものです。 `home.component.ts` は、TypeScriptで何かしらUIに関連する処理を記述するものです。
+です。`home.component.css` は `HomeComponent` に対するCSS定義を記述するものです。`home.component.html`は、HTMLテンプレートを記述するものです。`spec.ts` という拡張子のものがありますが、これはユニットテストを定義するものです。 `home.component.ts` は、TypeScriptで何かしらUIに関連する処理を記述するものです。
 
 > よく講演でコンポーネントの話をします。Webアプリケーション開発におけるコンポーネントは Web Components をベースにした考え方です。Web Components には次の4つの定義があります。
 >
@@ -39,7 +41,7 @@ $
 >
 > Shadow DOM ですが Angular では Scoped CSS を実装し実現させています。ブラウザを開きデベロッパーツールを開いて確認すると CSS が Scoped されているのが解ります。
 
-これとは別にルーティング設定用のモジュールを作成します。ルーティングを作るスカッフォールドはありませんので ng g class でテンプレートを生成します。
+これとは別にルーティング設定用のモジュールを作成します。ルーティングを作るスカッフォールドはありませんので `ng g class` でテンプレートを生成します。
 
 ```
 $ ng g class app.routes
