@@ -1,10 +1,10 @@
 ## Lazy Load
 
-Lazy Load\(遅延ロード\)とは、最初に必要なリソースのみダウンロードし、後に必要なModuleをロードさせる機能です。今回はpages.moduleをLazy Loadします。
+Lazy Load\(遅延ロード\)とは、最初に必要なリソースのみダウンロードし、後に必要な Module を（遅延）ロードさせる機能です。今回はPagesModule をLazy Loadします。
 
 > サンプルでは、細かくなった Component を Module という単位でまとめましたが、Module を利用するメリットのひとつとしてこのLazy Load（遅延ロード）も上げられます。
 
-`app.routes.ts` を次のように変更します。pathとして`pages`を定義しloadChildren句を定義します。
+`app.routes.ts` を次のように変更します。path として`pages`を定義し loadChildren と定義します。
 
 ```
 import { ModuleWithProviders } from '@angular/core';
@@ -39,7 +39,7 @@ export const appRoutingProviders: any[] = [];
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
 ```
 
-`pages.routes.ts` ではpath: 'pages'を定義していましたが、`app.routes.ts` で既に `pages` を記載してますのでここでは削除します。
+`pages.routes.ts` では path: 'pages' を定義していましたが、`app.routes.ts` で既に `pages` を記載してますのでここでは削除します。
 
 ```
 import { ModuleWithProviders } from '@angular/core';
@@ -213,8 +213,8 @@ webpack: bundle is now VALID.
 
 ## AoTビルド
 
-AoTはAhead of Timeの略で事前ビルドです。angular-cliを使っている場合  
-`ng build --aot true`
+AoT は Ahead of Time の略で事前ビルドです。angular-cli を使っている場合  
+`$ ng build --aot true`
 
 というコマンドで実行可能です。通常のビルドとAoTビルドのサイズ比較をしてみます。
 
@@ -242,5 +242,40 @@ chunk    {4} inline.bundle.js, inline.bundle.map (inline) 0 bytes [entry] [rende
 $
 ```
 
+サイズ以外にも大きな違いがあり、HTML Templates は、通常のビルドの場合コンパイル後の JavaScript ファイルが
 
+```
+core_1.Component({
+  selector: 'hero-search',
+  template: "\n  <div id=\"search-component\">\n    <h4>Hero Search</h4>\n    <input #searchBox id=\"search-box\" (keyup)=\"search(searchBox.value)\" />\n    <div>\n      <div *ngFor=\"let hero of heroes | async\"\n          (click)=\"gotoDetail(hero)\" class=\"search-result\" >\n        <p class=\"ashiras\">{{hero.name}}</p>\n      </div>\n    </div>\n  </div>\n  ",
+  styleUrls: ['hero-search.component.css'],
+  providers: [hero_search_service_1.HeroSearchService]
+}), 
+```
+
+であるのに対し、AoT の場合は完全な JavaScript に変換されます。
+
+```
+function (rootSelector) {
+  this._el_0 = this.renderer.createElement(null, 'div', this.debug(0, 5, 6));
+  this.renderer.setElementAttribute(this._el_0, 'class', 'search-result');
+  this._text_1 = this.renderer.createText(this._el_0, '\n        ', this.debug(1, 6, 60));
+  this._el_2 = this.renderer.createElement(this._el_0, 'p', this.debug(2, 7, 8));
+  this.renderer.setElementAttribute(this._el_2, 'class', 'ashiras');
+  this._text_3 = this.renderer.createText(this._el_2, '', this.debug(3, 7, 27));
+  this._text_4 = this.renderer.createText(this._el_0, '\n      ', this.debug(4, 7, 44));
+  var disposable_0 = this.renderer.listen(this._el_0, 'click', this.eventHandler(this._handle_click_0_0.bind(this)));
+  this._expr_1 = import9.UNINITIALIZED;
+  this.init([].concat([this._el_0]), [
+    this._el_0,
+    this._text_1,
+    this._el_2,
+    this._text_3,
+    this._text_4
+  ], [disposable_0], []);
+  return null;
+};
+```
+
+通常このコードはブラウザにロードしたときに Angular のビルドシステムが行う作業ですが、事前にこうしたコードを生成することでブラウザ上での実行速度を早めています。
 
