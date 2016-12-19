@@ -1,8 +1,8 @@
 フィルターのような動きをする Pipe という機能があります。 文字を大文字にする機能や、頭のみ大文字にする機能、検索フィルターなどを作るための機能です。
 
-Wiki 画面（マークダウンエディタ）を使って Pipe を実装します。
+WikiComponent（マークダウンエディタ）を使って Pipe を実装します。
 
-## Pipeの作成
+## Pipe の作成
 
 Pipe を作成します。マークダウンで入力したものをHTMLへ変換するためののPipeを作成します。
 
@@ -37,7 +37,7 @@ export class MarkdownPipe implements PipeTransform {
 
 ここで`DomSanitizer`,`SafeHtml`は通常HTMLタグを記述した場合、サニタイジング処理がされるためそれをしないようにする処理のために記載しています。
 
-## Pipeの利用
+## Pipe の利用
 
 `app.module.ts`に`markdown.pipe`が追加されていることを確認します。
 

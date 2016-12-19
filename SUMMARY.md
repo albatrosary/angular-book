@@ -8,7 +8,7 @@
 * [ルーティングの設定](routing.md)
 * [階層化されたModuleとRouter](階層化されたmoduleとrouting.md)
 * [RouterとComponentのライフサイクル](ライフサイクル.md)
-* [Pipeを使ったWikiページ](pipeの利用.md)
+* [Pipeを使ったWikiページの作成](pipeの利用.md)
 * [Issue Trackerページの作成](issue-trackerの作成.md)
 * [サービスの利用](service.md)
 * [コンポーネント分割](コンポーネント分割.md)
