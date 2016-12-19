@@ -1,3 +1,7 @@
+Issue Tracker を作成します。Issue Tracker と言ってもどこにでもある Todo リストですが、Angular の特徴を活かし Component 間のやり取りの方法や Service の使い方など学びたいと思います。
+
+## Issue Tracker の作成
+
 issueを保存するための型を定義します
 
 ```
@@ -13,7 +17,7 @@ export class Issue {
 }
 ```
 
-`issue.component.ts`ファイルは次のようになります
+`issue.component.ts`は次のようになります。入力された値を配列で保持する機能と登録された情報を削除する機能を持ち合わせています。
 
 ```
 import { Component, OnInit } from '@angular/core';
@@ -56,7 +60,7 @@ export class IssueComponent implements OnInit {
 }
 ```
 
-issue.component.html は
+issue.component.html は、入力部と Issue の一覧を表示する部分から成ります。
 
 ```
 <h2>Issue</h2>
@@ -72,7 +76,7 @@ issue.component.html は
 </div>
 ```
 
-issue.module.tsにも必要なライブラリを追加します
+issue.module.ts にも必要なライブラリを追加します。
 
 ```
 import { NgModule } from '@angular/core';
@@ -90,8 +94,7 @@ import { IssueComponent } from './issue.component';
 export class IssueModule { }
 ```
 
-簡単なIssueリストを作成することができました。ここで理解すべきことは [FORM](https://angular.io/docs/ts/latest/guide/forms.html) の使い方です。気がついたかもしれませんが、入力項目に値が入っていない場合、登録ボタンが押せなくなっています。これを応用すると、入力値のチェックやチェック後のメッセージ表示など様々なインタラクティブなことが実装できます。
+簡単な Issue リストを作成することができました。ここで理解すべきことは [FORM](https://angular.io/docs/ts/latest/guide/forms.html) の使い方です。気がついたかもしれませんが、入力項目に値が入っていない場合、登録ボタンが押せなくなっています。これを応用すると、入力値のチェックやチェック後のメッセージ表示など様々なインタラクティブなことが実装できます。
 
-  
 Angular のバインディングは強力ですので UI を構築するときには欠かせないものです。
 
