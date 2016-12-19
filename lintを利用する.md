@@ -1,22 +1,22 @@
 ## tslint
 
-tslintは既にangular-cliに定義されています。利用方法は
+tslint は既に angular-cli に定義されています。利用方法は
 
 ```
 $ npm run lint
 ```
 
-とすればTypeScriptのLintが実行されます。作成したtsファイルに対してlintを実行しプログラムを修正してください。
+とすれば TypeScript の Lint が実行されます。作成した tsファイルに対して lint を実行しプログラムを修正してください。
 
-## sasslint
+## sass-lint
 
-sasslintはangular-cliに登録されてませんのでインストールする必要があります。
+[sass-lint](https://github.com/sasstools/sass-lint) は angular-cli に登録されてませんのでインストールする必要があります。
 
 ```
 $ npm install sass-lint --save-dev
 ```
 
-sass-lint定義ファイル .sass-lint.yml を設定します。下記はサンプルとして提供されているものです。
+sass-lint 定義ファイル` .sass-lint.yml `をプロジェクト直下に作成し設定します。下記はサンプルとして提供されているものです。variable-for-property は（個人的には）余計と思われるのでコメントアウトしています。
 
 ```
 #########################
@@ -89,9 +89,7 @@ sass-lintを実行させるためのスクリプトをpackage.jsonに定義し�
   },
 ```
 
-これでsass-lintが利用できます。実際に作成したプロジェクトに対してlintをしてください。
-
-
+これで sass-lint が利用できます。実際に作成したプロジェクトに対して lint をしてください。
 
 さてここまでのファイル構成は次のようになってます。
 
@@ -115,7 +113,7 @@ $ tree -L 1 -all
 └── tslint.json
 
 7 directories, 10 files
-$ 
+$
 ```
 
 src/app ディレクトリ配下は次の通りです。
@@ -130,85 +128,85 @@ $ tree
 ├── app.module.ts
 ├── app.routes.ts
 ├── footer
-│   ├── footer.component.html
-│   ├── footer.component.scss
-│   ├── footer.component.spec.ts
-│   └── footer.component.ts
+│   ├── footer.component.html
+│   ├── footer.component.scss
+│   ├── footer.component.spec.ts
+│   └── footer.component.ts
 ├── home
-│   ├── guards-home.service.spec.ts
-│   ├── guards-home.service.ts
-│   ├── home.component.html
-│   ├── home.component.scss
-│   ├── home.component.spec.ts
-│   └── home.component.ts
+│   ├── guards-home.service.spec.ts
+│   ├── guards-home.service.ts
+│   ├── home.component.html
+│   ├── home.component.scss
+│   ├── home.component.spec.ts
+│   └── home.component.ts
 ├── index.ts
 ├── page-not-found
-│   ├── page-not-found.component.html
-│   ├── page-not-found.component.scss
-│   ├── page-not-found.component.spec.ts
-│   └── page-not-found.component.ts
+│   ├── page-not-found.component.html
+│   ├── page-not-found.component.scss
+│   ├── page-not-found.component.spec.ts
+│   └── page-not-found.component.ts
 ├── pages
-│   ├── guards-pages.service.spec.ts
-│   ├── guards-pages.service.ts
-│   ├── issue
-│   │   ├── guards-issue.service.spec.ts
-│   │   ├── guards-issue.service.ts
-│   │   ├── issue-detail
-│   │   │   ├── issue-detail.component.html
-│   │   │   ├── issue-detail.component.scss
-│   │   │   ├── issue-detail.component.spec.ts
-│   │   │   └── issue-detail.component.ts
-│   │   ├── issue-input
-│   │   │   ├── issue-input.component.html
-│   │   │   ├── issue-input.component.scss
-│   │   │   ├── issue-input.component.spec.ts
-│   │   │   └── issue-input.component.ts
-│   │   ├── issue-list
-│   │   │   ├── issue-list.component.html
-│   │   │   ├── issue-list.component.scss
-│   │   │   ├── issue-list.component.spec.ts
-│   │   │   └── issue-list.component.ts
-│   │   ├── issue-update
-│   │   │   ├── issue-update.component.html
-│   │   │   ├── issue-update.component.scss
-│   │   │   ├── issue-update.component.spec.ts
-│   │   │   └── issue-update.component.ts
-│   │   ├── issue.component.html
-│   │   ├── issue.component.scss
-│   │   ├── issue.component.spec.ts
-│   │   ├── issue.component.ts
-│   │   ├── issue.module.ts
-│   │   ├── issue.service.spec.ts
-│   │   ├── issue.service.ts
-│   │   └── issue.ts
-│   ├── pages.component.html
-│   ├── pages.component.scss
-│   ├── pages.component.spec.ts
-│   ├── pages.component.ts
-│   ├── pages.module.ts
-│   ├── pages.routes.ts
-│   ├── top
-│   │   ├── guards-top.service.spec.ts
-│   │   ├── guards-top.service.ts
-│   │   ├── top.component.html
-│   │   ├── top.component.scss
-│   │   ├── top.component.spec.ts
-│   │   └── top.component.ts
-│   └── wiki
-│       ├── guards-wiki.service.spec.ts
-│       ├── guards-wiki.service.ts
-│       ├── markdown.pipe.spec.ts
-│       ├── markdown.pipe.ts
-│       ├── wiki.component.html
-│       ├── wiki.component.scss
-│       ├── wiki.component.spec.ts
-│       ├── wiki.component.ts
-│       └── wiki.module.ts
+│   ├── guards-pages.service.spec.ts
+│   ├── guards-pages.service.ts
+│   ├── issue
+│   │   ├── guards-issue.service.spec.ts
+│   │   ├── guards-issue.service.ts
+│   │   ├── issue-detail
+│   │   │   ├── issue-detail.component.html
+│   │   │   ├── issue-detail.component.scss
+│   │   │   ├── issue-detail.component.spec.ts
+│   │   │   └── issue-detail.component.ts
+│   │   ├── issue-input
+│   │   │   ├── issue-input.component.html
+│   │   │   ├── issue-input.component.scss
+│   │   │   ├── issue-input.component.spec.ts
+│   │   │   └── issue-input.component.ts
+│   │   ├── issue-list
+│   │   │   ├── issue-list.component.html
+│   │   │   ├── issue-list.component.scss
+│   │   │   ├── issue-list.component.spec.ts
+│   │   │   └── issue-list.component.ts
+│   │   ├── issue-update
+│   │   │   ├── issue-update.component.html
+│   │   │   ├── issue-update.component.scss
+│   │   │   ├── issue-update.component.spec.ts
+│   │   │   └── issue-update.component.ts
+│   │   ├── issue.component.html
+│   │   ├── issue.component.scss
+│   │   ├── issue.component.spec.ts
+│   │   ├── issue.component.ts
+│   │   ├── issue.module.ts
+│   │   ├── issue.service.spec.ts
+│   │   ├── issue.service.ts
+│   │   └── issue.ts
+│   ├── pages.component.html
+│   ├── pages.component.scss
+│   ├── pages.component.spec.ts
+│   ├── pages.component.ts
+│   ├── pages.module.ts
+│   ├── pages.routes.ts
+│   ├── top
+│   │   ├── guards-top.service.spec.ts
+│   │   ├── guards-top.service.ts
+│   │   ├── top.component.html
+│   │   ├── top.component.scss
+│   │   ├── top.component.spec.ts
+│   │   └── top.component.ts
+│   └── wiki
+│       ├── guards-wiki.service.spec.ts
+│       ├── guards-wiki.service.ts
+│       ├── markdown.pipe.spec.ts
+│       ├── markdown.pipe.ts
+│       ├── wiki.component.html
+│       ├── wiki.component.scss
+│       ├── wiki.component.spec.ts
+│       ├── wiki.component.ts
+│       └── wiki.module.ts
 └── shared
     └── properties.scss
 
 12 directories, 71 files
-$ 
+$
 ```
 
 
