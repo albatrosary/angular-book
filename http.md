@@ -6,6 +6,7 @@
 * [Node.js](https://nodejs.org/ja/)
 
 で作られる Webアプリケーション のことです。2012年頃の話ですが、MongoDB コミュニティで入門者向けに LAMP\(Linux, Apache, MySQL, PHP\) のような構成で、より簡単なものとして考え出されました。
+
 ## アプリケーションサーバの作成
 
 REST処理を行うためサーバを構築します。「server/main.js」として簡単なRESTサーバを作成します
@@ -107,7 +108,7 @@ $ ng serve --proxy-config proxy.conf.json
 }
 ```
 
-package.jsonにプロキシ設定された簡易サーバを立ち上げるようにscriptsを記述します。
+package.json にプロキシ設定された簡易サーバを立ち上げるようにscriptsを記述します。
 
 ```
 "scripts": {
@@ -177,7 +178,7 @@ $
 
 ## サービスの書き換え
 
-issue.service.ts はRxJSのPromiseを使って実装します。
+issue.service.ts は RxJS の Promise を使って実装します。
 
     import { Injectable } from '@angular/core';
     import { Headers, Http } from '@angular/http';
@@ -249,9 +250,9 @@ issue.service.ts はRxJSのPromiseを使って実装します。
       }
     }
 
-## Componentの書き換え
+## Component の書き換え
 
-issue-list.componentはPromise実装に伴い若干の処理を追加しています。
+IssueListComponent は Promise実装に伴い若干の処理を追加しています。
 
 ```
 import { Component, OnInit } from '@angular/core';
@@ -286,7 +287,7 @@ export class IssueListComponent implements OnInit {
 }
 ```
 
-issue-update.component.ts は
+IssueUpdateComponent は
 
 ```
 import { Component, OnInit } from '@angular/core';
