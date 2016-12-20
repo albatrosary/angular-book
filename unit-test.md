@@ -142,7 +142,7 @@ export class PostService {
 </div>
 ```
 
-table.component.ts は
+app.component.ts は
 
 ```
 import { Component } from '@angular/core';
