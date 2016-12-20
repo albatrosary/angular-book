@@ -132,7 +132,7 @@ export class PostService {
 }
 ```
 
-あとは TableComponent を表示させるための AppComponent を定義するだけです。table.component.html は
+あとは TableComponent を表示させるための AppComponent を定義するだけです。app.component.html は
 
 ```
 <div *ngIf="isDataLoaded">
