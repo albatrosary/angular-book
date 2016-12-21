@@ -252,7 +252,6 @@ import { PostService } from './post.service';
 
 describe('MockBackend: TestService', () => {
   beforeEach(() => {
-    // Сделаем все нужные тестовые сервисы
     TestBed.configureTestingModule({
       providers: [
         PostService,
