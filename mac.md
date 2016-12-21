@@ -173,6 +173,64 @@ TypeScriptがコンパイルされブラウザに変更した文字が表示さ�
 
 アプリケーション開発では通常、ブラウザを起動したままTypeScriptファイルやHTMLファイル、CSSファイル\(SASSファイル\)を更新しながら進めていきます。
 
+> 現時点では少し早いと思われる内容ですが、ng new で作成したコンポーネントの接頭詞はデフォルトでは `app` と成っています。つまり Component に指定される selector が app-root で、以降 ng new component で生成されるものには app が付きます。
+>
+> ```
+> import { Component } from '@angular/core';
+>
+> @Component({
+>   selector: 'app-root',
+>   templateUrl: './app.component.html',
+>   styleUrls: ['./app.component.css']
+> })
+> export class AppComponent {
+>   title = 'ng works!';
+> }
+> ```
+>
+> 例えば ng g component hoge でコンポーネント生成すると
+>
+> ```
+> import { Component, OnInit } from '@angular/core';
+>
+> @Component({
+>   selector: 'app-hoge',
+>   templateUrl: './hoge.component.html',
+>   styleUrls: ['./hoge.component.css']
+> })
+> export class HogeComponent implements OnInit {
+>
+>   constructor() { }
+>
+>   ngOnInit() {
+>   }
+>
+> }
+> ```
+>
+> これを変更する場合には ng new --prefix とすると別の接頭詞になります。具体的には
+>
+> ```
+> $ ng new AngularTutorial --prefix ng
+> ```
+>
+> とした場合に app.component.ts は
+>
+> ```
+> import { Component } from '@angular/core';
+>
+> @Component({
+>   selector: 'ng-root',
+>   templateUrl: './app.component.html',
+>   styleUrls: ['./app.component.css']
+> })
+> export class AppComponent {
+>   title = 'ng works!';
+> }
+> ```
+>
+> といった具合になります。但しディレクトリ名の app はそのままです。
+
 ## ユニットテスト
 
 次に実際にはプロジェクトが完了したらユニットテストを実行します。 ユニットテストのコマンドは`ng test`で実行できます。
