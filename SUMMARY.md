@@ -22,5 +22,6 @@
 * [e2e Test](e2e-test.md)
 * [Azure and Wercker CI](azure-and-werker-ci.md)
 * [Angular Universalを使ったサーバサイドレンダリング](サーバサイドレンダリング.md)
+* [yarn を使ったプロジェクトの生成](yarn-を使ったプロジェクトの生成.md)
 * [Changelog](changelog.md)
 

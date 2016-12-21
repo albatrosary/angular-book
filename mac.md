@@ -490,31 +490,6 @@ $ npm install marked --save
 $ npm install @types/marked --save-dev
 ```
 
-## yarn によるインストール
-
-[yarn](https://yarnpkg.com/) は「Fast, reliable, and secure dependency management.」と書かれているように npm  より高速にモジュールをインストールできる仕組みです。yarn を利用する場合の angular-cli は --skipe-npm スイッチを使って実行し yarn コマンドを発行します。まず yarn のインストールには npm か brew を利用します。
-
-```
-$ npm install yarn -g
-```
-
-若しくは
-
-```
-$ brew update
-$ brew install yarn
-```
-
-yarn のインストールが終わったら angular-cli を使ってパッケージをインストールします。
-
-```
-$ ng new yarn-app --skip-npm
-$ cd yarn-app
-$ yarn
-```
-
-本来はこれで ng serve コマンドを実行すると動くはずですが、依存性解決がうまく出来ていないようでビルドが完了しません。実行速度はとても早いのでこれからに期待したいと思います。
-
 ## 完成したコード
 
 今回作成する簡単なWebアプリケーションの完成したコードは [github](https://github.com/albatrosary/start-angular) にあります。最終的な出来上がりを確認したい方はこちらを見て頂くと良いかと思います。
