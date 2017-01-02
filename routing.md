@@ -40,6 +40,22 @@ $
 > Angular は、この Web Component に準じた構成を取っています。具体的には @Component の selector で宣言しているのが Custom Element です。templateUrl で HTML Templates と HTML Imports を実現させています。
 >
 > Shadow DOM ですが Angular では Scoped CSS を実装し実現させています。ブラウザを開きデベロッパーツールを開いて確認すると CSS が Scoped されているのが解ります。
+>
+> 各ブラウザの Shadow DOM 実装はばらつきがありますが Angular ではキーワード  `ViewEncapsulation.Native` をコンポーネントに定義することで Showdow DOM を有効にすることができます。Scoped CSS 同様デベロッパーツールを開き確認すると良いでしょう。
+>
+> ```
+> import { Component, ViewEncapsulation } from '@angular/core';
+>
+> @Component({
+>   selector: 'app-root',
+>   templateUrl: './app.component.html',
+>   styleUrls: ['./app.component.css'],
+>   encapsulation: ViewEncapsulation.Native
+> })
+> export class AppComponent {
+>   title = 'app works!';
+> }
+> ```
 
 これとは別にルーティング設定用のモジュールを作成します。ルーティングを作るスカッフォールドはありませんので `ng g class` でテンプレートを生成します。
 
