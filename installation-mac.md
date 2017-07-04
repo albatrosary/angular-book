@@ -55,7 +55,12 @@ $ nodebrew install-binary v8.1.3
 
 ```
 $ nodebrew use v8.1.3
+use v8.1.3
 $ node -v
+v8.1.3
+$ npm -v
+5.0.3
+$
 ```
 
 これで node の準備が完了しました。Mac の場合  Ruby、Python などは既にインストールされているのでほとんど作業はありません。もし Xcode がインストールされていない場合は行って下さい。
