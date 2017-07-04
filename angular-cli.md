@@ -1,14 +1,24 @@
-Angular アプリケーションの開発を進める上で最も簡単で効率的なツールは angular-cli をインストールすることです。 angular-cli は、開発に必要なライブラリをまとめていて、かつ、スカッフォールドも行えます。
+Angular アプリケーションの開発を進める上で最も簡単で効率的なツールは angular-cli を利用することです。 angular-cli は、開発に必要なライブラリをまとめていて、かつ、スカッフォールドも行えます。
 
 ## angular-cli のインストール
 
-Node.js のインストールが済んでいれば、次に行うことは angular-cli をインストールすることです。angular-cli は npm\(Node Package Manager\) を使ってインストールします。インストール完了後 `ng help` や `ng version` が実行できていれば無事インストールが完了しています。
+Node.js のインストールが済んでいれば、次に行うことは angular-cli を[インストールする](https://github.com/angular/angular-cli/blob/master/README.md)ことです。angular-cli は npm\(Node Package Manager\) を使ってインストールします。インストール完了後 `ng help` や `ng version` が実行できていれば無事インストールが完了しています。
 
 > angular-cli のコマンドは ng を使います。ng コマンドには多くの機能が実装されてますので ng help で色々と確認すると良いでしょう。
 
 ```
-$ npm install -g angular-cli
+$ npm install -g @angular/cli
 $ ng version
+    _                      _                 ____ _     ___
+   / \   _ __   __ _ _   _| | __ _ _ __     / ___| |   |_ _|
+  / △ \ | '_ \ / _` | | | | |/ _` | '__|   | |   | |    | |
+ / ___ \| | | | (_| | |_| | | (_| | |      | |___| |___ | |
+/_/   \_\_| |_|\__, |\__,_|_|\__,_|_|       \____|_____|___|
+               |___/
+@angular/cli: 1.2.0
+node: 8.1.3
+os: darwin x64
+$ 
 angular-cli: 1.0.0-beta.22-1
 node: 6.7.0
 os: darwin x64
@@ -41,9 +51,16 @@ ng build <options...>
 もし既に古いバージョンの angular-cli がインストールされていた場合には更新を行います。
 
 ```
-$ npm uninstall angular-cli -g
-$ npm cache clear
-$ npm install angular-cli -g
+$ npm uninstall -g @angular/cli
+$ npm cache clean
+$ npm install -g @angular/cli@latest
+```
+
+尚、Angular CLI 1.0.0-beta.28 より以前のものを利用していた場合には、次のように削除します。
+
+```
+$ npm uninstall -g angular-cli
+$ npm uninstall --save-dev angular-cli
 ```
 
 angular-cli で私がよく利用するコマンドは
@@ -59,13 +76,14 @@ angular-cli のコマンドは [github](https://github.com/angular/angular-cli) 
 
 | Scaffold | Used |
 | :--- | :--- |
-| Component | ng g component my-new-component |
-| Directive | ng g directive my-new-directive |
+| Component	| ng g component my-new-component	|
+| Directive	| ng g directive my-new-directive	|
 | Pipe | ng g pipe my-new-pipe |
-| Service | ng g service my-new-service |
-| Class | ng g class my-new-class |
-| Interface | ng g interface my-new-interface |
-| Enum | ng g enum my-new-interface |
+| Service	| ng g service my-new-service	|
+| Class	| ng g class my-new-class	|
+| Guard	| ng g guard my-new-guard	|
+| Interface	| ng g interface my-new-interface	|
+| Enum | ng g enum my-new-enum |
 | Module | ng g module my-module |
 
 ## angular-cli を使ったプロジェクトの生成
@@ -81,11 +99,11 @@ $ cd Handson
 $ ng serve
 ```
 
-実際にプロジェクトを生成します。プロジェクトの作成には（ネットワークの状況にもよりますが）若干の時間を要します。下記のような`Installing packages for tooling via npm.` というメッセージから中々応答が帰ってこないこともありますが辛抱強く待ちましょう。
+実際にプロジェクトを生成します。プロジェクトの作成には（ネットワークの状況にもよりますが）若干の時間を要します。下記のような`Installing packages for tooling via yarn.` というメッセージから中々応答が帰ってこないこともありますが辛抱強く待ちましょう。
 
 ```
 $ ng new Handson
-installing ng2
+installing ng
   create .editorconfig
   create README.md
   create src/app/app.component.css
@@ -93,7 +111,6 @@ installing ng2
   create src/app/app.component.spec.ts
   create src/app/app.component.ts
   create src/app/app.module.ts
-  create src/app/index.ts
   create src/assets/.gitkeep
   create src/environments/environment.prod.ts
   create src/environments/environment.ts
@@ -103,34 +120,35 @@ installing ng2
   create src/polyfills.ts
   create src/styles.css
   create src/test.ts
-  create src/tsconfig.json
+  create src/tsconfig.app.json
+  create src/tsconfig.spec.json
   create src/typings.d.ts
-  create angular-cli.json
+  create .angular-cli.json
   create e2e/app.e2e-spec.ts
   create e2e/app.po.ts
-  create e2e/tsconfig.json
+  create e2e/tsconfig.e2e.json
   create .gitignore
   create karma.conf.js
   create package.json
   create protractor.conf.js
+  create tsconfig.json
   create tslint.json
-Successfully initialized git.
-Installing packages for tooling via npm.
+Installing packages for tooling via yarn.
 ```
 
 しばらくすると `Installed packages for tooling via npm.`というメッセージが表示され無事プロジェクトが生成たれたことを示します。
 
 ```
 $ ng new Handson
-installing ng2
+installing ng
   create .editorconfig
   create README.md
 
  ・・・
 
+Installed packages for tooling via yarn.
 Successfully initialized git.
-Installing packages for tooling via npm.
-Installed packages for tooling via npm.
+Project 'Handson' successfully created.
 $
 ```
 
@@ -139,14 +157,15 @@ $
 ```
 $ cd Handson
 $ ng serve
-** NG Live Development Server is running on http://localhost:4200. **
-Hash: 7cd95729a72e78fee9e4                                                               
-Time: 8721ms
-chunk    {0} main.bundle.js, main.bundle.map (main) 4.66 kB {2} [initial] [rendered]
-chunk    {1} styles.bundle.js, styles.bundle.map (styles) 9.99 kB {3} [initial] [rendered]
-chunk    {2} vendor.bundle.js, vendor.bundle.map (vendor) 2.22 MB [initial] [rendered]
-chunk    {3} inline.bundle.js, inline.bundle.map (inline) 0 bytes [entry] [rendered]
-webpack: bundle is now VALID.
+** NG Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200 **
+Hash: e82ae92c1a7c37970a7d                                                              
+Time: 9304ms
+chunk    {0} polyfills.bundle.js, polyfills.bundle.js.map (polyfills) 160 kB {4} [initial] [rendered]
+chunk    {1} main.bundle.js, main.bundle.js.map (main) 5.28 kB {3} [initial] [rendered]
+chunk    {2} styles.bundle.js, styles.bundle.js.map (styles) 10.5 kB {4} [initial] [rendered]
+chunk    {3} vendor.bundle.js, vendor.bundle.js.map (vendor) 2.18 MB [initial] [rendered]
+chunk    {4} inline.bundle.js, inline.bundle.js.map (inline) 0 bytes [entry] [rendered]
+webpack: Compiled successfully.
 ```
 
 はじめて見る方は、冒頭 `NG` と表示され何がだめなの？と思うかも知れませんがこれは ng コマンドという意味ですので勘違いしないようにしてください。
@@ -555,4 +574,3 @@ $ npm install @types/marked --save-dev
 ## まとめ
 
 このように通常の開発では`ng serve`でアプリケーション開発を行い、`ng test`や`ng e2e`を使ってテストを行います。テストが完了すると`ng build`でリリースモジュールの作成をします。こうした手順の一部はCIで行うことで開発ライフサイクルの自動化をします。
-
