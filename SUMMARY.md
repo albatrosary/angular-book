@@ -3,6 +3,8 @@
 * [Introduction](README.md)
 * [Angularとは](angularとは.md)
 * [アプリケーション開発をするための環境](installation.md)
+  * [Mac編](installation-mac.md)
+  * [Windows編](installation-windows.md)
 * [angular-cliの利用とプロジェクトの生成](angular-cli.md)
 * [ビルトインディレクティブ](ビルトインディレクティブ.md)
 * [ルーティングの設定](routing.md)
