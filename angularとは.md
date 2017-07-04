@@ -1,10 +1,10 @@
-Angular はフルスタックと呼ばれるように Component、Route、Service、PipeなどWebアプリケーションを作る上で全てのものが揃っています。Angular 2 になりそうしたライブラリ以外にも様々な道具が提供されています。
+Angular はフルスタックと呼ばれるように Component、Route、Service、PipeなどWebアプリケーションを作る上で全てのものが揃っています。AngularJS でも多くのライブラリが揃っていましたが（揃い過ぎでどこに何を実装するか迷うくらい）Angular になり、そうしたライブラリが整理され、プラス、以外にも様々な道具が提供されています。
 
 ## ANGULAR CLI
 
-Angular をインストールする最良の方法は、Angular CLI Toolを使用することです。
+Angular を利用する最良の方法は、Angular CLI ツールを使用することです。
 
-Angular CLI は Angular アプリケーションの足場を生成するのに役立つだけでなく、開発者、生成、サービス、テスト、および管理に役立つ一連のコマンドが付属しています。 Angularを利用するする人々から聞いた主な不平の一つは、それがどこで始まり、どこで終わるのかを理解することが難しいことです。 Yeoman、Grunt、Gulp、そしてあらゆる種類のツールを使って真の発展を作り出していることです。 環境は、今やすべてがフレームワークコマンドラインインターフェイスによって提供されます。
+__Angular CLI__ は Angular アプリケーションの雛形を生成するのに役立つだけでなく、開発者、生成、サービス、テスト、および管理に役立つ一連のコマンドが付属しています。 Angular を利用する人々から聞いた主な不平の一つは、それがどこで始まり、どこで終わるのかを理解することが難しいことです。 これまで Yeoman、Grunt、Gulp、そしてあらゆる種類のツールを使って真の発展を作り出していましたが、 __Angular CLI__ により Angular アプリケーションを開発するための環境は、今やすべてがこのフレームワークコマンドラインインターフェイス(Angular CLI)によって提供されます。
 
 [angular cli](https://cli.angular.io/)
 
@@ -26,23 +26,23 @@ Angular を使うと、デバッグがかなり難しいですが、Angular Augu
 
 [angular augury](https://augury.angular.io/)
 
-## ANGULAR MATERIAL 2
+## ANGULAR MATERIAL
 
-Angular Material 2コンポーネントではコミュニティに沿ってGoogle Developersチームの協力もあり、以前よりも強力なコンポーネントを作成しています。
+Angular Material コンポーネントではコミュニティに沿ってGoogle Developersチームの協力もあり、以前よりも強力なコンポーネントを作成しています。
 
-[angular material 2](https://material.angular.io/)
+[angular material](https://material.angular.io/)
 
-## ANGULAR FIREBASE 2
+## ANGULAR FIREBASE
 
 Angular Firebase 2というツールがあります。リアルタイムアプリケーション用に設計されているもので簡単に利用することができます。
 
-[angular firebase 2](https://github.com/angular/angularfire2)
+[angular firebase](https://github.com/angular/angularfire2)
 
 ## ANGULAR STYLE GUIDE
 
 Angular を開発するためのガイドラインを提示しています。
 
-[angular 2 style guide](https://angular.io/styleguide)
+[angular style guide](https://angular.io/styleguide)
 
 ## ANGULAR REFERENCES
 
@@ -64,5 +64,6 @@ Angular アプリケーションのコードアナライザは、Angular スタ�
 
 ## SEMANTIC VERSIONING
 
-これから Angular は [Semantic versioning](http://semver.org/) に従ってバージョン付与をします。これが意味するところは、これから私たちは Angular 2 という表現はあまり意味のないものになります。実際、February, 2017 には Angular 4 がリリースされる予定で、約半年に一度のペースでバージョンアップが行われます。
+これから Angular は [Semantic versioning](http://semver.org/) に従ってバージョン付与をします。これが意味するところは、これから私たちは Angular 2 という表現はあまり意味のないものになります。実際、February, 2017 には Angular 4 がリリースされました。これからは約半年に一度のペースでバージョンアップが行われます。
 
+一般的に、Angular 1系を __AngularJS__ と表現し Angular 2以降を __Angular__ と記載します。
