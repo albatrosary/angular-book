@@ -132,7 +132,7 @@ installing ng
 Installing packages for tooling via yarn.
 ```
 
-しばらくすると `Installed packages for tooling via npm.`というメッセージが表示され無事プロジェクトが生成たれたことを示します。
+しばらくすると `Installed packages for tooling via yarn.`というメッセージが表示され無事プロジェクトが生成たれたことを示します。
 
 ```
 $ ng new Handson
@@ -172,7 +172,7 @@ webpack: Compiled successfully.
 
 ```
 export class AppComponent {
-  title ='app works!';
+  title = 'app';
 }
 ```
 
@@ -180,7 +180,7 @@ export class AppComponent {
 
 ```
 export class AppComponent {
-  title ='app sample!';
+  title ='app sample';
 }
 ```
 
@@ -188,42 +188,42 @@ TypeScriptがコンパイルされブラウザに変更した文字が表示さ�
 
 アプリケーション開発では通常、ブラウザを起動したままTypeScriptファイルやHTMLファイル、CSSファイル\(SASSファイル\)を更新しながら進めていきます。
 
-> 現時点では少し早いと思われる内容ですが、ng new で作成したコンポーネントの接頭詞はデフォルトでは `app` と成っています。つまり Component に指定される selector が app-root で、以降 ng new component で生成されるものには app が付きます。
+> 現時点では少し早いと思われる内容ですが、ng new で作成したコンポーネントの接頭詞はデフォルトでは __app__ と成っています。つまり Component に指定される selector が app-root で、以降 `ng new component` で生成されるコンポーネントには app が付きます。
 >
 > ```
 > import { Component } from '@angular/core';
->
+> 
 > @Component({
 >   selector: 'app-root',
 >   templateUrl: './app.component.html',
 >   styleUrls: ['./app.component.css']
 > })
 > export class AppComponent {
->   title = 'ng works!';
+>   title = 'app';
 > }
 > ```
 >
-> 例えば ng g component hoge でコンポーネント生成すると
+> 例えば `ng g component hoge` コマンドでコンポーネント生成すると
 >
 > ```
 > import { Component, OnInit } from '@angular/core';
->
+> 
 > @Component({
 >   selector: 'app-hoge',
 >   templateUrl: './hoge.component.html',
 >   styleUrls: ['./hoge.component.css']
 > })
 > export class HogeComponent implements OnInit {
->
+> 
 >   constructor() { }
->
+> 
 >   ngOnInit() {
 >   }
->
+> 
 > }
 > ```
 >
-> これを変更する場合には ng new --prefix とすると別の接頭詞になります。具体的には
+> これを変更する場合には ng new --prefix とすると別の接頭詞になります。具体的に見てみましょう。`cd ../`として現在のプロジェクトディレクトリから外れ、新しいプロジェクトを作ります。
 >
 > ```
 > $ ng new AngularTutorial --prefix ng
@@ -233,14 +233,14 @@ TypeScriptがコンパイルされブラウザに変更した文字が表示さ�
 >
 > ```
 > import { Component } from '@angular/core';
->
+> 
 > @Component({
 >   selector: 'ng-root',
 >   templateUrl: './app.component.html',
 >   styleUrls: ['./app.component.css']
 > })
 > export class AppComponent {
->   title = 'ng works!';
+>   title = 'ng';
 > }
 > ```
 >
@@ -254,243 +254,200 @@ TypeScriptがコンパイルされブラウザに変更した文字が表示さ�
 
 ```
 $ ng test
-21 11 2016 22:07:56.353:WARN [karma]: No captured browser, open http://localhost:9876/
-21 11 2016 22:07:56.365:INFO [karma]: Karma v1.2.0 server started at http://localhost:9876/
-21 11 2016 22:07:56.366:INFO [launcher]: Launching browser Chrome with unlimited concurrency
-21 11 2016 22:07:56.372:INFO [launcher]: Starting browser Chrome
-21 11 2016 22:07:57.895:INFO [Chrome 54.0.2840 (Mac OS X 10.12.1)]: Connected on socket /#5nJLeGud-ZeWheNSAAAA with id 9431361
-Chrome 54.0.2840 (Mac OS X 10.12.1): Executed 3 of 3 SUCCESS (0.339 secs / 0.328 secs)
-^Csagawa-mbp:project_name albatrosary$ ng test
-21 11 2016 22:09:38.702:WARN [karma]: No captured browser, open http://localhost:9876/
-21 11 2016 22:09:38.714:INFO [karma]: Karma v1.2.0 server started at http://localhost:9876/
-21 11 2016 22:09:38.714:INFO [launcher]: Launching browser Chrome with unlimited concurrency
-21 11 2016 22:09:38.719:INFO [launcher]: Starting browser Chrome
-21 11 2016 22:09:39.919:INFO [Chrome 54.0.2840 (Mac OS X 10.12.1)]: Connected on socket /#UiWi_zzkjAja3k0tAAAA with id 77376120
-Chrome 54.0.2840 (Mac OS X 10.12.1) App: ProjectName should have as title 'app works!' FAILED
-    Expected 'app sample!' to equal 'app works!'.
-        at webpack:///Users/albatrosary/Sandbox/project_name/src/app/app.component.spec.ts:24:22 <- src/test.ts:16907:27
-        at ZoneDelegate.invoke (webpack:///Users/albatrosary/Sandbox/project_name/~/zone.js/dist/zone.js:232:0 <- src/test.ts:20417:26)
-        at AsyncTestZoneSpec.onInvoke (webpack:///Users/albatrosary/Sandbox/project_name/~/zone.js/dist/async-test.js:49:0 <- src/test.ts:13054:39)
-        at ProxyZoneSpec.onInvoke (webpack:///Users/albatrosary/Sandbox/project_name/~/zone.js/dist/proxy.js:76:0 <- src/test.ts:13746:39)
-Chrome 54.0.2840 (Mac OS X 10.12.1) App: ProjectName should render title in a h1 tag FAILED
-    Expected '      app sample!' to contain 'app works!'.
-        at webpack:///Users/albatrosary/Sandbox/project_name/src/app/app.component.spec.ts:31:53 <- src/test.ts:16913:58
-        at ZoneDelegate.invoke (webpack:///Users/albatrosary/Sandbox/project_name/~/zone.js/dist/zone.js:232:0 <- src/test.ts:20417:26)
-        at AsyncTestZoneSpec.onInvoke (webpack:///Users/albatrosary/Sandbox/project_name/~/zone.js/dist/async-test.js:49:0 <- src/test.ts:13054:39)
-        at ProxyZoneSpec.onInvoke (webpack:///Users/albatrosary/Sandbox/project_name/~/zone.js/dist/proxy.js:76:0 <- src/test.ts:13746:39)
-Chrome 54.0.2840 (Mac OS X 10.12.1): Executed 3 of 3 (2 FAILED) (0.273 secs / 0.239 secs)
+ 10% building modules 1/1 modules 0 active05 07 2017 07:52:11.645:WARN [karma]: No captured browser, open http://localhost:9876/
+05 07 2017 07:52:11.658:INFO [karma]: Karma v1.7.0 server started at http://0.0.0.0:9876/
+05 07 2017 07:52:11.659:INFO [launcher]: Launching browser Chrome with unlimited concurrency
+05 07 2017 07:52:11.666:INFO [launcher]: Starting browser Chrome
+05 07 2017 07:52:19.339:WARN [karma]: No captured browser, open http://localhost:9876/  
+05 07 2017 07:52:19.567:INFO [Chrome 59.0.3071 (Mac OS X 10.12.5)]: Connected on socket 5f6ppV2c5UgQHB9lAAAA with id 76162161
+Chrome 59.0.3071 (Mac OS X 10.12.5) AppComponent should have as title 'app' FAILED
+	Expected 'app sample' to equal 'app'.
+	    at Object.<anonymous> (http://localhost:9876/_karma_webpack_/main.bundle.js:90:27)
+	    at ZoneDelegate.webpackJsonp.../../../../zone.js/dist/zone.js.ZoneDelegate.invoke (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:2801:26)
+	    at AsyncTestZoneSpec.webpackJsonp.../../../../zone.js/dist/async-test.js.AsyncTestZoneSpec.onInvoke (http://localhost:9876/_karma_webpack_/vendor.bundle.js:2643:39)
+	    at ProxyZoneSpec.webpackJsonp.../../../../zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke (http://localhost:9876/_karma_webpack_/vendor.bundle.js:3406:39)
+Chrome 59.0.3071 (Mac OS X 10.12.5): Executed 2 of 4 (1 FAILED) (0 secs / 0.196 secs)
+Chrome 59.0.3071 (Mac OS X 10.12.5) AppComponent should have as title 'app' FAILED
+	Expected 'app sample' to equal 'app'.
+	    at Object.<anonymous> (http://localhost:9876/_karma_webpack_/main.bundle.js:90:27)
+	    at ZoneDelegate.webpackJsonp.../../../../zone.js/dist/zone.js.ZoneDelegate.invoke (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:2801:26)
+	    at AsyncTestZoneSpec.webpackJsonp.../../../../zone.js/dist/async-test.js.AsyncTestZoneSpec.onInvoke (http://localhost:9876/_karma_webpack_/vendor.bundle.js:2643:39)
+	    at ProxyZoneSpec.webpackJsonp.../../../../zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke (http://localhost:9876/_karma_webpack_/veChrome 59.0.3071 (Mac OS X 10.12.5) AppComponent should render title in a h1 tag FAILED
+	Expected '
+	    Welcome to app sample!!
+	  ' to contain 'Welcome to app!!'.
+	    at Object.<anonymous> (http://localhost:9876/_karma_webpack_/main.bundle.js:96:58)
+	    at ZoneDelegate.webpackJsonp.../../../../zone.js/dist/zone.js.ZoneDelegate.invoke (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:2801:26)
+	    at AsyncTestZoneSpec.webpackJsonp.../../../../zone.js/dist/async-test.js.AsyncTestZoneSpec.onInvoke (http://localhost:9876/_karma_webpack_/vendor.bundle.js:2643:39)
+	    at ProxyZoneSpec.webpackJsonp.../../../../zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke (http://localhost:9876/_karma_webpack_/vendor.bundle.js:3406:39)
+Chrome 59.0.3071 (Mac OS X 10.12.5): Executed 3 of 4 (2 FAILED) (0 secs / 0.244 secs)
+Chrome 59.0.3071 (Mac OS X 10.12.5) AppComponent should render title in a h1 tag FAILED
+	Expected '
+	    Welcome to app sample!!
+	  ' to contain 'Welcome to app!!'.
+	    at Object.<anonymous> (http://localhost:9876/_karma_webpack_/main.bundle.js:96:58)
+	    at ZoneDelegate.webpackJsonp.../../../../zone.js/dist/zone.js.ZoneDelegate.invoke (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:2801:26)
+	    at AsyncTestZoneSpec.webpackJsonp.../../../../zone.js/dist/async-test.js.AsyncTestZoneSpec.onInvoke (http://localhost:9876/_karma_webpack_/vendor.bundle.js:2643:39)
+	    at ProxyZoneSpec.webpackJsonp.../../../../zone.js/dist/proxy.js.ProxyZoneSpec.onInvoke (http://localhost:9876/_karma_webpack_/veChrome 59.0.3071 (Mac OS X 10.12.5): Executed 4 of 4 (2 FAILED) (0.335 secs / 0.278 secs)
 ```
 
 先程`app.component.ts`を
 
 ```
 export class AppComponent {
-  title = 'app sample!';
+  title = 'app sample';
 }
 ```
 
 と変更したためにテストが通らなくなっています。テストコードを変更します。`app.component.spec.ts`を見て下さい。
 
-     ・・・
-      it(`should have as title 'app works!'`, async(() => {
-        let fixture =TestBed.createComponent(AppComponent);
-        let app =fixture.debugElement.componentInstance;
-        expect(app.title).toEqual('app works!');
-      }));
+```
+・・・
 
-      it('should render title in a h1 tag', async(() => {
-        let fixture =TestBed.createComponent(AppComponent);
-        fixture.detectChanges();
-        let compiled =fixture.debugElement.nativeElement;
-        expect(compiled.querySelector('h1').textContent).toContain('app works!');
-      }));
-     ・・・
+it(`should have as title 'app'`, async(() => {
+  const fixture = TestBed.createComponent(AppComponent);
+  const app = fixture.debugElement.componentInstance;
+  expect(app.title).toEqual('app');
+}));
 
-ここに`app works!`という文字列と比較している部分あありますので、これを`app sample!`に変更してください。ライブリロードが実行されテストが再実行されます。結果次のようなメッセージあ表示されます。
+it('should render title in a h1 tag', async(() => {
+  const fixture = TestBed.createComponent(AppComponent);
+  fixture.detectChanges();
+  const compiled = fixture.debugElement.nativeElement;
+  expect(compiled.querySelector('h1').textContent).toContain('Welcome to app!!');
+}));
+
+・・・
+```
+
+ここに`app`という文字列と比較している部分あありますので、これを`app sample`に変更してください。
+
 
 ```
-Chrome 54.0.2840 (Mac OS X 10.12.1): Executed 3 of 3 SUCCESS (0.191 secs / 0.187 secs)
+・・・
+
+it(`should have as title 'app'`, async(() => {
+  const fixture = TestBed.createComponent(AppComponent);
+  const app = fixture.debugElement.componentInstance;
+  expect(app.title).toEqual('app sample');
+}));
+
+it('should render title in a h1 tag', async(() => {
+  const fixture = TestBed.createComponent(AppComponent);
+  fixture.detectChanges();
+  const compiled = fixture.debugElement.nativeElement;
+  expect(compiled.querySelector('h1').textContent).toContain('Welcome to app sample!!');
+}));
+
+・・・
+```
+
+ライブリロードが実行されテストが再実行されます。結果次のようなメッセージあ表示されます。
+
+```
+Chrome 59.0.3071 (Mac OS X 10.12.5): Executed 4 of 4 SUCCESS (0.297 secs / 0.286 secs)
 ```
 
 ## e2eテスト
 
 e2eテストは「End to Endテスト」と呼ばれブラウザを通してキーコード入力しクリックなどの動作テストをするためのものです。 先程と同様にコンソール画面を\[ctrl\]+\[c\]でプロセスを停止させe2eを実行します。
 
-e2eテストを行うには、別のコンソールで簡易サーバを立ち上げておきe2eコマンドを実行する必要あります。
-
 ```
-$ ng serve
- ・・・
-Time: 10242ms
-           Asset       Size  Chunks             Chunk Names
-  main.bundle.js    2.71 MB    0, 2  [emitted]  main
-styles.bundle.js    10.2 kB    1, 2  [emitted]  styles
-       inline.js    5.53 kB       2  [emitted]  inline
-        main.map    2.81 MB    0, 2  [emitted]  main
-      styles.map    14.1 kB    1, 2  [emitted]  styles
-      inline.map    5.59 kB       2  [emitted]  inline
-      index.html  478 bytes          [emitted]  
-Child html-webpack-plugin for"index.html":
-         Asset     Size  Chunks       Chunk Names
-    index.html  2.81 kB       0       
-webpack: bundle is now VALID.
+$ ng e2e
+** NG Live Development Server is listening on localhost:49152, open your browser on http://localhost:49152 **
+(node:14848) [DEP0022] DeprecationWarning: os.tmpDir() is deprecated. Use os.tmpdir() instead.
+Hash: 2ceeea2902c0ef04e8bd
+Time: 8703ms
+chunk    {0} polyfills.bundle.js, polyfills.bundle.js.map (polyfills) 160 kB {4} [initial] [rendered]
+chunk    {1} main.bundle.js, main.bundle.js.map (main) 6.93 kB {3} [initial] [rendered]
+chunk    {2} styles.bundle.js, styles.bundle.js.map (styles) 10.5 kB {4} [initial] [rendered]
+chunk    {3} vendor.bundle.js, vendor.bundle.js.map (vendor) 2.18 MB [initial] [rendered]
+chunk    {4} inline.bundle.js, inline.bundle.js.map (inline) 0 bytes [entry] [rendered]
+webpack: Compiled successfully.
+[07:56:37] I/file_manager - creating folder /Users/albatrosary/Sandbox/Handson/node_modules/webdriver-manager/selenium
+[07:56:38] I/update - chromedriver: unzipping chromedriver_2.30.zip
+[07:56:38] I/update - chromedriver: setting permissions to 0755 for /Users/albatrosary/Sandbox/Handson/node_modules/webdriver-manager/selenium/chromedriver_2.30
+[07:56:39] I/launcher - Running 1 instances of WebDriver
+[07:56:39] I/direct - Using ChromeDriver directly...
+Jasmine started
+
+  handson App
+    ✗ should display welcome message
+      - Expected 'Welcome to app sample!!' to equal 'Welcome to app!!'.
+          at Object.<anonymous> (/Users/albatrosary/Sandbox/Handson/e2e/app.e2e-spec.ts:12:37)
+          at /Users/albatrosary/Sandbox/Handson/node_modules/jasminewd2/index.js:112:25
+          at new ManagedPromise (/Users/albatrosary/Sandbox/Handson/node_modules/selenium-webdriver/lib/promise.js:1067:7)
+          at ControlFlow.promise (/Users/albatrosary/Sandbox/Handson/node_modules/selenium-webdriver/lib/promise.js:2396:12)
+          at schedulerExecute (/Users/albatrosary/Sandbox/Handson/node_modules/jasminewd2/index.js:95:18)
+          at TaskQueue.execute_ (/Users/albatrosary/Sandbox/Handson/node_modules/selenium-webdriver/lib/promise.js:2970:14)
+          at TaskQueue.executeNext_ (/Users/albatrosary/Sandbox/Handson/node_modules/selenium-webdriver/lib/promise.js:2953:27)
+          at asyncRun (/Users/albatrosary/Sandbox/Handson/node_modules/selenium-webdriver/lib/promise.js:2860:25)
+          at /Users/albatrosary/Sandbox/Handson/node_modules/selenium-webdriver/lib/promise.js:676:7
+          at <anonymous>
+          at process._tickCallback (internal/process/next_tick.js:169:7)
+
+**************************************************
+*                    Failures                    *
+**************************************************
+
+1) handson App should display welcome message
+  - Expected 'Welcome to app sample!!' to equal 'Welcome to app!!'.
+
+Executed 1 of 1 spec (1 FAILED) in 0.623 sec.
+[07:56:41] I/launcher - 0 instance(s) of WebDriver still running
+[07:56:41] I/launcher - chrome #01 failed 1 test(s)
+[07:56:41] I/launcher - overall: 1 failed spec(s)
+[07:56:41] E/launcher - Process exited with error code 1
+$ 
 ```
-
-簡易サーバが起動した後、e2eテストを実行します。
-
-    $ ng e2e
-
-    > handson@0.0.0 pree2e /Users/albatrosary/Sandbox/Handson
-    > webdriver-manager update
-
-    [11:53:53] I/update - selenium standalone: file exists /Users/albatrosary/Sandbox/Handson/node_modules/webdriver-manager/selenium/selenium-server-standalone-2.53.1.jar
-    [11:53:53] I/update - selenium standalone: v2.53.1 up to date
-    [11:53:54] I/update - chromedriver: file exists /Users/albatrosary/Sandbox/Handson/node_modules/webdriver-manager/selenium/chromedriver_2.24mac64.zip
-    [11:53:54] I/update - chromedriver: unzipping chromedriver_2.24mac64.zip
-    [11:53:54] I/update - chromedriver: setting permissions to 0755 for /Users/albatrosary/Sandbox/Handson/node_modules/webdriver-manager/selenium/chromedriver_2.24
-    [11:53:54] I/update - chromedriver: v2.24 up to date
-    [11:53:55] W/file_manager - geckodriver-v0.9.0-mac.tar.gz expected length undefined, found 1096885
-    [11:53:55] W/file_manager - removing file: /Users/albatrosary/Sandbox/Handson/node_modules/webdriver-manager/selenium/geckodriver-v0.9.0-mac.tar.gz
-    [11:53:55] I/downloader - geckodriver: downloading version v0.9.0
-    [11:53:55] I/downloader - curl -o /Users/albatrosary/Sandbox/Handson/node_modules/webdriver-manager/selenium/geckodriver-v0.9.0-mac.tar.gz https://github.com/mozilla/geckodriver/releases/download/v0.9.0/geckodriver-v0.9.0-mac.tar.gz
-    [11:54:00] I/update - geckodriver: unzipping /Users/albatrosary/Sandbox/Handson/node_modules/webdriver-manager/selenium/geckodriver-v0.9.0-mac.tar.gz
-    [11:54:00] I/update - geckodriver: setting permissions to 0755 for /Users/albatrosary/Sandbox/Handson/node_modules/webdriver-manager/selenium/geckodriver-v0.9.0
-
-    > handson@0.0.0 e2e /Users/albatrosary/Sandbox/Handson
-    > protractor "./protractor.conf.js"
-
-    [11:54:01] I/direct - Using ChromeDriver directly...
-    [11:54:01] I/launcher - Running 1 instances of WebDriver
-    Started
-    Spec started
-    F
-      handson App
-        ✗ should display message saying app works
-          - Expected 'app sample!' to equal 'app works!'.
-
-
-
-    Failures:
-    1) handson App should display message saying app works
-      Message:
-        Expected 'app sample!' to equal 'app works!'.
-      Stack:
-        Error: Failed expectation
-            at Object.<anonymous> (/Users/albatrosary/Sandbox/Handson/e2e/app.e2e-spec.ts:10:41)
-            at /Users/albatrosary/Sandbox/Handson/node_modules/protractor/node_modules/jasminewd2/index.js:94:23
-            at new ManagedPromise (/Users/albatrosary/Sandbox/Handson/node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:1082:7)
-            at controlFlowExecute (/Users/albatrosary/Sandbox/Handson/node_modules/protractor/node_modules/jasminewd2/index.js:80:18)
-            at TaskQueue.execute_ (/Users/albatrosary/Sandbox/Handson/node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:2913:14)
-            at TaskQueue.executeNext_ (/Users/albatrosary/Sandbox/Handson/node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:2896:21)
-            at asyncRun (/Users/albatrosary/Sandbox/Handson/node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:2820:25)
-            at /Users/albatrosary/Sandbox/Handson/node_modules/protractor/node_modules/selenium-webdriver/lib/promise.js:639:7
-            at process._tickCallback (internal/process/next_tick.js:103:7)
-
-    1 spec, 1 failure
-    Finished in 1.032 seconds
-
-    **************************************************
-    *                    Failures                    *
-    **************************************************
-
-    1) handson App should display message saying app works
-      - Expected 'app sample!' to equal 'app works!'.
-
-    Executed 1 of 1 spec (1 FAILED) in 1 sec.
-    [11:54:04] I/launcher - 0 instance(s) of WebDriver still running
-    [11:54:04] I/launcher - chrome #01 failed 1 test(s)
-    [11:54:04] I/launcher - overall: 1 failed spec(s)
-    [11:54:04] E/launcher - Process exited with error code 1
-
-
-    npm ERR! Darwin 16.3.0
-    npm ERR! argv "/Users/albatrosary/.nodebrew/node/v6.7.0/bin/node" "/Users/albatrosary/.nodebrew/current/bin/npm" "run" "e2e" "--" "./protractor.conf.js"
-    npm ERR! node v6.7.0
-    npm ERR! npm  v3.10.3
-    npm ERR! code ELIFECYCLE
-    npm ERR! handson@0.0.0 e2e: `protractor "./protractor.conf.js"`
-    npm ERR! Exit status 1
-    npm ERR! 
-    npm ERR! Failed at the handson@0.0.0 e2e script 'protractor "./protractor.conf.js"'.
-    npm ERR! Make sure you have the latest version of node.js and npm installed.
-    npm ERR! If you do, this is most likely a problem with the handson package,
-    npm ERR! not with npm itself.
-    npm ERR! Tell the author that this fails on your system:
-    npm ERR!     protractor "./protractor.conf.js"
-    npm ERR! You can get information on how to open an issue for this project with:
-    npm ERR!     npm bugs handson
-    npm ERR! Or if that isn't available, you can get their info via:
-    npm ERR!     npm owner ls handson
-    npm ERR! There is likely additional logging output above.
-
-    npm ERR! Please include the following file with any support request:
-    npm ERR!     /Users/albatrosary/Sandbox/Handson/npm-debug.log
-
-    Some end-to-end tests failed, see above.
-    $ 
 
 ここでもユニットテストと同様の理由でエラーが発生します。e2eテストコードは「src」ディレクトリとは別の「e2e」ディレクトリに格納されています。 その中にある`app.e2e-spec.ts`というファイルを見てみます。
 
 ```
-it('should display message saying app works', () => {
-    page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
-  });
+it('should display welcome message', () => {
+  page.navigateTo();
+  expect(page.getParagraphText()).toEqual('Welcome to app!!');
+});
 ```
 
-`app works!`という文字と比較している部分がありますので先程と同様に`app sample!`へ変更し、再度実行してみます。
+`Welcome to app!!`という文字と比較している部分がありますので先程と同様に`app sample!!`へ変更し、再度実行してみます。
 
 ```
 it('should display message saying app works', () => {
-    page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app sample!');
-  });
+  page.navigateTo();
+  expect(page.getParagraphText()).toEqual('Welcome to app sample!!');
+});
 ```
 
 正常に実行されます。
 
 ```
 $ ng e2e
+** NG Live Development Server is listening on localhost:49152, open your browser on http://localhost:49152 **
+(node:15085) [DEP0022] DeprecationWarning: os.tmpDir() is deprecated. Use os.tmpdir() instead.
+Hash: 2ceeea2902c0ef04e8bd
+Time: 9730ms
+chunk    {0} polyfills.bundle.js, polyfills.bundle.js.map (polyfills) 160 kB {4} [initial] [rendered]
+chunk    {1} main.bundle.js, main.bundle.js.map (main) 6.93 kB {3} [initial] [rendered]
+chunk    {2} styles.bundle.js, styles.bundle.js.map (styles) 10.5 kB {4} [initial] [rendered]
+chunk    {3} vendor.bundle.js, vendor.bundle.js.map (vendor) 2.18 MB [initial] [rendered]
+chunk    {4} inline.bundle.js, inline.bundle.js.map (inline) 0 bytes [entry] [rendered]
+webpack: Compiled successfully.
+[08:00:42] I/update - chromedriver: file exists /Users/albatrosary/Sandbox/Handson/node_modules/webdriver-manager/selenium/chromedriver_2.30.zip
+[08:00:42] I/update - chromedriver: unzipping chromedriver_2.30.zip
+[08:00:43] I/update - chromedriver: setting permissions to 0755 for /Users/albatrosary/Sandbox/Handson/node_modules/webdriver-manager/selenium/chromedriver_2.30
+[08:00:43] I/update - chromedriver: chromedriver_2.30 up to date
+[08:00:43] I/launcher - Running 1 instances of WebDriver
+[08:00:43] I/direct - Using ChromeDriver directly...
+Jasmine started
 
-> handson@0.0.0 pree2e /Users/albatrosary/Sandbox/Handson
-> webdriver-manager update
-
-[11:56:17] I/update - chromedriver: file exists /Users/albatrosary/Sandbox/Handson/node_modules/webdriver-manager/selenium/chromedriver_2.24mac64.zip
-[11:56:17] I/update - chromedriver: unzipping chromedriver_2.24mac64.zip
-[11:56:17] I/update - chromedriver: setting permissions to 0755 for /Users/albatrosary/Sandbox/Handson/node_modules/webdriver-manager/selenium/chromedriver_2.24
-[11:56:17] I/update - chromedriver: v2.24 up to date
-[11:56:17] I/update - selenium standalone: file exists /Users/albatrosary/Sandbox/Handson/node_modules/webdriver-manager/selenium/selenium-server-standalone-2.53.1.jar
-[11:56:17] I/update - selenium standalone: v2.53.1 up to date
-[11:56:19] W/file_manager - geckodriver-v0.9.0-mac.tar.gz expected length undefined, found 1096885
-[11:56:19] W/file_manager - removing file: /Users/albatrosary/Sandbox/Handson/node_modules/webdriver-manager/selenium/geckodriver-v0.9.0-mac.tar.gz
-[11:56:19] I/downloader - geckodriver: downloading version v0.9.0
-[11:56:19] I/downloader - curl -o /Users/albatrosary/Sandbox/Handson/node_modules/webdriver-manager/selenium/geckodriver-v0.9.0-mac.tar.gz https://github.com/mozilla/geckodriver/releases/download/v0.9.0/geckodriver-v0.9.0-mac.tar.gz
-[11:56:23] I/update - geckodriver: unzipping /Users/albatrosary/Sandbox/Handson/node_modules/webdriver-manager/selenium/geckodriver-v0.9.0-mac.tar.gz
-[11:56:23] I/update - geckodriver: setting permissions to 0755 for /Users/albatrosary/Sandbox/Handson/node_modules/webdriver-manager/selenium/geckodriver-v0.9.0
-
-> handson@0.0.0 e2e /Users/albatrosary/Sandbox/Handson
-> protractor "./protractor.conf.js"
-
-[11:56:24] I/direct - Using ChromeDriver directly...
-[11:56:24] I/launcher - Running 1 instances of WebDriver
-Started
-Spec started
-.
   handson App
-    ✓ should display message saying app sample
+    ✓ should display welcome message
 
-
-
-
-1 spec, 0 failures
-Finished in 0.947 seconds
-
-Executed 1 of 1 spec SUCCESS in 0.947 sec.
-[11:56:28] I/launcher - 0 instance(s) of WebDriver still running
-[11:56:28] I/launcher - chrome #01 passed
-
-All end-to-end tests pass.
-$
+Executed 1 of 1 spec SUCCESS in 1 sec.
+[08:00:46] I/launcher - 0 instance(s) of WebDriver still running
+[08:00:46] I/launcher - chrome #01 passed
+$ 
 ```
 
 ## ビルド
