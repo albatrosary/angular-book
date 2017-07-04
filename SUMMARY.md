@@ -2,8 +2,8 @@
 
 * [Introduction](README.md)
 * [Angularとは](angularとは.md)
-* [アプリケーション開発をするための環境](chapter1.md)
-* [angular-cliの利用とプロジェクトの生成](mac.md)
+* [アプリケーション開発をするための環境](installation.md)
+* [angular-cliの利用とプロジェクトの生成](angular-cli.md)
 * [ビルトインディレクティブ](ビルトインディレクティブ.md)
 * [ルーティングの設定](routing.md)
 * [階層化されたModuleとRouter](階層化されたmoduleとrouting.md)
@@ -24,4 +24,3 @@
 * [AppendixA: Angular Universalを使ったサーバサイドレンダリング](サーバサイドレンダリング.md)
 * [AppendixB: yarn を使ったプロジェクトの生成](yarn-を使ったプロジェクトの生成.md)
 * [Changelog](changelog.md)
-
