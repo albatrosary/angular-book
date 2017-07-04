@@ -4,7 +4,7 @@ Angular アプリケーションの開発を進める上で最も簡単で効率
 
 Node.js のインストールが済んでいれば、次に行うことは angular-cli を[インストールする](https://github.com/angular/angular-cli/blob/master/README.md)ことです。angular-cli は npm\(Node Package Manager\) を使ってインストールします。インストール完了後 `ng help` や `ng version` が実行できていれば無事インストールが完了しています。
 
-> angular-cli のコマンドは ng を使います。ng コマンドには多くの機能が実装されてますので ng help で色々と確認すると良いでしょう。
+> angular-cli のコマンドは ng を使います。ng コマンドには多くの機能が実装されてますので `ng help` で色々と確認すると良いでしょう。
 
 ```
 $ npm install -g @angular/cli
@@ -17,10 +17,6 @@ $ ng version
                |___/
 @angular/cli: 1.2.0
 node: 8.1.3
-os: darwin x64
-$ 
-angular-cli: 1.0.0-beta.22-1
-node: 6.7.0
 os: darwin x64
 $ ng help
 ng build <options...>
