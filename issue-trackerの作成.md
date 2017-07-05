@@ -17,7 +17,7 @@ export class Issue {
 }
 ```
 
-`issue.component.ts`は次のようになります。入力された値を配列で保持する機能と登録された情報を削除する機能を持ち合わせています。
+__issue.component.ts__ は次のようになります。入力された値を配列で保持する機能と登録された情報を削除する機能を持ち合わせています。
 
 ```
 import { Component, OnInit } from '@angular/core';
@@ -60,7 +60,7 @@ export class IssueComponent implements OnInit {
 }
 ```
 
-issue.component.html は、入力部と Issue の一覧を表示する部分から成ります。
+__issue.component.html__ は、入力部と Issue の一覧を表示する部分から成ります。
 
 ```
 <h2>Issue</h2>
@@ -74,24 +74,6 @@ issue.component.html は、入力部と Issue の一覧を表示する部分か�
   <pre>{{issue.desc}}</pre><div>{{i+1}}</div>
   <button (click)="onDelete(i)">削除</button>
 </div>
-```
-
-issue.module.ts にも必要なライブラリを追加します。
-
-```
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { IssueComponent } from './issue.component';
-
-@NgModule({
-  imports: [
-    CommonModule,
-    FormsModule
-  ],
-  declarations: [IssueComponent]
-})
-export class IssueModule { }
 ```
 
 簡単な Issue リストを作成することができました。ここで理解すべきことは [FORM](https://angular.io/docs/ts/latest/guide/forms.html) の使い方です。気がついたかもしれませんが、入力項目に値が入っていない場合、登録ボタンが押せなくなっています。これを応用すると、入力値のチェックやチェック後のメッセージ表示など様々なインタラクティブなことが実装できます。
