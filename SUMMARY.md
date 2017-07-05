@@ -5,11 +5,10 @@
 * [アプリケーション開発をするための環境](installation.md)
   * [Mac編](installation-mac.md)
   * [Windows編](installation-windows.md)
-* Angular アプリケーション開発
   * [angular-cliの利用とプロジェクトの生成](angular-cli.md)
+* Angular アプリケーション開発
   * [ビルトインディレクティブ](ビルトインディレクティブ.md)
-  * [ルーティングの設定](routing.md)
-  * [階層化されたModuleとRouter](階層化されたmoduleとrouting.md)
+  * [ルーティングの設定と階層化されたModule](routing.md)
   * [RouterとComponentのライフサイクル](ライフサイクル.md)
   * [Pipeを使ったWikiページの作成](pipeの利用.md)
   * [Issue Trackerページの作成](issue-trackerの作成.md)

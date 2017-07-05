@@ -4,19 +4,22 @@ SPA\(Single-page Application\) の最大の特徴であるルーティングに�
 
 ## ルーティングの設定
 
-はじめにルーティングに必要となる4つの画面を追加します。
+はじめにルーティングに必要となるいくつかの画面を追加します。top 画面、issue 画面、wiki 画面は pages 配下として定義しています。
 
 ```
 $ ng g component home
-$ ng g component issue
 $ ng g component pageNotFound
-$ ng g component wiki
+$ ng g module pages --routing
+$ ng g component pages
+$ ng g component pages/top
+$ ng g component pages/issue
+$ ng g component pages/wiki
 ```
 
 `ng g component` コマンドを実行すると4つのファイルが出来上がり、ひとつのファイルが更新されます。具体的に `ng g component home` としたときは
 
 ```
-$ ng g component home
+$ ng g component pages/home
 installing component
   create src/app/home/home.component.css
   create src/app/home/home.component.html
@@ -65,15 +68,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
-import { IssueComponent } from './issue/issue.component';
-import { WikiComponent } from './wiki/wiki.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: 'home', component: HomeComponent },
-  { path: 'issue', component: IssueComponent },
-  { path: 'wiki', component: WikiComponent },
+  { path: 'pages', loadChildren: './pages/pages.module#PagesModule' },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -96,32 +96,23 @@ export class AppRoutingModule { }
 ```
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { IssueComponent } from './issue/issue.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { WikiComponent } from './wiki/wiki.component';
-
-import { routing, appRoutingProviders } from './app.routes';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    IssueComponent,
-    PageNotFoundComponent,
-    WikiComponent
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    HttpModule,
-    routing
+    AppRoutingModule
   ],
-  providers: [appRoutingProviders],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
@@ -133,10 +124,95 @@ export class AppModule { }
 <h1>Issue Tracker</h1>
 <ul>
   <li><a routerLink="home">Home</a></li>
-  <li><a routerLink="issue">Issue</a></li>
-  <li><a routerLink="wiki">Wiki</a></li>
+  <li><a routerLink="pages">Pages</a></li>
 </ul>
 <router-outlet></router-outlet>
+```
+
+## 子ルーティングの設定
+
+pages 配下にあるページに対するルーティング設定を行います。`pages-routing.module.ts` は
+
+```
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+
+import { PagesComponent } from './pages.component';
+import { TopComponent } from './top/top.component';
+import { IssueComponent } from './issue/issue.component';
+import { WikiComponent } from './wiki/wiki.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: PagesComponent,
+    children: [
+      { path: '', redirectTo: 'top', pathMatch: 'full'},
+      { path: 'top', component: TopComponent },
+      { path: 'issue', component: IssueComponent },
+      { path: 'wiki', component: WikiComponent }
+    ]
+  }
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class PagesRoutingModule { }
+```
+
+__pages.module.ts__ は
+
+```
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { PagesRoutingModule } from './pages-routing.module';
+import { PagesComponent } from './pages.component';
+import { TopComponent } from './top/top.component';
+import { IssueComponent } from './issue/issue.component';
+import { WikiComponent } from './wiki/wiki.component';
+
+@NgModule({
+  imports: [
+    CommonModule,
+    PagesRoutingModule
+  ],
+  declarations: [PagesComponent, TopComponent, IssueComponent, WikiComponent]
+})
+export class PagesModule { }
+```
+
+最後に、`pages.component.html`に aタグ を使って使って簡易メニューを作成します。
+
+```
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+
+import { PagesComponent } from './pages.component';
+import { TopComponent } from './top/top.component';
+import { IssueComponent } from './issue/issue.component';
+import { WikiComponent } from './wiki/wiki.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: PagesComponent,
+    children: [
+      { path: '', redirectTo: 'top', pathMatch: 'full'},
+      { path: 'top', component: TopComponent },
+      { path: 'issue', component: IssueComponent },
+      { path: 'wiki', component: WikiComponent }
+    ]
+  }
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class PagesRoutingModule { }
 ```
 
 これでルーティングを定義することができました。実際に画面を動かしルーティングが出来ているか確認してください。
@@ -157,25 +233,36 @@ $ tree
 │   ├── home.component.html
 │   ├── home.component.spec.ts
 │   └── home.component.ts
-├── issue
-│   ├── issue.component.css
-│   ├── issue.component.html
-│   ├── issue.component.spec.ts
-│   └── issue.component.ts
 ├── page-not-found
 │   ├── page-not-found.component.css
 │   ├── page-not-found.component.html
 │   ├── page-not-found.component.spec.ts
 │   └── page-not-found.component.ts
-└── wiki
-    ├── wiki.component.css
-    ├── wiki.component.html
-    ├── wiki.component.spec.ts
-    └── wiki.component.ts
+└── pages
+    ├── pages-routing.module.ts
+    ├── pages.component.css
+    ├── pages.component.html
+    ├── pages.component.spec.ts
+    ├── pages.component.ts
+    ├── pages.module.ts
+    ├── issue
+    │   ├── issue.component.css
+    │   ├── issue.component.html
+    │   ├── issue.component.spec.ts
+    │   └── issue.component.ts
+    ├── top
+    │   ├── top.component.css
+    │   ├── top.component.html
+    │   ├── top.component.spec.ts
+    │   └── top.component.ts
+    └── wiki
+        ├── wiki.component.css
+        ├── wiki.component.html
+        ├── wiki.component.spec.ts
+        └── wiki.component.ts
 
-4 directories, 22 files
-$
+6 directories, 32 files
+$ 
 ```
 
 ここまでの作業は非常に簡単だったと思います。特に angular-cli のお陰で、ややこしい環境設定は気にする必要無いというのは大きなメリットだと思います。
-
