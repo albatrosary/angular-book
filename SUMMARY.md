@@ -26,6 +26,5 @@
   * [Unit Test](unit-test.md)
   * [e2e Test](e2e-test.md)
   * [Azure and Wercker CI](azure-and-werker-ci.md)
-* [AppendixA: Angular Universalを使ったサーバサイドレンダリング](サーバサイドレンダリング.md)
-* [AppendixB: yarn を使ったプロジェクトの生成](yarn-を使ったプロジェクトの生成.md)
+* [Angular Universalを使ったサーバサイドレンダリング](サーバサイドレンダリング.md)
 * [Changelog](changelog.md)
