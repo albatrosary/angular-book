@@ -13,7 +13,7 @@ $ ng g component pageNotFound
 $ ng g component wiki
 ```
 
-`ng g component` コマンドを実行すると4つのファイルが出来上がります。具体的に `ng g component home` としたときは
+`ng g component` コマンドを実行すると4つのファイルが出来上がり、ひとつのファイルが更新されます。具体的に `ng g component home` としたときは
 
 ```
 $ ng g component home
@@ -22,12 +22,13 @@ installing component
   create src/app/home/home.component.html
   create src/app/home/home.component.spec.ts
   create src/app/home/home.component.ts
+  update src/app/app.module.ts
 $
 ```
 
-です。`home.component.css` は `HomeComponent` に対するCSS定義を記述するものです。`home.component.html`は、HTMLテンプレートを記述するものです。`spec.ts` という拡張子のものがありますが、これはユニットテストを定義するものです。 `home.component.ts` は、TypeScriptで何かしらUIに関連する処理を記述するものです。
+です。__home.component.css__ は `HomeComponent` に対するCSS定義を記述するものです。__home.component.html__ は、HTMLテンプレートを記述するものです。`spec.ts` という拡張子のものがありますが、これはユニットテストを定義するものです。 __home.component.ts__ は、TypeScriptで何かしらUIに関連する処理を記述するものです。
 
-> よく講演でコンポーネントの話をします。Webアプリケーション開発におけるコンポーネントは Web Components をベースにした考え方です。Web Components には次の4つの定義があります。
+> よく講演でコンポーネントの話をしますが、Webアプリケーション開発におけるコンポーネントは Web Components をベースにした考え方です。Web Components には次の4つの定義があります。より詳細な説明は [MDN の Web Components](https://developer.mozilla.org/ja/docs/Web/Web_Components) を参照下さい
 >
 > 1. Custom Element
 >
@@ -53,20 +54,14 @@ $
 >   encapsulation: ViewEncapsulation.Native
 > })
 > export class AppComponent {
->   title = 'app works!';
+>   title = 'app sample';
 > }
 > ```
 
-これとは別にルーティング設定用のモジュールを作成します。ルーティングを作るスカッフォールドはありませんので `ng g class` でテンプレートを生成します。
+これとは別にルーティング設定用のモジュールを作成します。`app-routing.module.ts` は
 
 ```
-$ ng g class app.routes
-```
-
-`app.routes.ts` は
-
-```
-import { ModuleWithProviders } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
@@ -74,7 +69,7 @@ import { IssueComponent } from './issue/issue.component';
 import { WikiComponent } from './wiki/wiki.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
-const appRoutes: Routes= [
+const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: 'home', component: HomeComponent },
   { path: 'issue', component: IssueComponent },
@@ -82,10 +77,13 @@ const appRoutes: Routes= [
   { path: '**', component: PageNotFoundComponent }
 ];
 
-export const appRoutingProviders: any[] = [];
-
-export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
 ```
+> プロジェクト生成時に `--routing` パラメーターを指定してない場合には `app-routing.module.ts`  が作られません。
 
 ここで、`path: ''` はルートパス（ ://localhost:4200/ のような）で呼ばれたときに `/home` へリダイレクトするよう定義しています。リダイレクト先の `/home` ではコンポーネント HomeComponent を実行するよう定義されていますので、画面には HomeComponent で定義されたテンプレートが表示されます。
 
@@ -143,40 +141,39 @@ export class AppModule { }
 
 これでルーティングを定義することができました。実際に画面を動かしルーティングが出来ているか確認してください。
 
-参考までに、ここまでのファイル構成を記載します。
+参考までに、ここまでの `Handon/src/app` 内のファイル構成を記載します。
 
 ```
-$ tree 
+$ tree
 .
+├── app-routing.module.ts
 ├── app.component.css
 ├── app.component.html
 ├── app.component.spec.ts
 ├── app.component.ts
 ├── app.module.ts
-├── app.routes.ts
 ├── home
-│   ├── home.component.css
-│   ├── home.component.html
-│   ├── home.component.spec.ts
-│   └── home.component.ts
-├── index.ts
+│   ├── home.component.css
+│   ├── home.component.html
+│   ├── home.component.spec.ts
+│   └── home.component.ts
 ├── issue
-│   ├── issue.component.css
-│   ├── issue.component.html
-│   ├── issue.component.spec.ts
-│   └── issue.component.ts
+│   ├── issue.component.css
+│   ├── issue.component.html
+│   ├── issue.component.spec.ts
+│   └── issue.component.ts
 ├── page-not-found
-│   ├── page-not-found.component.css
-│   ├── page-not-found.component.html
-│   ├── page-not-found.component.spec.ts
-│   └── page-not-found.component.ts
+│   ├── page-not-found.component.css
+│   ├── page-not-found.component.html
+│   ├── page-not-found.component.spec.ts
+│   └── page-not-found.component.ts
 └── wiki
     ├── wiki.component.css
     ├── wiki.component.html
     ├── wiki.component.spec.ts
     └── wiki.component.ts
 
-4 directories, 23 files
+4 directories, 22 files
 $
 ```
 

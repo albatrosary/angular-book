@@ -90,7 +90,7 @@ angular-cli のコマンドは [github](https://github.com/angular/angular-cli) 
 
 ```
 $ cd ~
-$ ng new Handson
+$ ng new Handson --routing
 $ cd Handson
 $ ng serve
 ```
