@@ -77,28 +77,29 @@ export class WikiComponent implements OnInit {
 }
 ```
 
-`wiki.module.ts` に必要なライブラリを追加します。
+`pages.module.ts` に必要なライブラリを追加します。
 
 ```
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { FormsModule }   from '@angular/forms';
 
-import { WikiComponent } from './wiki.component';
-
-import { MarkdownPipe } from './markdown.pipe';
+import { PagesRoutingModule } from './pages-routing.module';
+import { PagesComponent } from './pages.component';
+import { TopComponent } from './top/top.component';
+import { IssueComponent } from './issue/issue.component';
+import { WikiComponent } from './wiki/wiki.component';
+import { MarkdownPipe } from './wiki/markdown.pipe';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    PagesRoutingModule
   ],
-  declarations: [
-    WikiComponent,
-    MarkdownPipe
-  ]
+  declarations: [PagesComponent, TopComponent, IssueComponent, WikiComponent, MarkdownPipe]
 })
-export class WikiModule { }
+export class PagesModule { }
 ```
 
 Angular のバインディングの仕組みとPipeを利用することで、数行のコードで簡単にマークダウンエディタを作成することができます。
@@ -118,4 +119,3 @@ Angular のバインディングの仕組みとPipeを利用することで、�
 | sessionStorage | ☓ | ページのセッション中でブラウザを閉じると消去されます |
 
 データ容量は OS やブラウザで異なりますので[ストレージ容量を報告しているサイト](http://dev-test.nemikor.com/web-storage/support-test/)で確認すると良いでしょう。
-
