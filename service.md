@@ -8,13 +8,13 @@
 
 ## サービスの作成
 
-angular-cli を使って Service を生成します。
+angular-cli を使ってサービスを生成します。
 
 ```
 $ ng g service pages/issue/issue
 ```
 
-`issue.service.ts`は配列の登録を記述します。具体的には
+__issue.service.ts__ は配列の登録を記述します。具体的には
 
 ```
 import { Injectable } from '@angular/core';
@@ -39,7 +39,7 @@ export class IssueService {
 }
 ```
 
-作成した Service を issue.component.ts でインジェクションします。
+作成したサービスを __issue.component.ts__ でインジェクションします。
 
 ```
 import { Component, OnInit } from '@angular/core';
@@ -85,28 +85,34 @@ export class IssueComponent implements OnInit {
 }
 ```
 
-issue.module.ts に IssueService を追加します。
+__pages.module.ts__ に IssueService を追加します。
 
 ```
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { FormsModule }   from '@angular/forms';
 
-import { IssueComponent } from './issue.component';
+import { PagesRoutingModule } from './pages-routing.module';
+import { PagesComponent } from './pages.component';
+import { TopComponent } from './top/top.component';
+import { IssueComponent } from './issue/issue.component';
+import { WikiComponent } from './wiki/wiki.component';
+import { MarkdownPipe } from './wiki/markdown.pipe';
 
-import { IssueService } from './issue.service';
+import { IssueService } from './issue/issue.service';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    PagesRoutingModule
   ],
-  declarations: [IssueComponent],
+  declarations: [PagesComponent, TopComponent, IssueComponent, WikiComponent, MarkdownPipe],
   providers: [
     IssueService
   ]
 })
-export class IssueModule { }
+export class PagesModule { }
 ```
 
 これでロジック部を Component から Service へ移動させることができました。
@@ -114,6 +120,3 @@ export class IssueModule { }
 今回のようにあまり複雑でないようなものをサービス化する必要があるのか？という疑問もあるかもしれません。コンポーネント、特にtemplateUrl で定義されたテンプレートはUIの処理を定義し制御をそのTypeScriptファイルで実装します。言い換えると @Component で定義されたクラスは UI のためのものです。@Injectable は何かしらの処理を定義したもので UI とはあまり関係のないものを定義します。データストアを定義しそのハンドリングするメソッドを定義するのもいいですし、HTTPリクエストを処理するために定義するのも良いと思います。こうしてモジュール分割したものを接続する機能が DI だと考えれば良いかと思います。
 
 > ReactなどでReduxなどのフレームワークがありますが、Angular でも [ngrx](https://github.com/ngrx) というものが存在し似たような構成が作れます。好みの問題もありますが ngrx を全面に採用する人もいますが私は利用しません。サンプルコードを書いてみると理解できますが Angular が提供している @Injectable が薄くなるのがもったいなく感じるためです。
-
-
-
