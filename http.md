@@ -225,7 +225,7 @@ export class IssueService {
       .catch(this.handleError);
   }
 
-  public getList(): Promise<Issue[]> {
+  public get list(): Promise<Issue[]> {
     return this.http.get(this.url)
       .toPromise()
       .then(response => {
@@ -252,7 +252,7 @@ export class IssueService {
 }
 ```
 
-## Component の書き換え
+## IssueListComponent の書き換え
 
 IssueListComponent は Promise実装に伴い若干の処理を追加しています。
 
@@ -276,7 +276,7 @@ export class IssueListComponent implements OnInit {
   ) {}
 
   public ngOnInit () {
-    this.issueService.getList()
+    this.issueService.list
       .then(response => this.issues = response)
       .catch(error => console.log(error));
   }
@@ -287,6 +287,8 @@ export class IssueListComponent implements OnInit {
 
 }
 ```
+
+## IssueUpdateComponent の変更
 
 issue-update.component.html は
 
