@@ -180,85 +180,87 @@ $
 
 issue.service.ts は RxJS の Promise を使って実装します。
 
-    import { Injectable } from '@angular/core';
-    import { Headers, Http } from '@angular/http';
+```
+import { Injectable } from '@angular/core';
+import { Headers, Http } from '@angular/http';
 
-    import { Observable } from 'rxjs';
-    import 'rxjs/add/operator/toPromise';
+import { Observable } from 'rxjs';
+import 'rxjs/add/operator/toPromise';
 
-    import { Issue } from './issue';
+import { Issue } from './issue';
 
-    @Injectable()
-    export class IssueService {
+@Injectable()
+export class IssueService {
 
-      private headers = new Headers({'Content-Type': 'application/json'});
+  private headers = new Headers({'Content-Type': 'application/json'});
 
-      private url = '/api/issues';
+  private url = '/api/issues';
 
-      private issues: Issue[] = [];
+  constructor(private http: Http) { }
 
-      constructor(private http: Http) { }
+  private issues: Issue[] = [];
 
-      public delete(index: number): Promise<Issue[]> {
-        return this.http.delete(this.url + `/${index}`, { headers: this.headers })
-          .toPromise()
-          .then(() => this.issues.splice(index, 1))
-          .catch(this.handleError);
-      }
+  public delete(index: number): Promise<Issue[]> {
+    return this.http.delete(this.url + `/${index}`, { headers: this.headers })
+      .toPromise()
+      .then(() => this.issues.splice(index, 1))
+      .catch(this.handleError);
+  }
 
-      public add(issue: Issue): void {
-        this.http.post(this.url, JSON.stringify(issue), { headers: this.headers })
-          .toPromise()
-          .then(() => this.issues.push(issue))
-          .catch(this.handleError);
-      }
+  public add(issue: Issue): void {
+    this.http.post(this.url, JSON.stringify(issue), { headers: this.headers })
+      .toPromise()
+      .then(() => this.issues.push(issue))
+      .catch(this.handleError);
+  }
 
-      public update(id: number, issue: Issue): void {
-        let udata = {
-          id: id,
-          issue: JSON.stringify(issue)
-        };
+  public update(id: number, issue: Issue): void {
+    let udata = {
+      id: id,
+      issue: JSON.stringify(issue)
+    };
 
-        this.http.put(this.url, udata, {headers: this.headers})
-          .toPromise()
-          .catch(this.handleError);
-      }
+    this.http.put(this.url, udata, {headers: this.headers})
+      .toPromise()
+      .catch(this.handleError);
+  }
 
-      public allList(): Promise<Issue[]> {
-        return this.http.get(this.url)
-          .toPromise()
-          .then(response => {
-            this.issues = response.json();
-            return this.issues;
-          })
-          .catch(this.handleError);
-      }
+  public getList(): Promise<Issue[]> {
+    return this.http.get(this.url)
+      .toPromise()
+      .then(response => {
+        this.issues = response.json();
+        return this.issues;
+      })
+      .catch(this.handleError);
+  }
 
-      public getIssue(id: number): Promise<Issue> {
-        return this.http.get(this.url + `/${id}`)
-          .toPromise()
-          .then(response => {
-            this.issues = response.json();
-            return this.issues;
-          })
-          .catch(this.handleError);
-      }
+  public getIssue(id: number): Promise<Issue> {
+    return this.http.get(this.url + `/${id}`)
+      .toPromise()
+      .then(response => {
+        return response.json();
+      })
+      .catch(this.handleError);
+  }
 
-      private handleError(error: any) {
-        console.error('An error occurred', error);
-        return Promise.reject(error.message || error);
-      }
-    }
+  private handleError(error: any) {
+    console.error('An error occurred', error);
+    return Promise.reject(error.message || error);
+  }
+
+}
+```
 
 ## Component の書き換え
 
 IssueListComponent は Promise実装に伴い若干の処理を追加しています。
 
 ```
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from'@angular/core';
 
-import { Issue } from '../issue';
-import { IssueService } from '../issue.service';
+import { Issue } from'../issue';
+import { IssueService } from'../issue.service';
 
 @Component({
   selector: 'app-issue-list',
@@ -267,27 +269,37 @@ import { IssueService } from '../issue.service';
 })
 export class IssueListComponent implements OnInit {
 
-  private issues: Issue[];
+  issues: Issue[];
 
   constructor (
     private issueService: IssueService
   ) {}
 
-  ngOnInit() {
-    this.issueService.allList()
+  public ngOnInit () {
+    this.issueService.getList()
       .then(response => this.issues = response)
       .catch(error => console.log(error));
   }
 
   public onDelete(index: number): void {
-    this.issueService.delete(index)
-      .catch(error => console.log(error));
+    this.issueService.delete(index);
   }
 
 }
 ```
 
-IssueUpdateComponent は
+issue-update.component.html は
+
+```
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+  <input class="id" name="id" [(ngModel)]="id" required placeholder="id">
+  <input name="title" [(ngModel)]="title" required placeholder="title">
+  <textarea name="desc" [(ngModel)]="desc" required placeholder="desc"></textarea>
+  <button type=submit [disabled]="!f.form.valid">更新</button>
+</form>
+```
+
+issue-update.component.ts は
 
 ```
 import { Component, OnInit } from '@angular/core';
@@ -348,6 +360,41 @@ export class IssueUpdateComponent implements OnInit {
   }
 
 }
+```
+
+## UpdateComponent のルータ追加
+
+pages-routing.module.ts に UpdateComponentの設定を追加します
+
+```
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+
+import { PagesComponent } from './pages.component';
+import { TopComponent } from './top/top.component';
+import { IssueComponent } from './issue/issue.component';
+import { IssueUpdateComponent } from './issue/issue-update/issue-update.component';
+import { WikiComponent } from './wiki/wiki.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: PagesComponent,
+    children: [
+      { path: '', redirectTo: 'top', pathMatch: 'full'},
+      { path: 'top', component: TopComponent },
+      { path: 'issue', component: IssueComponent },
+      { path: 'issue/update/:id', component: IssueUpdateComponent },
+      { path: 'wiki', component: WikiComponent }
+    ]
+  }
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class PagesRoutingModule { }
 ```
 
 これでHTTPリクエストに対する簡単な処理が完了しました。
