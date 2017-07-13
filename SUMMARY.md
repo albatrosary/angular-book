@@ -1,5 +1,3 @@
-# Summary
-
 * [Introduction](README.md)
 * [Angular とは](angularとは.md)
 * [アプリケーション開発をするための環境](installation.md)
