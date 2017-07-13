@@ -1,6 +1,7 @@
 {
   "pdf": {
-    "fontFamily": "IPAGothic"
+    "fontFamily": "IPAGothic",
+    "fontSize": 10
   }
 }
 
