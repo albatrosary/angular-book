@@ -6,6 +6,8 @@ issueを保存するための型を定義します
 
 ```
 $ ng g class pages/issue/issue
+  create src/app/pages/issue/issue.ts (23 bytes)
+$ 
 ```
 
 内容は
@@ -26,9 +28,9 @@ import { NgForm } from '@angular/forms';
 import { Issue } from './issue';
 
 @Component({
-  selector: 'app-issue',
+  selector: 'ah-issue',
   templateUrl: './issue.component.html',
-  styleUrls: ['./issue.component.css']
+  styleUrls: ['./issue.component.sass']
 })
 export class IssueComponent implements OnInit {
 
@@ -42,7 +44,7 @@ export class IssueComponent implements OnInit {
     this.issues= [];
   }
 
-  public onSubmit(form:NgForm): void {
+  public onSubmit(form: NgForm) {
     const issue = {
       title: form.value.title,
       desc: form.value.desc
@@ -53,7 +55,7 @@ export class IssueComponent implements OnInit {
     form.reset();
   }
 
-  public onDelete(index: number): void {
+  public onDelete(index: number) {
     this.issues.splice(index, 1);
   }
 
@@ -79,4 +81,3 @@ __issue.component.html__ は、入力部と Issue の一覧を表示する部分
 簡単な Issue リストを作成することができました。ここで理解すべきことは [FORM](https://angular.io/docs/ts/latest/guide/forms.html) の使い方です。気がついたかもしれませんが、入力項目に値が入っていない場合、登録ボタンが押せなくなっています。これを応用すると、入力値のチェックやチェック後のメッセージ表示など様々なインタラクティブなことが実装できます。
 
 Angular のバインディングは強力ですので UI を構築するときには欠かせないものです。
-

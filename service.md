@@ -12,6 +12,9 @@ angular-cli を使ってサービスを生成します。
 
 ```
 $ ng g service pages/issue/issue
+  create src/app/pages/issue/issue.service.spec.ts (368 bytes)
+  create src/app/pages/issue/issue.service.ts (111 bytes)
+$ 
 ```
 
 __issue.service.ts__ は配列の登録を記述します。具体的には

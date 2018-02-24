@@ -7,7 +7,11 @@ WikiComponent（マークダウンエディタ）を使って Pipe を実装し�
 Pipe を作成します。マークダウンで入力したものをHTMLへ変換するためののPipeを作成します。
 
 ```
-$ ng g pipe pages/wiki/markdown.pipe
+$ ng g pipe pages/wiki/markdown
+  create src/app/pages/wiki/markdown.pipe.spec.ts (195 bytes)
+  create src/app/pages/wiki/markdown.pipe.ts (205 bytes)
+  update src/app/pages/pages.module.ts (691 bytes)
+$ 
 ```
 
 「app/pages/wiki」ディレクトリにある`markdown.pipe.ts`ファイルを開き次のように記述します
@@ -39,7 +43,28 @@ export class MarkdownPipe implements PipeTransform {
 
 ## Pipe の利用
 
-`app.module.ts`に`markdown.pipe`が追加されていることを確認します。
+`pages.module.ts`に`markdown.pipe`が追加されていることを確認します。
+
+```
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { PagesRoutingModule } from './pages-routing.module';
+import { PagesComponent } from './pages.component';
+import { TopComponent } from './top/top.component';
+import { IssueComponent } from './issue/issue.component';
+import { WikiComponent } from './wiki/wiki.component';
+import { MarkdownPipe } from './wiki/markdown.pipe';
+
+@NgModule({
+  imports: [
+    CommonModule,
+    PagesRoutingModule
+  ],
+  declarations: [PagesComponent, TopComponent, IssueComponent, WikiComponent, Markdown.PipePipe, MarkdownPipe]
+})
+export class PagesModule { }
+```
 
 `wiki.component.html`を開き次のように記載します。
 
@@ -61,11 +86,12 @@ export class MarkdownPipe implements PipeTransform {
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-wiki',
+  selector: 'ah-wiki',
   templateUrl: './wiki.component.html',
-  styleUrls: ['./wiki.component.css']
+  styleUrls: ['./wiki.component.sass']
 })
 export class WikiComponent implements OnInit {
+  
   wiki: string;
 
   constructor() { }
@@ -77,12 +103,12 @@ export class WikiComponent implements OnInit {
 }
 ```
 
-`pages.module.ts` に必要なライブラリを追加します。
+`pages.module.ts` に必要なライブラリ（FormsModule）を追加します。
 
 ```
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { PagesRoutingModule } from './pages-routing.module';
 import { PagesComponent } from './pages.component';

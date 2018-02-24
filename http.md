@@ -7,7 +7,54 @@
 
 で作られる Webアプリケーション のことです。2012年頃の話ですが、MongoDB コミュニティで入門者向けに LAMP\(Linux, Apache, MySQL, PHP\) のような構成で、より簡単なものとして考え出されました。
 
-## アプリケーションサーバの作成
+## HTTPサーバの作成
+
+### 準備
+
+Node.js に必要なライブラリを登録するため yarn コマンドでライブラリを取得します。
+
+```
+$ yarn add express body-parser http -D
+yarn add v1.0.2
+[1/4] 🔍  Resolving packages...
+[2/4] 🚚  Fetching packages...
+warning Pattern ["body-parser@^1.18.2"] is trying to unpack in the same destination "/Users/albatrosary/Library/Caches/Yarn/v1/npm-body-parser-1.18.2-87678a19d84b47d859b83199bd59bce222b10454" as pattern ["body-parser@1.18.2","body-parser@^1.16.1"]. This could result in a non deterministic behavior, skipping.
+[3/4] 🔗  Linking dependencies...
+warning "@angular-devkit/schematics@0.0.52" has incorrect peer dependency "@angular-devkit/core@0.0.29".
+warning "@ngtools/webpack@1.9.8" has incorrect peer dependency "webpack@^2.2.0 || ^3.0.0".
+warning "@schematics/angular@0.1.17" has incorrect peer dependency "@angular-devkit/core@0.0.29".
+warning "@schematics/angular@0.1.17" has incorrect peer dependency "@angular-devkit/schematics@0.0.52".
+warning "extract-text-webpack-plugin@3.0.2" has incorrect peer dependency "webpack@^3.1.0".
+warning "file-loader@1.1.9" has incorrect peer dependency "webpack@^2.0.0 || ^3.0.0".
+warning "html-webpack-plugin@2.30.1" has incorrect peer dependency "webpack@1 || ^2 || ^2.1.0-beta || ^2.2.0-rc || ^3".
+warning "istanbul-instrumenter-loader@3.0.0" has incorrect peer dependency "webpack@^2.0.0 || ^3.0.0".
+warning "less-loader@4.0.5" has incorrect peer dependency "less@^2.3.1".
+warning "less-loader@4.0.5" has incorrect peer dependency "webpack@^2.0.0 || ^3.0.0".
+warning "license-webpack-plugin@1.1.1" has incorrect peer dependency "webpack-sources@>=1.0.0".
+warning "sass-loader@6.0.6" has incorrect peer dependency "node-sass@^4.0.0".
+warning "sass-loader@6.0.6" has incorrect peer dependency "webpack@^2.0.0 || >= 3.0.0-rc.0 || ^3.0.0".
+warning "stylus-loader@3.0.1" has incorrect peer dependency "stylus@>=0.52.4".
+warning "uglifyjs-webpack-plugin@1.2.2" has incorrect peer dependency "webpack@^2.0.0 || ^3.0.0 || ^4.0.0".
+warning "url-loader@0.6.2" has incorrect peer dependency "file-loader@*".
+warning "webpack-dev-middleware@1.12.2" has incorrect peer dependency "webpack@^1.0.0 || ^2.0.0 || ^3.0.0".
+warning "webpack-dev-server@2.11.1" has incorrect peer dependency "webpack@^2.2.0 || ^3.0.0".
+warning "webpack-subresource-integrity@1.0.4" has incorrect peer dependency "webpack@^1.12.11 || ~2 || ~3".
+warning "schema-utils@0.4.5" has incorrect peer dependency "webpack@^2.0.0 || ^3.0.0 || ^4.0.0".
+warning "ajv-keywords@2.1.1" has incorrect peer dependency "ajv@^5.0.0".
+warning "uglifyjs-webpack-plugin@0.4.6" has incorrect peer dependency "webpack@^1.9 || ^2 || ^2.1.0-beta || ^2.2.0-rc || ^3.0.0".
+warning "ajv-keywords@3.1.0" has incorrect peer dependency "ajv@^6.0.0".
+warning "ajv-keywords@1.5.1" has incorrect peer dependency "ajv@>=4.10.0".
+[4/4] 📃  Building fresh packages...
+success Saved lockfile.
+success Saved 3 new dependencies.
+├─ body-parser@1.18.2
+├─ express@4.16.2
+└─ http@0.0.0
+✨  Done in 26.53s.
+$ 
+```
+
+### アプリケーションサーバの作成
 
 REST処理を行うためサーバを構築します。「server/main.js」として簡単なRESTサーバを作成します
 
@@ -60,7 +107,7 @@ app.put('/api/issues', function(req, res) {
 
 app.delete('/api/issues/:id', function(req, res) {
   let id = req.params.id;
-  items.splice(id, 1);
+  items.splice(Number(id), 1);
   res.status(200).json();
 });
 
@@ -89,7 +136,7 @@ Express server listening on 3000, in development mode
 
 で起動することができます
 
-## プロキシ設定
+### プロキシ設定
 
 `ng serve`はプロキシを設定することができます。具体的には proxy.conf.json を プロジェクトの直下に配置し
 
@@ -111,12 +158,14 @@ $ ng serve --proxy-config proxy.conf.json
 package.json にプロキシ設定された簡易サーバを立ち上げるようにscriptsを記述します。
 
 ```
-"scripts": {
+  "scripts": {
+    "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
-    "lint": "tslint \"src/**/*.ts\"",
+    "build": "ng build --prod",
     "test": "ng test",
-    "pree2e": "webdriver-manager update",
-    "e2e": "protractor"
+    "lint": "ng lint",
+    "lint:sass": "./node_modules/sass-lint/bin/sass-lint.js -c sass-lint.yml -v -q",
+    "e2e": "ng e2e"
   },
 ```
 
@@ -178,14 +227,14 @@ $
 
 ## サービスの書き換え
 
-issue.service.ts は RxJS の Promise を使って実装します。
+issue.service.ts は RxJS の Promise 等を使って実装します。
 
 ```
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 
-import { Observable } from 'rxjs';
-import 'rxjs/add/operator/toPromise';
+import { Observable } from 'rxjs/Observable';
+import { catchError } from 'rxjs/operators';
 
 import { Issue } from './issue';
 
@@ -196,22 +245,17 @@ export class IssueService {
 
   private url = '/api/issues';
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
-  private issues: Issue[] = [];
-
-  public delete(index: number): Promise<Issue[]> {
-    return this.http.delete(this.url + `/${index}`, { headers: this.headers })
-      .toPromise()
-      .then(() => this.issues.splice(index, 1))
-      .catch(this.handleError);
+  public delete(index: number) {
+    console.log(`${this.url}/${index}`);
+    this.http.delete(`${this.url}/${index}`)
+     .toPromise();
   }
 
-  public add(issue: Issue): void {
-    this.http.post(this.url, JSON.stringify(issue), { headers: this.headers })
-      .toPromise()
-      .then(() => this.issues.push(issue))
-      .catch(this.handleError);
+  public add(issue: Issue): Observable<Issue> {
+    return this.http.post<Issue>(this.url, JSON.stringify(issue))
+      .pipe(catchError(this.handleError));
   }
 
   public update(id: number, issue: Issue): void {
@@ -220,28 +264,19 @@ export class IssueService {
       issue: JSON.stringify(issue)
     };
 
-    this.http.put(this.url, udata, {headers: this.headers})
+    this.http.put(this.url, udata)
       .toPromise()
       .catch(this.handleError);
   }
 
-  public get list(): Promise<Issue[]> {
-    return this.http.get(this.url)
-      .toPromise()
-      .then(response => {
-        this.issues = response.json();
-        return this.issues;
-      })
-      .catch(this.handleError);
+  public get list(): Observable<Issue[]> {
+    return this.http.get<Issue[]>(this.url)
+      .pipe(catchError(this.handleError));
   }
 
-  public getIssue(id: number): Promise<Issue> {
-    return this.http.get(this.url + `/${id}`)
-      .toPromise()
-      .then(response => {
-        return response.json();
-      })
-      .catch(this.handleError);
+  public getIssue(id: number): Observable<Issue> {
+    return this.http.get<Issue>(this.url + `/${id}`)
+      .pipe(catchError(this.handleError));
   }
 
   private handleError(error: any) {
@@ -251,40 +286,66 @@ export class IssueService {
 
 }
 ```
+## IssueModule に HTTPモジュールの登録
 
-## IssueListComponent の書き換え
-
-IssueListComponent は Promise実装に伴い若干の処理を追加しています。
+HTTPモジュールを利用するため IssueModule に HttpClientModule を登録します。Angular 4 以前のバージョンでは HttpModule を利用してましたが、以降では HttpClientModule を使います。HttpClientModule を使うと HttpModule より簡素に記載することができます。
 
 ```
-import { Component, OnInit } from'@angular/core';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
+import { IssueComponent } from './issue.component';
+
+import { IssueService } from './issue.service';
+import { IssueDetailComponent } from './issue-detail/issue-detail.component';
+import { IssueInputComponent } from './issue-input/issue-input.component';
+import { IssueListComponent } from './issue-list/issue-list.component';
+import { IssueUpdateComponent } from './issue-update/issue-update.component';
+
+@NgModule({
+  imports: [
+    CommonModule,
+    FormsModule,
+    HttpClientModule
+  ],
+  exports: [IssueComponent],
+  declarations: [IssueComponent, IssueDetailComponent, IssueInputComponent, IssueListComponent, IssueUpdateComponent],
+  providers: [IssueService]
+})
+export class IssueModule { }
+```
+
+## IssueListComponent の書き換え
+ 
+IssueListComponent は 削除イベントを IssueComponent へ通知するように変更しています。
+
+```
+import { Component, OnInit, Input, Output, EventEmitter } from'@angular/core';
 
 import { Issue } from'../issue';
-import { IssueService } from'../issue.service';
 
 @Component({
-  selector: 'app-issue-list',
+  selector: 'ah-issue-list',
   templateUrl: './issue-list.component.html',
-  styleUrls: ['./issue-list.component.css']
+  styleUrls: ['./issue-list.component.sass']
 })
 export class IssueListComponent implements OnInit {
 
-  issues: Issue[];
+  @Input() issues: Issue[];
 
   constructor (
-    private issueService: IssueService
   ) {}
 
-  public ngOnInit () {
-    this.issueService.list
-      .then(response => this.issues = response)
-      .catch(error => console.log(error));
-  }
+  public ngOnInit () { }
 
+  @Output('onDelete')
+  private _onDelete = new EventEmitter<number>();
   public onDelete(index: number): void {
-    this.issueService.delete(index);
+    this._onDelete.emit(index);
   }
-
+  
 }
 ```
 
@@ -314,11 +375,12 @@ import { IssueService } from '../issue.service';
 import { Issue } from '../issue';
 
 @Component({
-  selector: 'app-issue-update',
+  selector: 'ah-issue-update',
   templateUrl: './issue-update.component.html',
-  styleUrls: ['./issue-update.component.css']
+  styleUrls: ['./issue-update.component.sass']
 })
 export class IssueUpdateComponent implements OnInit {
+
 
   id: number;
 
@@ -360,11 +422,10 @@ export class IssueUpdateComponent implements OnInit {
   private gotoIssue() {
     this.router.navigate(['./pages/issue']);
   }
-
 }
 ```
 
-## UpdateComponent のルータ追加
+## IssueUpdateComponent のルータへの追加
 
 pages-routing.module.ts に UpdateComponentの設定を追加します
 
@@ -397,6 +458,99 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class PagesRoutingModule { }
+```
+
+## IssueComponent の整理
+
+IssueComponent で IssueService の管理をしています。データを受け渡すための設定を issue.component.html に記載します
+
+```
+<h2>Issue</h2>
+<ah-issue-input
+  (onSubmit)="onSubmit($event)">
+></ah-issue-input>
+<ah-issue-list
+  [issues]="issues"
+  (onDelete)="onDelete($event)">
+></ah-issue-list>
+```
+
+issue.component.ts は各子コンポーネントへのデータの受け渡しと各子コンポーネントからの通知を取得します。
+
+```
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+
+import { Issue } from'./issue';
+import { IssueService } from'./issue.service';
+
+@Component({
+  selector: 'ah-issue',
+  templateUrl: './issue.component.html',
+  styleUrls: ['./issue.component.sass']
+})
+export class IssueComponent implements OnInit {
+
+  issues: Issue[]
+
+  constructor (
+    private issueService: IssueService
+  ) {}
+
+  ngOnInit(): void {
+    this.issueService.list
+      .subscribe(response => this.issues = response)
+  }
+  
+  onSubmit(issue: Issue) {
+    this.issueService.add(issue);
+    this.issues.push(issue);
+  }
+
+  public onDelete(index: number) {
+    this.issueService.delete(index);
+    this.issues.splice(index, 1);
+  }
+}
+```
+
+
+## IssueInputComponent のイベント通知
+
+
+IssueComponent でサービスを管理していますので、IssueInputComponent から登録通知を行うよう変更します
+
+```
+import { Component, OnInit, Output, EventEmitter } from'@angular/core';
+import { NgForm } from '@angular/forms';
+
+import { Issue } from '../issue';
+
+@Component({
+  selector: 'ah-issue-input',
+  templateUrl: './issue-input.component.html',
+  styleUrls: ['./issue-input.component.sass']
+})
+export class IssueInputComponent implements OnInit {
+
+  constructor() {
+  }
+
+  ngOnInit() {
+  }
+
+  @Output("onSubmit")
+  private _onSubmit = new EventEmitter<Issue>();
+  public onSubmit(form: NgForm): void {
+    const issue = {
+      title: form.value.title,
+      desc: form.value.desc
+    };
+    this._onSubmit.emit(issue);
+    form.reset();
+  }
+
+}
 ```
 
 これでHTTPリクエストに対する簡単な処理が完了しました。

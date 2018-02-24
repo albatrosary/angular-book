@@ -22,6 +22,9 @@ Router と Component には何かしらの生成、消滅などイベントが�
 
 ```
 $ ng g guard app
+  create src/app/app.guard.spec.ts (340 bytes)
+  create src/app/app.guard.ts (400 bytes)
+$ 
 ```
 
 生成されるファイル __app.quard.ts__ は
@@ -169,7 +172,7 @@ import { Router, ActivatedRoute, NavigationStart } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app sample';
+  title = 'app';
   constructor(private router: Router) {
     this.router.events
       .filter(e => e instanceof NavigationStart)     
@@ -179,10 +182,28 @@ export class AppComponent {
 }
 ```
 
-RxJS のオペレータを有効にするため `polyfills.ts` に次の行を追加します
+RxJS のオペレータを有効にするため filter, pairwise を追加します
 
 ```
+import { Component } from '@angular/core';
+
+import { Router, ActivatedRoute, NavigationStart } from '@angular/router';
+
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/pairwise';
-```
 
+@Component({
+  selector: 'ah-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.sass']
+})
+export class AppComponent {
+  title = 'ah';
+  constructor(private router: Router) {
+    this.router.events
+      .filter(e => e instanceof NavigationStart)     
+      .pairwise()
+      .subscribe((e) => { console.log(e); }); 
+   }
+}
+```

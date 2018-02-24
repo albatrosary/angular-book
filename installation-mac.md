@@ -29,35 +29,37 @@ $ nodebrew ls-remote
 
 ...
 
-v7.6.0    
+v8.0.0    v8.1.0    v8.1.1    v8.1.2    v8.1.3    v8.1.4    v8.2.0    v8.2.1
+v8.3.0    v8.4.0    v8.5.0    v8.6.0    v8.7.0    v8.8.0    v8.8.1    v8.9.0
+v8.9.1    v8.9.2    v8.9.3    v8.9.4    
 
-v7.7.0    v7.7.1    v7.7.2    v7.7.3    v7.7.4    
+v9.0.0    v9.1.0    v9.2.0    v9.2.1    v9.3.0    v9.4.0    v9.5.0    v9.6.0
+v9.6.1    
 
-v7.8.0    
+io@v1.0.0 io@v1.0.1 io@v1.0.2 io@v1.0.3 io@v1.0.4 io@v1.1.0 io@v1.2.0 io@v1.3.0
+io@v1.4.1 io@v1.4.2 io@v1.4.3 io@v1.5.0 io@v1.5.1 io@v1.6.0 io@v1.6.1 io@v1.6.2
+io@v1.6.3 io@v1.6.4 io@v1.7.1 io@v1.8.1 io@v1.8.2 io@v1.8.3 io@v1.8.4 
 
-v7.9.0    
+io@v2.0.0 io@v2.0.1 io@v2.0.2 io@v2.1.0 io@v2.2.0 io@v2.2.1 io@v2.3.0 io@v2.3.1
+io@v2.3.2 io@v2.3.3 io@v2.3.4 io@v2.4.0 io@v2.5.0 
 
-v7.10.0   
-
-v8.0.0    
-
-v8.1.0    v8.1.1    v8.1.2    v8.1.3    
+io@v3.0.0 io@v3.1.0 io@v3.2.0 io@v3.3.0 io@v3.3.1  
 $ 
 ```
 
 利用したいバージョンの node をインストールします。
 
 ```
-$ nodebrew install-binary v8.1.3
+$ nodebrew install-binary v8.9.4
 ```
 
 使う node バージョンを指定します。
 
 ```
-$ nodebrew use v8.1.3
-use v8.1.3
+$ nodebrew use v8.9.4
+use v8.9.4
 $ node -v
-v8.1.3
+v8.9.4
 $ npm -v
 5.0.3
 $
@@ -69,7 +71,7 @@ $
 
 ### yarn のインストール
 
-yarn は npm と同様のパッケージマネージャです。yarn は早く、しっかりと、そして確実に行います。yarn のインストールは簡単で
+yarn は npm と同様のパッケージマネージャです。yarn のインストールは簡単で
 
 ```
 $ brew install yarn
@@ -77,3 +79,4 @@ $ brew install yarn
 
 を実行すれば完了です。
 
+yarn の詳細は [こちら](https://yarnpkg.com/lang/ja/docs/install/) を見て頂くとアップデート方法など詳細が理解できます。

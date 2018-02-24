@@ -1,4 +1,7 @@
 Angular アプリケーションを作成する前に、ウォーミングアップとしてビルトインディレクティブ（Angular が提供しているディレクティブを指しています）について触れていきます。
+前章で作成した Handson アプリケーション に対して `ng serve` コマンドを実行しアプリケーションを起動します。
+
+![figure01](./images/built-in-directive/figure01.png "figure01")
 
 ### ngModel
 
@@ -9,16 +12,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 
+import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
-import { HogeComponent } from './hoge/hoge.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HogeComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     FormsModule
   ],
   providers: [],
@@ -141,4 +146,3 @@ export class AppComponent {
 ```
 
 ここまでがウォーミングアップです。それではちょっとしたアプリケーションを開発しましょう。
-

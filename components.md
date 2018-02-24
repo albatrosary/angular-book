@@ -11,10 +11,8 @@
 
 ```
 $ ng g module pages/issue
-installing module
-  create src/app/pages/issue/issue.module.ts
-  WARNING Module is generated but not provided, it must be provided to be used
-$ 
+  create src/app/pages/issue/issue.module.ts (189 bytes)
+$  
 ```
 
 __issue.module.ts__ は IssueComponent と IssueService を保持します。 IssueComponent は PagesRouting で利用しますので Exports しておきます。
@@ -83,8 +81,8 @@ __issue.component.html__ は次のようになります。
 
 ```
 <h2>Issue</h2>
-<app-issue-input></app-issue-input>
-<app-issue-list></app-issue-list>
+<ah-issue-input></ah-issue-input>
+<ah-issue-list></ah-issue-list>
 ```
 
 __issue.component.ts__ は特別に処理というものが無いので次のような何も無くなります。
@@ -93,17 +91,18 @@ __issue.component.ts__ は特別に処理というものが無いので次のよ
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-issue',
+  selector: 'ah-issue',
   templateUrl: './issue.component.html',
-  styleUrls: ['./issue.component.css']
+  styleUrls: ['./issue.component.sass']
 })
 export class IssueComponent implements OnInit {
 
   constructor (
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
+
 }
 ```
 
@@ -130,7 +129,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from'@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-issue-detail',
+  selector: 'ah-issue-detail',
   templateUrl: './issue-detail.component.html',
   styleUrls: ['./issue-detail.component.css']
 })
@@ -186,7 +185,7 @@ import { NgForm } from '@angular/forms';
 import { IssueService } from '../issue.service';
 
 @Component({
-  selector: 'app-issue-input',
+  selector: 'ah-issue-input',
   templateUrl: './issue-input.component.html',
   styleUrls: ['./issue-input.component.css']
 })
@@ -221,12 +220,12 @@ __issue-list.component.html__ では Issue 登録された情報を一覧化し�
 
 ```
 <div *ngFor="let issue of issues; let i = index">
-  <app-issue-detail
+  <ah-issue-detail
     [rownum]="i"
     [title]="issue.title"
     [desc]="issue.desc"
     (onDelete)="onDelete(i)">
-  </app-issue-detail>
+  </ah-issue-detail>
 </div>
 ```
 
@@ -239,7 +238,7 @@ import { Issue } from'../issue';
 import { IssueService } from'../issue.service';
 
 @Component({
-  selector: 'app-issue-list',
+  selector: 'ah-issue-list',
   templateUrl: './issue-list.component.html',
   styleUrls: ['./issue-list.component.css']
 })
