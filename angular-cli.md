@@ -1,5 +1,7 @@
 Angular アプリケーションの開発を進める上で最も簡単で効率的なツールは angular-cli を利用することです。 angular-cli は、開発に必要なライブラリをまとめていて、かつ、スカッフォールドも行えます。
 
+![figure03](./images/angular-cli/figure03.png "figure03")
+
 ## angular-cli のインストール
 
 Node.js のインストールが済んでいれば、次に行うことは angular-cli を[インストールする](https://github.com/angular/angular-cli/blob/master/README.md)ことです。angular-cli は npm\(Node Package Manager\) を使ってインストールします。インストール完了後 `ng help` や `ng version` が実行できていれば無事インストールが完了しています。

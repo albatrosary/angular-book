@@ -16,7 +16,7 @@ $ ng g component pages/issue
 $ ng g component pages/wiki
 ```
 
-`ng g component` コマンドを実行すると4つのファイルが出来上がり、ひとつのファイルが更新されます。具体的に `ng g component home` としたときは
+`ng g component` コマンドを実行すると4つのファイルが出来上がり、ひとつのファイルが更新されます。
 
 ### home コンポーネントの作成
 
