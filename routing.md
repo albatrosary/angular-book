@@ -16,6 +16,8 @@ $ ng g component pages/issue
 $ ng g component pages/wiki
 ```
 
+![figure03](./images/routing/figure03.png "figure03")
+
 `ng g component` コマンドを実行すると4つのファイルが出来上がり、ひとつのファイルが更新されます。
 
 ### home コンポーネントの作成
