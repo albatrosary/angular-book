@@ -9,6 +9,8 @@
 
 などが上げられます
 
+![figure03](./images/components/figure03.png "figure03")
+
 ```
 $ ng g module pages/issue
   create src/app/pages/issue/issue.module.ts (189 bytes)
