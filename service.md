@@ -6,6 +6,8 @@
 
 です。それぞれどのように DI 設定するのか見ていきます。
 
+![figure03](./images/service/figure03.png "figure03")
+
 ## サービスの作成
 
 angular-cli を使ってサービスを生成します。
