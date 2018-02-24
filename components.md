@@ -120,6 +120,10 @@ __issue-detail.component.html__ は一覧の詳細部分のみを記載します
 
 __issue-detail.component.ts__ では、@Input により IssueListComponent からデータを取得し、@Output と Emitter を利用しイベントを IssueListComponent へ渡しています。
 
+![figure01](./images/components/figure01.png "figure01")
+
+![figure02](./images/components/figure02.png "figure02")
+
 > IssueList と IssueDetail を親子関係とすると（IssueList は親、IssueDetailは子）、親から子へは @Input を使って直接的にデータを渡すことが出来ます。子から親へは @Output と Emitter を使って直接的にイベントを渡すことが出来ます。
 >
 > この方法を採用することで Angular はレスポンスを上げる方法のひとつにしています。
